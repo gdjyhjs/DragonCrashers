@@ -1,0 +1,49 @@
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Unity 生成的文件和目录
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ibrary/
+[Ll]ogs/
+[Uu]ser[Pp]refs/
+
+# 导出的包
+ExportedObj/
+
+# Visual Studio 解决方案和项目文件
+*.sln
+*.csproj
+*.unityproj
+*.booproj
+*.pidb
+*.suo
+*.user
+*.userprefs
+*.unitypackage
+*.dll
+*.exe
+*.pdb
+
+# 测试结果
+TestResults/
+
+# 自定义忽略
+# 如果你使用了特定的插件或工具，可以在这里添加它们的忽略规则
+# 例如：
+# Plugins/SomePlugin/
+
+# 建议保留的文件
+!Documentation/*.md
+!Assets/*.meta
+!Packages/*.meta
+!ProjectSettings/*.asset
+!ProjectSettings/*.json
