@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf7b68d1ccdd9214787c607f06308f45
+    m_Address: Chinese (Simplified) (zh-Hans)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e29a729aa5b274859944baf44ae17547
     m_Address: Spanish (es)
     m_ReadOnly: 1

@@ -6,7 +6,7 @@
     <ui:VisualElement name="MailItem" class="mail-message-selected" style="width: 90%; height: 145px; align-items: center; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_B.png?fileID=2800000&amp;guid=f3c815d95da3a483385620d7bd8fc545&amp;type=3#Cursor_B&quot;);">
         <ui:VisualElement name="mail-item__subject-background" picking-mode="Ignore" class="mail-item__subject-background">
             <ui:VisualElement name="mail-item__text" picking-mode="Ignore" class="mail-item__text">
-                <ui:Label text="Message1" display-tooltip-when-elided="true" name="mail-item__subject" picking-mode="Ignore" class="mail-item__subject" />
+                <ui:Label text="消息1" display-tooltip-when-elided="true" name="mail-item__subject" picking-mode="Ignore" class="mail-item__subject" />
                 <ui:Label text="01/01/2022" display-tooltip-when-elided="true" name="mail-item__date" picking-mode="Ignore" class="mail-item__date" />
             </ui:VisualElement>
             <ui:VisualElement name="mail-item__badge" picking-mode="Ignore" class="mail-item__badge" />

@@ -19,7 +19,7 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 1830770696192
-    m_Localized: "Volumen m\xFAsica"
+    m_Localized: "Volumen m\uFFFD\uFFFDsica"
     m_Metadata:
       m_Items: []
   - m_Id: 1870314594304
@@ -31,7 +31,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 478749429587968
-    m_Localized: "M\xE1x"
+    m_Localized: "M\uFFFD\uFFFDx"
     m_Metadata:
       m_Items: []
   - m_Id: 2233855893504
@@ -87,23 +87,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 482007850147840
-    m_Localized: "Ingl\xE9s"
+    m_Localized: "Ingl\uFFFD\uFFFDs"
     m_Metadata:
       m_Items: []
   - m_Id: 482054406922240
-    m_Localized: "Dan\xE9s"
+    m_Localized: "Dan\uFFFD\uFFFDs"
     m_Metadata:
       m_Items: []
   - m_Id: 482117585723392
-    m_Localized: "Espa\xF1ol"
+    m_Localized: Espa?ol
     m_Metadata:
       m_Items: []
   - m_Id: 482163551100928
-    m_Localized: "Franc\xE9s"
+    m_Localized: "Franc\uFFFD\uFFFDs"
     m_Metadata:
       m_Items: []
   - m_Id: 5962506102104064
-    m_Localized: "Configuraci\xF3n"
+    m_Localized: "Configuraci\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 5964322869075968
@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5964384655368192
-    m_Localized: "H\xE9roes"
+    m_Localized: "H\uFFFD\uFFFDroes"
     m_Metadata:
       m_Items: []
   - m_Id: 5964407635959808
@@ -135,7 +135,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6117969045217280
-    m_Localized: "La Guarida del Drag\xF3n"
+    m_Localized: "La Guarida del Drag\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 6153065827655680
@@ -147,11 +147,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153262058168320
-    m_Localized: "Obt\xE9n el e-book"
+    m_Localized: "Obt\uFFFD\uFFFDn el e-book"
     m_Metadata:
       m_Items: []
   - m_Id: 6153414135242752
-    m_Localized: "M\xE1s contenido de UI de Unity"
+    m_Localized: "M\uFFFD\uFFFDs contenido de UI de Unity"
     m_Metadata:
       m_Items: []
   - m_Id: 6153318945513472
@@ -171,7 +171,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6187479865483264
-    m_Localized: "Ning\xFAn mensaje seleccionado."
+    m_Localized: "Ning\uFFFD\uFFFDn mensaje seleccionado."
     m_Metadata:
       m_Items: []
   - m_Id: 6187432310464512
@@ -195,7 +195,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199112465637376
-    m_Localized: "M\xE1s Comprado"
+    m_Localized: "M\uFFFD\uFFFDs Comprado"
     m_Metadata:
       m_Items: []
   - m_Id: 6199149585227776
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6200181723750400
-    m_Localized: "Pociones de Curaci\xF3n"
+    m_Localized: "Pociones de Curaci\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 6199273661128704
@@ -235,7 +235,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199952576339968
-    m_Localized: "Un gran mont\xF3n de gemas"
+    m_Localized: "Un gran mont\uFFFD\uFFFDn de gemas"
     m_Metadata:
       m_Items: []
   - m_Id: 6297508480278528
@@ -243,7 +243,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309153927585792
-    m_Localized: "Com\xFAn"
+    m_Localized: "Com\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 6309216842145792
@@ -307,7 +307,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6920435546447872
-    m_Localized: "Palad\xEDn"
+    m_Localized: "Palad\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 6920577112596480
@@ -327,7 +327,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7052242984099840
-    m_Localized: "Com\xFAn"
+    m_Localized: "Com\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 7052367135498240
@@ -347,7 +347,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7229870013669376
-    m_Localized: "El Se\xF1or de los Huesos"
+    m_Localized: El Se?or de los Huesos
     m_Metadata:
       m_Items: []
   - m_Id: 7229777718009856
@@ -363,7 +363,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7241299408183296
-    m_Localized: "Ataque b\xE1sico"
+    m_Localized: "Ataque b\uFFFD\uFFFDsico"
     m_Metadata:
       m_Items: []
   - m_Id: 7241336636825600
@@ -399,7 +399,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280179318611968
-    m_Localized: "Rayo M\xE1gico"
+    m_Localized: "Rayo M\uFFFD\uFFFDgico"
     m_Metadata:
       m_Items: []
   - m_Id: 7280180828561408
@@ -407,7 +407,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280182250430464
-    m_Localized: "Esfera de Aniquilaci\xF3n"
+    m_Localized: "Esfera de Aniquilaci\uFFFD\uFFFDn"
     m_Metadata:
       m_Items: []
   - m_Id: 7314553179201536
@@ -419,12 +419,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7359834620944384
-    m_Localized: "Inflige <color=#775027>{0} puntos de da\xF1o</color> a un enemigo
-      cada <color=#775027>{1} segundos</color>"
+    m_Localized: Inflige <color=#775027>{0} puntos de da?o</color> a un enemigo cada
+      <color=#775027>{1} segundos</color>
     m_Metadata:
       m_Items: []
   - m_Id: 7411562842152960
-    m_Localized: "Fondos insuficientes para <color=#F8BB19>{0}</color>. Compra m\xE1s
+    m_Localized: "Fondos insuficientes para <color=#F8BB19>{0}</color>. Compra m\uFFFD\uFFFDs
       <color=#F8BB19>{1}</color>."
     m_Metadata:
       m_Items: []
@@ -433,11 +433,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7411614566309888
-    m_Localized: "<color=#F8BB19>{0}</color> a\xF1adido al inventario."
+    m_Localized: <color=#F8BB19>{0}</color> a?adido al inventario.
     m_Metadata:
       m_Items: []
   - m_Id: 7411617997250560
-    m_Localized: "<color=#F8BB19>{0} {1}{2}</color> a\xF1adido al inventario."
+    m_Localized: <color=#F8BB19>{0} {1}{2}</color> a?adido al inventario.
     m_Metadata:
       m_Items: []
   - m_Id: 7411611013734400
@@ -445,7 +445,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7430279634345984
-    m_Localized: "\xA1Bienvenido <color=#F8BB19>{0}</color>!"
+    m_Localized: ?Bienvenido <color=#F8BB19>{0}</color>!
     m_Metadata:
       m_Items: []
   references:

@@ -13,7 +13,7 @@
         <ui:VisualElement name="background__letterbox-bottom" class="background__letterbox-bottom tileable--128px" />
     </ui:VisualElement>
     <ui:VisualElement name="info__container" picking-mode="Ignore" class="info__container">
-        <ui:Label text="This is a small slice of the 2D demo, Dragon Crashers, available on the Asset Store" display-tooltip-when-elided="true" name="info__label" enable-rich-text="false" picking-mode="Ignore" class="info__label" />
+        <ui:Label text="这是大鬼正在制作的修仙游戏，如需帮助可以联系八荒大鬼QQ996776472" display-tooltip-when-elided="true" name="info__label" enable-rich-text="false" picking-mode="Ignore" class="info__label" />
     </ui:VisualElement>
     <ui:VisualElement name="pause__button-container" picking-mode="Ignore" class="pause__button-container">
         <ui:Button display-tooltip-when-elided="true" name="pause__button" class="pause__button" style="cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_B.png?fileID=2800000&amp;guid=f3c815d95da3a483385620d7bd8fc545&amp;type=3#Cursor_B&quot;); transition-duration: 0.25s;">
@@ -44,7 +44,7 @@
     <ui:VisualElement name="healing-potion__screen" picking-mode="Ignore" style="flex-grow: 1; width: 100%; height: 100%; max-width: 100%; max-height: 100%; top: 0; position: absolute;" />
     <engine:VisualElement xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" template="LogWindow" name="debug-log__container" picking-mode="Ignore" style="position: absolute; width: 100%; height: 22%; top: 5%; display: none;">
         <engine:VisualElement name="debug-log__background" picking-mode="Ignore" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.8);">
-            <engine:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lobortis enim nec neque imperdiet pellentesque. Phasellus risus sapien, convallis at viverra mattis, vulputate in ligula. Mauris vitae bibendum elit. Maecenas egestas ultrices tincidunt. Nulla facilisi. Aenean scelerisque aliquam tincidunt. Praesent egestas massa rhoncus velit consectetur facilisis. Proin ut tristique enim. Nulla cursus scelerisque ullamcorper. Aenean lobortis dapibus scelerisque. Duis vel dui feugiat, sagittis ipsum sed, lacinia ipsum. Ut ornare scelerisque nulla, eu eleifend magna tempus ac. Pellentesque id quam rhoncus urna fermentum tempus at eu ante." name="debug-log__label" picking-mode="Ignore" style="flex-grow: 1; color: rgb(212, 212, 212); white-space: normal; font-size: 26px;" />
+            <engine:Label text="素常研习，当以勤勉为基，循时序而进，探微求知，于文辞章句间寻真意。或观山川风物，感四时流转，云霞明灭，林泉清响，皆可入思；或品史传经典，察兴替之理，贤愚行迹，谋略韬光，尽藏智识。\n执笔为文，常思结构经纬，起笔若初绽繁花，引人探幽；承转如溪流迂曲，递接自然；收束似暮鼓沉钟，余韵悠长。字词斟酌，求精准达意，雅俗相宜，使读之者或悟哲理，或感情韵，心有所会。\n虽为 placeholder（占位之用），亦盼合文理，助设计排版时观整体风貌，待实际内容充盈，再成精彩篇章。若论学识涵养，当积跬步，汇涓流，久之自成格局，如匠人琢器，渐至佳境，方不负求知问道之诚 。\n你也可以根据实际场景（比如文艺、商务、科普等风格倾向 ），调整内容侧重，偏商务风格的" name="debug-log__label" picking-mode="Ignore" style="flex-grow: 1; color: rgb(212, 212, 212); white-space: normal; font-size: 26px;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </ui:UXML>

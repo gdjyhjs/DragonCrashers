@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2233855893504
-    m_Localized: "Case \xE0 cocher"
+    m_Localized: "Case \uFFFD\uFFFD cocher"
     m_Metadata:
       m_Items: []
   - m_Id: 2252730261504
@@ -47,19 +47,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 2480212533248
-    m_Localized: "R\xE9initialiser niveau"
+    m_Localized: "R\uFFFD\uFFFDinitialiser niveau"
     m_Metadata:
       m_Items: []
   - m_Id: 2581387534336
-    m_Localized: "R\xE9initialiser monnaie"
+    m_Localized: "R\uFFFD\uFFFDinitialiser monnaie"
     m_Metadata:
       m_Items: []
   - m_Id: 1899318206464
-    m_Localized: "Th\xE8me"
+    m_Localized: "Th\uFFFD\uFFFDme"
     m_Metadata:
       m_Items: []
   - m_Id: 476952254210048
-    m_Localized: "Par d\xE9faut"
+    m_Localized: "Par d\uFFFD\uFFFDfaut"
     m_Metadata:
       m_Items: []
   - m_Id: 476985498263552
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 477015936327680
-    m_Localized: "No\xEBl"
+    m_Localized: No?l
     m_Metadata:
       m_Items: []
   - m_Id: 1874093662208
@@ -75,11 +75,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 477196048130048
-    m_Localized: "Activ\xE9"
+    m_Localized: "Activ\uFFFD\uFFFD"
     m_Metadata:
       m_Items: []
   - m_Id: 477945775775744
-    m_Localized: "D\xE9sactiv\xE9"
+    m_Localized: "D\uFFFD\uFFFDsactiv\uFFFD\uFFFD"
     m_Metadata:
       m_Items: []
   - m_Id: 21377310720
@@ -99,11 +99,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 482163551100928
-    m_Localized: "Fran\xE7ais"
+    m_Localized: Fran?ais
     m_Metadata:
       m_Items: []
   - m_Id: 5962506102104064
-    m_Localized: "Param\xE8tres"
+    m_Localized: "Param\uFFFD\uFFFDtres"
     m_Metadata:
       m_Items: []
   - m_Id: 5964450430443520
@@ -119,7 +119,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5964384655368192
-    m_Localized: "H\xE9ros"
+    m_Localized: "H\uFFFD\uFFFDros"
     m_Metadata:
       m_Items: []
   - m_Id: 5964322869075968
@@ -143,12 +143,12 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153195121270784
-    m_Localized: "D\xE9couvrez les solutions et les flux de travail de UI Toolkit
-      dans notre e-book gratuit"
+    m_Localized: "D\uFFFD\uFFFDcouvrez les solutions et les flux de travail de UI
+      Toolkit dans notre e-book gratuit"
     m_Metadata:
       m_Items: []
   - m_Id: 6153262058168320
-    m_Localized: "Obtenez l\u2019e-book"
+    m_Localized: "Obtenez l\uFFFD\uFFFDe-book"
     m_Metadata:
       m_Items: []
   - m_Id: 6153414135242752
@@ -172,23 +172,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6187479865483264
-    m_Localized: "Aucun message s\xE9lectionn\xE9."
+    m_Localized: "Aucun message s\uFFFD\uFFFDlectionn\uFFFD\uFFFD."
     m_Metadata:
       m_Items: []
   - m_Id: 6187432310464512
-    m_Localized: "R\xE9clamer"
+    m_Localized: "R\uFFFD\uFFFDclamer"
     m_Metadata:
       m_Items: []
   - m_Id: 6187396377862144
-    m_Localized: "Supprim\xE9s"
+    m_Localized: "Supprim\uFFFD\uFFFDs"
     m_Metadata:
       m_Items: []
   - m_Id: 6187370209599488
-    m_Localized: "Bo\xEEte"
+    m_Localized: Bo?te
     m_Metadata:
       m_Items: []
   - m_Id: 6199224092844032
-    m_Localized: "de R\xE9duction"
+    m_Localized: "de R\uFFFD\uFFFDduction"
     m_Metadata:
       m_Items: []
   - m_Id: 6192167281221632
@@ -196,7 +196,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199112465637376
-    m_Localized: "Le Plus Achet\xE9"
+    m_Localized: "Le Plus Achet\uFFFD\uFFFD"
     m_Metadata:
       m_Items: []
   - m_Id: 6199149585227776
@@ -212,19 +212,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199273661128704
-    m_Localized: "Quelques pi\xE8ces d\u2019or"
+    m_Localized: "Quelques pi\uFFFD\uFFFDces d\uFFFD\uFFFDor"
     m_Metadata:
       m_Items: []
   - m_Id: 6199404519219200
-    m_Localized: "Un gros tas de pi\xE8ces d\u2019or"
+    m_Localized: "Un gros tas de pi\uFFFD\uFFFDces d\uFFFD\uFFFDor"
     m_Metadata:
       m_Items: []
   - m_Id: 6199438241423360
-    m_Localized: "Un sac plein de pi\xE8ces d\u2019or"
+    m_Localized: "Un sac plein de pi\uFFFD\uFFFDces d\uFFFD\uFFFDor"
     m_Metadata:
       m_Items: []
   - m_Id: 6199491098042368
-    m_Localized: "Un coffre rempli de pi\xE8ces d\u2019or"
+    m_Localized: "Un coffre rempli de pi\uFFFD\uFFFDces d\uFFFD\uFFFDor"
     m_Metadata:
       m_Items: []
   - m_Id: 6199927095943168
@@ -240,7 +240,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6297508480278528
-    m_Localized: "Inventaire d\u2019\xE9quipement"
+    m_Localized: "Inventaire d\uFFFD\uFFFD\uFFFD\uFFFDquipement"
     m_Metadata:
       m_Items: []
   - m_Id: 6309153927585792
@@ -252,7 +252,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309247292792832
-    m_Localized: "Sp\xE9cial"
+    m_Localized: "Sp\uFFFD\uFFFDcial"
     m_Metadata:
       m_Items: []
   - m_Id: 6309275289772032
@@ -288,7 +288,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6315080336531456
-    m_Localized: "Comp\xE9tences"
+    m_Localized: "Comp\uFFFD\uFFFDtences"
     m_Metadata:
       m_Items: []
   - m_Id: 6315104374087680
@@ -296,15 +296,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6315225115516928
-    m_Localized: "Am\xE9liorer"
+    m_Localized: "Am\uFFFD\uFFFDliorer"
     m_Metadata:
       m_Items: []
   - m_Id: 6315248591036416
-    m_Localized: "D\xE9s\xE9quiper"
+    m_Localized: "D\uFFFD\uFFFDs\uFFFD\uFFFDquiper"
     m_Metadata:
       m_Items: []
   - m_Id: 6315128545861632
-    m_Localized: "Auto-\xE9quiper"
+    m_Localized: "Auto-\uFFFD\uFFFDquiper"
     m_Metadata:
       m_Items: []
   - m_Id: 6920435546447872
@@ -324,7 +324,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7052321920901120
-    m_Localized: "Sp\xE9cial"
+    m_Localized: "Sp\uFFFD\uFFFDcial"
     m_Metadata:
       m_Items: []
   - m_Id: 7052242984099840
@@ -340,11 +340,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7062891260796928
-    m_Localized: "\xC0 distance"
+    m_Localized: "\uFFFD\uFFFD distance"
     m_Metadata:
       m_Items: []
   - m_Id: 7062893907402752
-    m_Localized: "Corps \xE0 corps"
+    m_Localized: "Corps \uFFFD\uFFFD corps"
     m_Metadata:
       m_Items: []
   - m_Id: 7229870013669376
@@ -356,11 +356,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7229742183866368
-    m_Localized: "Le Conte de la Sorci\xE8re"
+    m_Localized: "Le Conte de la Sorci\uFFFD\uFFFDre"
     m_Metadata:
       m_Items: []
   - m_Id: 7229657865773056
-    m_Localized: "Le Chevalier Sacr\xE9 du Royaume"
+    m_Localized: "Le Chevalier Sacr\uFFFD\uFFFD du Royaume"
     m_Metadata:
       m_Items: []
   - m_Id: 7241299408183296
@@ -368,11 +368,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7241336636825600
-    m_Localized: "Attaque interm\xE9diaire"
+    m_Localized: "Attaque interm\uFFFD\uFFFDdiaire"
     m_Metadata:
       m_Items: []
   - m_Id: 7241382312796160
-    m_Localized: "Attaque avanc\xE9e"
+    m_Localized: "Attaque avanc\uFFFD\uFFFDe"
     m_Metadata:
       m_Items: []
   - m_Id: 7280168564416512
@@ -392,19 +392,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280176390987776
-    m_Localized: "Invocation d\u2019\xC9l\xE9mentaire"
+    m_Localized: "Invocation d\uFFFD\uFFFD\uFFFD\uFFFDl\uFFFD\uFFFDmentaire"
     m_Metadata:
       m_Items: []
   - m_Id: 7280174600019968
-    m_Localized: "Coup d\u2019\xC9p\xE9e"
+    m_Localized: "Coup d\uFFFD\uFFFD\uFFFD\uFFFDp\uFFFD\uFFFDe"
     m_Metadata:
       m_Items: []
   - m_Id: 7280179318611968
-    m_Localized: "\xC9clair Magique"
+    m_Localized: "\uFFFD\uFFFDclair Magique"
     m_Metadata:
       m_Items: []
   - m_Id: 7280182250430464
-    m_Localized: "Sph\xE8re d\u2019Annihilation"
+    m_Localized: "Sph\uFFFD\uFFFDre d\uFFFD\uFFFDAnnihilation"
     m_Metadata:
       m_Items: []
   - m_Id: 7280180828561408
@@ -420,8 +420,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7359834620944384
-    m_Localized: "Inflige <color=#775027>{0} points de d\xE9g\xE2ts</color> \xE0
-      un ennemi toutes les <color=#775027>{1} secondes</color>"
+    m_Localized: "Inflige <color=#775027>{0} points de d\uFFFD\uFFFDgats</color>
+      \uFFFD\uFFFD un ennemi toutes les <color=#775027>{1} secondes</color>"
     m_Metadata:
       m_Items: []
   - m_Id: 7411562842152960
@@ -430,15 +430,16 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7411606907510784
-    m_Localized: "<color=#F8BB19>{0}</color> \xE9quip\xE9."
+    m_Localized: "<color=#F8BB19>{0}</color> \uFFFD\uFFFDquip\uFFFD\uFFFD."
     m_Metadata:
       m_Items: []
   - m_Id: 7411614566309888
-    m_Localized: "<color=#F8BB19>{0}</color> ajout\xE9 \xE0 l'inventaire."
+    m_Localized: "<color=#F8BB19>{0}</color> ajout\uFFFD\uFFFD \uFFFD\uFFFD l'inventaire."
     m_Metadata:
       m_Items: []
   - m_Id: 7411617997250560
-    m_Localized: "<color=#F8BB19>{0} {1}{2}</color> ajout\xE9 \xE0 l'inventaire."
+    m_Localized: "<color=#F8BB19>{0} {1}{2}</color> ajout\uFFFD\uFFFD \uFFFD\uFFFD
+      l'inventaire."
     m_Metadata:
       m_Items: []
   - m_Id: 7411611013734400

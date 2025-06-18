@@ -1,0 +1,108 @@
+Key,Id,Chinese (Simplified) (zh-Hans),Danish(da),English(en),French(fr),Spanish(es)
+AttackType.Magic,7.06E+15,魔法,Magi,Magic,Magie,Magia
+AttackType.Melee,7.06E+15,近战,N?rkamp,Melee,Corps à corps,Cuerpo a cuerpo
+AttackType.Ranged,7.06E+15,远程,R?kkevidde,Ranged,à distance,A distancia
+BioTitle.Barbarian,7.23E+15,满月之下,Under en Fuldm?ne,Under a Full Moon,Sous la Pleine Lune,Bajo la Luna Llena
+BioTitle.Necromancer,7.23E+15,骨之主,Knoglernes Herre,The Lord of Bones,Le Seigneur des Os,El Se?or de los Huesos
+BioTitle.Paladin,7.23E+15,王国圣骑,Den Hellige Ridder af Kongeriget,The Sacred Knight of the Kingdom,Le Chevalier Sacré du Royaume,El Caballero Sagrado del Reino
+BioTitle.Wizard,7.23E+15,女巫传说,Historien om Heksen,Tale of the Witch,Le Conte de la Sorcière,La Historia de la Hechicera
+Char_AutoEquip,6.32E+15,自动装备,Auto-udstyr,Auto-Equip,Auto-équiper,Auto-equipar
+Char_BioTab,6.32E+15,传记,Bio,Bio,Bio,Bio
+Char_LevelUp,6.32E+15,升级,Opgradér,Level up,Améliorer,Subir de nivel
+Char_SkillsTab,6.32E+15,技能,Evner,Skills,Compétences,Habilidades
+Char_StatsTab,6.32E+15,属性,Stats,Stats,Stats,Stats
+Char_Unequip,6.32E+15,卸下装备,Fjern udstyr,Unequip,Déséquiper,Desequipar
+CharacterClass.Barbarian,7.05E+15,野蛮人,Barbarian,Barbarian,Barbarian,Barbarian
+CharacterClass.Necromancer,7.05E+15,necromancer（死灵法师，游戏语境常用 “死灵法师” ）,Necromancer,Necromancer,Necromancer,Necromancer
+CharacterClass.Paladin,6.92E+15,圣骑士,Paladin,Paladin,Paladin,Paladín
+CharacterClass.Wizard,6.92E+15,巫师,Troldmand,Wizard,Magicien,Mago
+Home_Level,5.97E+15,等级,Niveau,Level,Niveau,Nivel
+Home_LevelSubtitle,6.12E+15,龙巢,Dragens Hule,The Dragon's Lair,Le Repaire du Dragon,La Guarida del Dragón
+Home_PlayButton,5.97E+15,游玩,Spil,Play,Jouer,Jugar
+Info_AssetStore,6.15E+15,资源商店,Asset Store,Asset Store,Asset Store,Asset Store
+Info_Blog,6.15E+15,博客,Blog,Blog,Blog,Blog
+Info_DiscoverUIToolkit,6.15E+15,在我们的免费电子书中探索 UI Toolkit 解决方案和工作流,Oplev UI Toolkit-l?sninger og -arbejdsgange i vores gratis e-bog,Discover UI Toolkit solutions land workflows in our free e-book,Découvrez les solutions et les flux de travail de UI Toolkit dans notre e-book gratuit,Descubre UI Toolkit en nuestro e-book gratuito
+Info_Discuss,6.15E+15,论坛,Forum,Discuss,Forum,Foro
+Info_GetEbook,6.15E+15,获取电子书,F? e-bogen,Get the e-book,Obtenez l’e-book,Obtén el e-book
+Info_Manual,6.15E+15,手册,Manual,Manual,Manuel,Manual
+Info_MoreContent,6.15E+15,Unity 更多 UI 内容,Mere UI-indhold fra Unity,More UI content from Unity,Plus de contenu UI de Unity,Más contenido de UI de Unity
+Info_Title,6.15E+15,资源,Ressourcer,Resources,Ressources,Recursos
+Inventory_Rarity_All,6.31E+15,全部,Alle,All,Tous,Todos
+Inventory_Rarity_Common,6.31E+15,普通,Almindelig,Common,Commun,Común
+Inventory_Rarity_Rare,6.31E+15,稀有,Sj?lden,Rare,Rare,Raro
+Inventory_Rarity_Special,6.31E+15,特殊,Speciel,Special,Spécial,Especial
+Inventory_SlotType_All,6.31E+15,靴子,St?vler,Boots,Bottes,Botas
+Inventory_SlotType_Boots,6.31E+15,手套,Handsker,Gloves,Gants,Guantes
+Inventory_SlotType_Gloves,6.31E+15,头盔,Hjelm,Helmet,Casque,Casco
+Inventory_SlotType_Helmet,6.31E+15,盾牌,Skjold,Shield,Bouclier,Escudo
+Inventory_SlotType_Shield,6.31E+15,武器,V?ben,Weapon,Arme,Arma
+Inventory_SlotType_Weapon,6.31E+15,装备背包,Udstyrsinventar,Gear Inventory,Inventaire d’équipement,Inventario de equipo
+Inventory_Title,6.30E+15,领取,Indl?s,Claim,Réclamer,Reclamar
+Mail_Claim,6.19E+15,已删除,Slettet,Deleted,Supprimés,Eliminados
+Mail_Deleted,6.19E+15,收件箱,Indbakke,Inbox,Bo?te,Entrada
+Mail_Inbox,6.19E+15,未选中消息。,Ingen besked valgt.,No message selected.,Aucun message sélectionné.,Ningún mensaje seleccionado.
+Mail_NoMessage,6.19E+15,英雄,Helte,Heroes,Héros,Héroes
+Menu_Char,5.96E+15,主页,Hjem,Home,Accueil,Inicio
+Menu_Home,5.96E+15,邮件,Post,Mail,Courrier,Correo
+Menu_Info,5.96E+15,商店,Butik,Shop,Boutique,Tienda
+Menu_Mail,5.96E+15,<color=#F8BB19>{0}</color> 已装备。,<color=#F8BB19>{0}</color> udstyret.,<color=#F8BB19>{0}</color> equipped.,<color=#F8BB19>{0}</color> équipé.,<color=#F8BB19>{0}</color> equipado.
+Menu_Shop,5.96E+15,购买 <color=#F8BB19>{0}</color> 资金不足，请购买更多 <color=#F8BB19>{1}</color> 。,Utilstr?kkelige midler til <color=#F8BB19>{0}</color>. K?b mere <color=#F8BB19>{1}</color>.,Insufficient funds for <color=#F8BB19>{0}</color>. Buy more <color=#F8BB19>{1}</color>.,Fonds insuffisants pour <color=#F8BB19>{0}</color>. Achetez plus de <color=#F8BB19>{1}</color>.,Fondos insuficientes para <color=#F8BB19>{0}</color>. Compra más <color=#F8BB19>{1}</color>.
+PopUp.GearEquipped,7.41E+15,升级药水不足。,Utilstr?kkelige potioner til at stige i niveau.,Insufficient potions to level up.,Potions insuffisantes pour monter de niveau.,Pociones insuficientes para subir de nivel.
+PopUp.InsufficientFunds,7.41E+15,<color=#F8BB19>{0}</color> 已加入背包。,<color=#F8BB19>{0}</color> tilf?jet til inventar.,<color=#F8BB19>{0}</color> added to inventory.,<color=#F8BB19>{0}</color> ajouté à l'inventaire.,<color=#F8BB19>{0}</color> a?adido al inventario.
+PopUp.InsufficientPotions,7.41E+15,<color=#F8BB19>{0} {1}{2}</color> 已加入背包。,<color=#F8BB19>{0} {1}{2}</color> tilf?jet til inventar.,<color=#F8BB19>{0} {1}{2}</color> added to inventory.,<color=#F8BB19>{0} {1}{2}</color> ajouté à l'inventaire.,<color=#F8BB19>{0} {1}{2}</color> a?adido al inventario.
+PopUp.ItemAddedToInventory,7.41E+15,欢迎 <color=#F8BB19>{0}</color> ！,Velkommen <color=#F8BB19>{0}</color>!,Welcome <color=#F8BB19>{0}</color>!,Bienvenue <color=#F8BB19>{0}</color>!,?Bienvenido <color=#F8BB19>{0}</color>!
+PopUp.PotionsAddedToInventory,7.41E+15,账户,Konto,Account,Compte,Cuenta
+PopUp.WelcomeMessage,7.43E+15,复选框示例,Afkrydsningsfelt,Checkbox example,Case à cocher,Ejemplo de checkbox
+Rarity.Common,7.05E+15,帧率计数器,Fps-t?ller,Fps counter,Compteur fps,Contador fps
+Rarity.Rare,7.05E+15,关闭,Slukket,Off,Désactivé,Apagado
+Rarity.Special,7.05E+15,开启,T?ndt,On,Activé,Encendido
+Settings_AccountLabel,2.39E+12,目标帧率,M?lfrekvens,Target frame rate,Taux cible,Tasa de refresco
+Settings_Checkbutton,2.23E+12,最大,Maks,Max,Max,Máx
+Settings_FpsSlideToggle,1.87E+12,语言,Sprog,Language,Langue,Idioma
+Settings_FpsSlideToggle_Off,4.78E+14,丹麦语,Dansk,Danish,Danois,Danés
+Settings_FpsSlideToggle_On,4.77E+14,英语,Engelsk,English,Anglais,Inglés
+Settings_FrameRateRadioButtons,1.88E+12,法语,Fransk,French,Fran?ais,Francés
+Settings_FrameRateRadioButtons_Max,4.79E+14,西班牙语,Spansk,Spanish,Espagnol,Espa?ol
+Settings_LanguageDropdown,21377310720,音乐音量,Musikvolumen,Music volume,Volume musique,Volumen música
+Settings_LanguageDropdown_Danish,4.82E+14,玩家名称,Spillernavn,Player name,Nom joueur,Nombre de jugador
+Settings_LanguageDropdown_English,4.82E+14,重置玩家等级,Nulstil niveau,Reset Player Level,Réinitialiser niveau,Restablecer nivel
+Settings_LanguageDropdown_French,4.82E+14,重置玩家货币,Nulstil valuta,Reset Player Currency,Réinitialiser monnaie,Restablecer monedas
+Settings_LanguageDropdown_Spanish,4.82E+14,音效音量,Lydvolumen,SFX volume,Volume effets,Volumen efectos
+Settings_MusicSlider,1.83E+12,主题,Tema,Theme,Thème,Tema
+Settings_PlayerNameLabel,2.25E+12,默认,Standard,Default,Par défaut,Predeterminado
+Settings_ResetButton1,2.48E+12,万圣节,Halloween,Halloween,Halloween,Halloween
+Settings_ResetButton2,2.58E+12,圣诞节,Jul,Christmas,No?l,Navidad
+Settings_SFXSlider,1.87E+12,设置,Indstillinger,Settings,Paramètres,Configuración
+Settings_ThemeDropdown,1.90E+12,最优套餐,Bedste Tilbud,Best Deal,Meilleure Offre,Mejor Oferta
+Settings_ThemeDropdown_Option1,4.77E+14,免费,Gratuit,Free,Gratuit,Gratuito（注：原文是 Gratis，西班牙语常用 “Gratuito” 更贴合 “免费”；若严格对应 “Gratis”，中文仍为 “免费” ）
+Settings_ThemeDropdown_Option2,4.77E+14,一大堆宝石,En stor bunke ?delstene,A big pile of Gems,Un gros tas de gemmes,Un gran montón de gemas
+Settings_ThemeDropdown_Option3,4.77E+14,一满袋宝石,En pose fuld af ?delstene,A bag full of Gems,Un sac plein de gemmes,Una bolsa llena de gemas
+Settings_Title,5.96E+15,几颗宝石,Et par ?delstene,A couple of Gems,Quelques gemmes,Un par de gemas
+Shop_BestDeal,6.20E+15,一箱金币,En kiste med guldm?nter,A chest of Gold Coins,Un coffre rempli de pièces d’or,Un cofre lleno de monedas de oro
+Shop_Free,6.19E+15,一满袋金币,En pose fuld af guldm?nter,A bag full of Gold Coins,Un sac plein de pièces d’or,Una bolsa llena de monedas de oro
+Shop_GemsLarge,6.20E+15,一大堆金币,En stor bunke guldm?nter,A big pile of Gold Coins,Un gros tas de pièces d’or,Una gran pila de monedas de oro
+Shop_GemsMedium,6.20E+15,几枚金币,Et par guldm?nter,A couple of Gold Coins,Quelques pièces d’or,Un par de monedas de oro
+Shop_GemsSmall,6.20E+15,治疗药水,Helbredelsesdrikke,Healing Potions,Potions de Soin,Pociones de Curación
+Shop_GoldExtraLarge,6.20E+15,销量最高,Mest K?bt,Most Purchased,Le Plus Acheté,Más Comprado
+Shop_GoldLarge,6.20E+15,折扣,Rabat,Off,de Réduction,de Descuento
+Shop_GoldMedium,6.20E+15,力量药水,Kraftdrikke,Power Potions,Potions de Puissance,Pociones de Poder
+Shop_GoldSmall,6.20E+15,每 <color=#775027>{1} 秒</color> 对敌人造成 <color=#775027>{0} 点伤害</color>,Giver <color=#775027>{0} skadepoint</color> til en fjende hvert <color=#775027>{1} sekund</color>,Deals <color=#775027>{0} Damage</color> points to an enemy every <color=#775027>{1} seconds</color>,Inflige <color=#775027>{0} points de dégats</color> à un ennemi toutes les <color=#775027>{1} secondes</color>,Inflige <color=#775027>{0} puntos de da?o</color> a un enemigo cada <color=#775027>{1} segundos</color>
+Shop_HealingPotions,6.20E+15,<color=#775027> 等级 {0}</color> 解锁下一阶,N?ste rang ved <color=#775027>niveau {0}</color>,Next tier at <color=#775027>Level {0}</color>,Rang suivant au <color=#775027>niveau {0}</color>,Siguiente rango en <color=#775027>nivel {0}</color>
+Shop_MostPurchased,6.20E+15,<color=#775027> 阶 {0}</color>,<color=#775027>Rang {0}</color>,<color=#775027>Tier {0}</color>,<color=#775027>Rang {0}</color>,<color=#775027>Rango {0}</color>
+Shop_OffDiscount,6.20E+15,进阶攻击,Avanceret angreb,Advanced attack,Attaque avancée,Ataque avanzado
+Shop_PowerPotions,6.20E+15,基础攻击,Grundl?ggende angreb,Basic attack,Attaque de base,Ataque básico
+Skill.DamageFormat,7.36E+15,中级攻击,Mellem angreb,Intermediate attack,Attaque intermédiaire,Ataque intermedio
+Skill.NextTierLevelFormat,7.31E+15,斧击,?ksehug,Axe Strike,Coup de Hache,Golpe de Hacha
+Skill.TierFormat,7.31E+15,破盾,Skjoldknuser,Shield Breaker,Brise-Bouclier,Rompeescudos
+SkillCategory.Advanced,7.24E+15,狂战士之怒,Bers?rkerrasen,Beserker Rage,Rage du Berserker,Furia de Berserker
+SkillCategory.Basic,7.24E+15,挥砍,Sv?rdhug,Sword Slash,Coup d’épée,Corte de Espada
+SkillCategory.Intermediate,7.24E+15,召唤元素,Tilkald Elementar,Summon Elemental,Invocation d’élémentaire,Invocar Elemental
+SkillName.BarbarianSkill1,7.28E+15,能量之手,Kraftens H?nder,Hands of Power,Mains de Puissance,Manos de Poder
+SkillName.BarbarianSkill2,7.28E+15,魔法飞弹,Magisk Lyn,Magic Bolt,éclair Magique,Rayo Mágico
+SkillName.BarbarianSkill3,7.28E+15,火球术,Ildkugle,Fireball,Boule de Feu,Bola de Fuego
+SkillName.PaladinSkill1,7.28E+15,湮灭之球,Tilintetg?relsessf?re,Sphere of Annihilation,Sphère d’Annihilation,Esfera de Aniquilación
+SkillName.PaladinSkill2,7.28E+15,召唤元素,Tilkald Elementar,Summon Elemental,Invocation d’élémentaire,Invocar Elemental
+SkillName.PaladinSkill3,7.28E+15,能量之手,Kraftens H?nder,Hands of Power,Mains de Puissance,Manos de Poder
+SkillName.WizardSkill1,7.28E+15,魔法飞弹,Magisk Lyn,Magic Bolt,éclair Magique,Rayo Mágico
+SkillName.WizardSkill2,7.28E+15,火球术,Ildkugle,Fireball,Boule de Feu,Bola de Fuego
+SkillName.WizardSkill3,7.28E+15,湮灭之球,Tilintetg?relsessf?re,Sphere of Annihilation,Sphère d’Annihilation,Esfera de Aniquilación

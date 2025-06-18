@@ -3,24 +3,24 @@
         <ui:GroupBox name="tabbed-menu-container" style="display: flex; width: 950px; height: 554px;">
             <ui:VisualElement name="tabs" style="font-size: 31px;">
                 <ui:VisualElement name="name1-tab" class="tab selected-tab">
-                    <ui:Label text="Name1" display-tooltip-when-elided="true" name="name1-label" />
+                    <ui:Label text="名称1" display-tooltip-when-elided="true" name="name1-label" />
                 </ui:VisualElement>
                 <ui:VisualElement name="name2-tab" class="tab">
-                    <ui:Label text="Name2" display-tooltip-when-elided="true" name="name2-label" />
+                    <ui:Label text="名称2" display-tooltip-when-elided="true" name="name2-label" />
                 </ui:VisualElement>
                 <ui:VisualElement name="name3-tab" class="tab">
-                    <ui:Label text="Name3" display-tooltip-when-elided="true" name="name3-label" />
+                    <ui:Label text="名称3" display-tooltip-when-elided="true" name="name3-label" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="tab-content" style="top: -4px;">
                 <ui:VisualElement name="name1-content" style="background-color: rgb(255, 0, 0); height: 90%;">
-                    <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." display-tooltip-when-elided="true" name="name1-content-text" style="flex-grow: 1; white-space: normal; -unity-font-style: bold; font-size: 32px; color: rgb(219, 219, 219);" />
+                    <ui:Label text="素常研习，当以勤勉为基，循时序而进，探微求知，于文辞章句间寻真意。或观山川风物，感四时流转，云霞明灭，林泉清响，皆可入思；或品史传经典，察兴替之理，贤愚行迹，谋略韬光，尽藏智识。\n执笔为文，常思结构经纬，起笔若初绽繁花，引人探幽；承转如溪流迂曲，递接自然；收束似暮鼓沉钟，余韵悠长。字词斟酌，求精准达意，雅俗相宜，使读之者或悟哲理，或感情韵，心有所会。\n虽为 placeholder（占位之用），亦盼合文理，助设计排版时观整体风貌，待实际内容充盈，再成精彩篇章。若论学识涵养，当积跬步，汇涓流，久之自成格局，如匠人琢器，渐至佳境，方不负求知问道之诚 。" display-tooltip-when-elided="true" name="name1-content-text" style="flex-grow: 1; white-space: normal; -unity-font-style: bold; font-size: 32px; color: rgb(219, 219, 219);" />
                 </ui:VisualElement>
                 <ui:VisualElement name="name2-content" class="unselected-content" style="background-color: rgb(0, 116, 255); height: 90%;">
-                    <ui:Label text="Tellus in hac habitasse platea dictumst vestibulum rhoncus est pellentesque. At quis risus sed vulputate odio ut enim blandit volutpat." display-tooltip-when-elided="true" name="name2-content-text" style="flex-grow: 1; white-space: normal; -unity-font-style: bold; font-size: 32px; color: rgb(219, 219, 219);" />
+                    <ui:Label text="抵制不良游戏，拒绝盗版游戏\n注意自我保护，谨防受骗上当\n适度游戏益脑，沉迷游戏伤身\n合理安排时间，享受健康生活。" display-tooltip-when-elided="true" name="name2-content-text" style="flex-grow: 1; white-space: normal; -unity-font-style: bold; font-size: 32px; color: rgb(219, 219, 219);" />
                 </ui:VisualElement>
                 <ui:VisualElement name="name3-content" class="unselected-content" style="background-color: rgb(255, 212, 0); height: 90%;">
-                    <ui:Label text="Malesuada proin libero nunc consequat interdum varius sit amet. Bibendum est ultricies integer quis auctor elit sed. " display-tooltip-when-elided="true" name="name3-content-text" style="flex-grow: 1; white-space: normal; -unity-font-style: bold; font-size: 32px; color: rgb(219, 219, 219);" />
+                    <ui:Label text="抵制不良游戏，拒绝盗版游戏\n注意自我保护，谨防受骗上当\n适度游戏益脑，沉迷游戏伤身\n合理安排时间，享受健康生活。" display-tooltip-when-elided="true" name="name3-content-text" style="flex-grow: 1; white-space: normal; -unity-font-style: bold; font-size: 32px; color: rgb(219, 219, 219);" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:GroupBox>

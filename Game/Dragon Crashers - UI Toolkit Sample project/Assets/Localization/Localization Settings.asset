@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Metadata:
     m_Items: []
   m_ProjectLocaleIdentifier:
-    m_Code: en
+    m_Code: zh-Hans
   m_PreloadBehavior: 1
   m_InitializeSynchronously: 0
   references:
@@ -44,7 +44,7 @@ MonoBehaviour:
       type: {class: SpecificLocaleSelector, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data:
         m_LocaleId:
-          m_Code: en
+          m_Code: zh-Hans
     - rid: 5570773876179992659
       type: {class: LocalesProvider, ns: UnityEngine.Localization.Settings, asm: Unity.Localization}
       data: 
@@ -70,8 +70,8 @@ MonoBehaviour:
           rid: -2
         m_AsynchronousBehaviour: 0
         m_UseFallback: 0
-        m_MissingTranslationState: 0
-        m_NoTranslationFoundMessage: No translation found for '{key}' in {table.TableCollectionName}
+        m_MissingTranslationState: 2
+        m_NoTranslationFoundMessage: "\u65E0\u6CD5\u5728'{table.TableCollectionName}'\u627E\u5230'{key}'\uFF01"
         m_SmartFormat:
           rid: 5570773876179992662
     - rid: 5570773876179992662

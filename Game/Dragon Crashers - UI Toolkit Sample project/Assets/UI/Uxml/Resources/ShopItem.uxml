@@ -3,7 +3,7 @@
     <Style src="project://database/Assets/UI/Uss/Base/Text.uss?fileID=7433441132597879392&amp;guid=b05ff73889e4f4eb087e35c5f3d38284&amp;type=3#Text" />
     <ui:VisualElement name="shop-item__container" picking-mode="Ignore" class="shop-item__size--normal shop-item__size--wide shop-item__container">
         <ui:VisualElement name="shop-item__contents" picking-mode="Ignore" style="width: 100%; height: 100%; align-items: center; flex-grow: 1; min-width: 100%; max-width: 100%; padding-left: 5%; padding-right: 5%; padding-top: 5%; padding-bottom: 5%; opacity: 1; top: 0; position: absolute; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_A.png?fileID=2800000&amp;guid=0fc53ad8e877049c3aef54a3f8a1e01a&amp;type=3#Cursor_A&quot;);">
-            <ui:Label text="A big pile of Gems A big pile of Gems" display-tooltip-when-elided="true" name="shop-item__description" picking-mode="Ignore" class="shop-item__description" />
+            <ui:Label text="一大堆宝石" display-tooltip-when-elided="true" name="shop-item__description" picking-mode="Ignore" class="shop-item__description" />
             <ui:VisualElement name="shop-item-body" picking-mode="Ignore" class="shop-item__body">
                 <ui:VisualElement name="shop-item-frame" picking-mode="Ignore" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=2841462034448977479&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Frame_02&quot;); width: 94%; height: 93%; rotate: 180deg; position: absolute; -unity-background-image-tint-color: rgb(255, 255, 255); top: 7%;">
                     <ui:VisualElement name="shop-item-frame-color" picking-mode="Ignore" style="background-color: rgb(163, 137, 103); height: 10%; width: 100%; position: absolute; top: 11%;" />
@@ -15,14 +15,14 @@
                 <ui:VisualElement name="shop-item__product-image" picking-mode="Ignore" class="shop-item__graphic" />
                 <ui:VisualElement name="shop-item__discount-badge" picking-mode="Ignore" class="shop-item__badge">
                     <ui:Label text="50%" display-tooltip-when-elided="true" name="shop-item__badge-text" picking-mode="Ignore" class="shop-item__label" style="left: 44%; -unity-font-style: normal; font-size: 60px; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); top: -11%; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute;" />
-                    <ui:Label text="Off" display-tooltip-when-elided="true" name="shop-item__badge-off-text" picking-mode="Ignore" class="shop-item__label" style="left: 44%; -unity-font-style: normal; font-size: 32px; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); top: 43%; margin-left: 0; margin-right: 0; margin-top: 2%; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute;">
+                    <ui:Label text="关闭" display-tooltip-when-elided="true" name="shop-item__badge-off-text" picking-mode="Ignore" class="shop-item__label" style="left: 44%; -unity-font-style: normal; font-size: 32px; text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3); top: 43%; margin-left: 0; margin-right: 0; margin-top: 2%; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; position: absolute;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6199224092844032)" />
                         </Bindings>
                     </ui:Label>
                 </ui:VisualElement>
                 <ui:VisualElement name="shop-item__banner" picking-mode="Ignore" class="shop-item__banner" style="width: 101%; top: 4%; height: 17%; display: none;">
-                    <ui:Label text="Most purchased" display-tooltip-when-elided="true" name="shop-item__banner-label" picking-mode="Ignore" class="shop-item__label" style="font-size: 40px; text-shadow: 3px 3px 3px rgba(44, 62, 80, 0.47); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; top: 9%; -unity-font-style: normal;" />
+                    <ui:Label text="最畅销" display-tooltip-when-elided="true" name="shop-item__banner-label" picking-mode="Ignore" class="shop-item__label" style="font-size: 40px; text-shadow: 3px 3px 3px rgba(44, 62, 80, 0.47); margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; top: 9%; -unity-font-style: normal;" />
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:Button text="&#10;" display-tooltip-when-elided="true" name="shop-item__buy-button" class="shop-item__button" style="flex-shrink: 1;">
@@ -46,7 +46,7 @@
                             <ui:Label text="$9.99" display-tooltip-when-elided="true" name="shop-item__discount-price" picking-mode="Ignore" class="shop-item__cost text__shadow--small" style="margin-left: 10px; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-left;" />
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:Label text="Free" display-tooltip-when-elided="true" name="shop-item__cost-free" picking-mode="Ignore" class="text__shadow--large text__size--large text__style--normal text__font--default" style="padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center; margin-left: 10px; margin-right: 0; margin-top: 0; margin-bottom: 0; position: absolute; width: 100%; height: 100%; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/ChelaOne-Regular%20SDF%201.asset?fileID=11400000&amp;guid=4e008579d9e985040974fa631b2f2b80&amp;type=2#ChelaOne-Regular SDF 1&quot;); color: rgb(255, 255, 255); left: -4%;">
+                    <ui:Label text="免费" display-tooltip-when-elided="true" name="shop-item__cost-free" picking-mode="Ignore" class="text__shadow--large text__size--large text__style--normal text__font--default" style="padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center; margin-left: 10px; margin-right: 0; margin-top: 0; margin-bottom: 0; position: absolute; width: 100%; height: 100%; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/ChelaOne-Regular%20SDF%201.asset?fileID=11400000&amp;guid=4e008579d9e985040974fa631b2f2b80&amp;type=2#ChelaOne-Regular SDF 1&quot;); color: rgb(255, 255, 255); left: -4%;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6192167281221632)" />
                         </Bindings>

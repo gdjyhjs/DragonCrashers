@@ -15,7 +15,7 @@
             <ui:VisualElement name="menu__button-group" picking-mode="Ignore" class="menu__button-group">
                 <ui:Button display-tooltip-when-elided="true" name="menu__home-button" class="menu__button--active cursor-b" style="flex-grow: 0; flex-shrink: 1;">
                     <ui:VisualElement name="menu-home-icon" picking-mode="Ignore" class="menu__icon--active" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=7899088828675708884&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Main_menu_icon_01&quot;); background-color: rgba(255, 255, 255, 0); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="Home" display-tooltip-when-elided="true" name="menu-home-label" picking-mode="Ignore" class="menu__label--active">
+                    <ui:Label text="主页" display-tooltip-when-elided="true" name="menu-home-label" picking-mode="Ignore" class="menu__label--active">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5964322869075968)" />
                         </Bindings>
@@ -23,7 +23,7 @@
                 </ui:Button>
                 <ui:Button display-tooltip-when-elided="true" name="menu__char-button" class="menu__button cursor-b">
                     <ui:VisualElement name="menu-char-icon" picking-mode="Ignore" class="menu__icon" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=7921838834792204216&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Main_menu_icon_02&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0);" />
-                    <ui:Label text="Heroes" display-tooltip-when-elided="true" name="menu-char-label" picking-mode="Ignore" class="menu-label menu__label" style="position: absolute; bottom: 0;">
+                    <ui:Label text="英雄" display-tooltip-when-elided="true" name="menu-char-label" picking-mode="Ignore" class="menu-label menu__label" style="position: absolute; bottom: 0;">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5964384655368192)" />
                         </Bindings>
@@ -31,7 +31,7 @@
                 </ui:Button>
                 <ui:Button display-tooltip-when-elided="true" name="menu__info-button" class="menu__button cursor-b">
                     <ui:VisualElement name="menu-info-icon" picking-mode="Ignore" class="menu__icon" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=832231871827974919&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Main_menu_icon_03&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0);" />
-                    <ui:Label text="Resources" display-tooltip-when-elided="true" name="menu-info-label" picking-mode="Ignore" class="menu-label menu__label">
+                    <ui:Label text="资源" display-tooltip-when-elided="true" name="menu-info-label" picking-mode="Ignore" class="menu-label menu__label">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5964407635959808)" />
                         </Bindings>
@@ -39,7 +39,7 @@
                 </ui:Button>
                 <ui:Button display-tooltip-when-elided="true" name="menu__shop-button" class="menu__button cursor-b">
                     <ui:VisualElement name="menu-shop-icon" picking-mode="Ignore" class="menu__icon" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=5546219552474026466&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Main_menu_icon_04&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(255, 255, 255, 0);" />
-                    <ui:Label text="Shop" display-tooltip-when-elided="true" name="menu-shop-label" picking-mode="Ignore" class="menu-label menu__label">
+                    <ui:Label text="商店" display-tooltip-when-elided="true" name="menu-shop-label" picking-mode="Ignore" class="menu-label menu__label">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5964432071974912)" />
                         </Bindings>
@@ -47,7 +47,7 @@
                 </ui:Button>
                 <ui:Button display-tooltip-when-elided="true" name="menu__mail-button" class="menu__button cursor-b">
                     <ui:VisualElement name="menu-mail-icon" picking-mode="Ignore" class="menu__icon" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=2475862303943896879&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Main_menu_icon_05&quot;); background-color: rgba(255, 255, 255, 0); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="Mail" display-tooltip-when-elided="true" name="menu-mail-label" enable-rich-text="false" picking-mode="Ignore" class="menu-label menu__label">
+                    <ui:Label text="邮件" display-tooltip-when-elided="true" name="menu-mail-label" enable-rich-text="false" picking-mode="Ignore" class="menu-label menu__label">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5964450430443520)" />
                         </Bindings>

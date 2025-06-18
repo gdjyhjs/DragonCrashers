@@ -27,7 +27,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1878497681408
-    m_Localized: "M\xE5lfrekvens"
+    m_Localized: M?lfrekvens
     m_Metadata:
       m_Items: []
   - m_Id: 478749429587968
@@ -71,11 +71,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1874093662208
-    m_Localized: "Fps-t\xE6ller"
+    m_Localized: Fps-t?ller
     m_Metadata:
       m_Items: []
   - m_Id: 477196048130048
-    m_Localized: "T\xE6ndt"
+    m_Localized: T?ndt
     m_Metadata:
       m_Items: []
   - m_Id: 477945775775744
@@ -143,11 +143,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153195121270784
-    m_Localized: "Oplev UI Toolkit-l\xF8sninger og -arbejdsgange i vores gratis e-bog"
+    m_Localized: Oplev UI Toolkit-l?sninger og -arbejdsgange i vores gratis e-bog
     m_Metadata:
       m_Items: []
   - m_Id: 6153262058168320
-    m_Localized: "F\xE5 e-bogen"
+    m_Localized: F? e-bogen
     m_Metadata:
       m_Items: []
   - m_Id: 6153414135242752
@@ -175,7 +175,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6187432310464512
-    m_Localized: "Indl\xF8s"
+    m_Localized: Indl?s
     m_Metadata:
       m_Items: []
   - m_Id: 6187396377862144
@@ -195,7 +195,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199112465637376
-    m_Localized: "Mest K\xF8bt"
+    m_Localized: Mest K?bt
     m_Metadata:
       m_Items: []
   - m_Id: 6199149585227776
@@ -211,31 +211,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199273661128704
-    m_Localized: "Et par guldm\xF8nter"
+    m_Localized: Et par guldm?nter
     m_Metadata:
       m_Items: []
   - m_Id: 6199404519219200
-    m_Localized: "En stor bunke guldm\xF8nter"
+    m_Localized: En stor bunke guldm?nter
     m_Metadata:
       m_Items: []
   - m_Id: 6199438241423360
-    m_Localized: "En pose fuld af guldm\xF8nter"
+    m_Localized: En pose fuld af guldm?nter
     m_Metadata:
       m_Items: []
   - m_Id: 6199491098042368
-    m_Localized: "En kiste med guldm\xF8nter"
+    m_Localized: En kiste med guldm?nter
     m_Metadata:
       m_Items: []
   - m_Id: 6199927095943168
-    m_Localized: "En pose fuld af \xE6delstene"
+    m_Localized: En pose fuld af ?delstene
     m_Metadata:
       m_Items: []
   - m_Id: 6199884184018944
-    m_Localized: "Et par \xE6delstene"
+    m_Localized: Et par ?delstene
     m_Metadata:
       m_Items: []
   - m_Id: 6199952576339968
-    m_Localized: "En stor bunke \xE6delstene"
+    m_Localized: En stor bunke ?delstene
     m_Metadata:
       m_Items: []
   - m_Id: 6297508480278528
@@ -247,7 +247,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309216842145792
-    m_Localized: "Sj\xE6lden"
+    m_Localized: Sj?lden
     m_Metadata:
       m_Items: []
   - m_Id: 6309247292792832
@@ -263,7 +263,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309305736224768
-    m_Localized: "V\xE5ben"
+    m_Localized: V?ben
     m_Metadata:
       m_Items: []
   - m_Id: 6309338455990272
@@ -275,7 +275,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309398291931136
-    m_Localized: "St\xF8vler"
+    m_Localized: St?vler
     m_Metadata:
       m_Items: []
   - m_Id: 6309426343436288
@@ -295,7 +295,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6315225115516928
-    m_Localized: "Opgrad\xE9r"
+    m_Localized: "Opgrad\uFFFD\uFFFDr"
     m_Metadata:
       m_Items: []
   - m_Id: 6315248591036416
@@ -327,7 +327,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7052367135498240
-    m_Localized: "Sj\xE6lden"
+    m_Localized: Sj?lden
     m_Metadata:
       m_Items: []
   - m_Id: 7052321920901120
@@ -339,11 +339,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7062891260796928
-    m_Localized: "R\xE6kkevidde"
+    m_Localized: R?kkevidde
     m_Metadata:
       m_Items: []
   - m_Id: 7062893907402752
-    m_Localized: "N\xE6rkamp"
+    m_Localized: N?rkamp
     m_Metadata:
       m_Items: []
   - m_Id: 7229870013669376
@@ -351,7 +351,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7229777718009856
-    m_Localized: "Under en Fuldm\xE5ne"
+    m_Localized: Under en Fuldm?ne
     m_Metadata:
       m_Items: []
   - m_Id: 7229742183866368
@@ -363,7 +363,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7241299408183296
-    m_Localized: "Grundl\xE6ggende angreb"
+    m_Localized: Grundl?ggende angreb
     m_Metadata:
       m_Items: []
   - m_Id: 7241336636825600
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280168564416512
-    m_Localized: "\xD8ksehug"
+    m_Localized: ?ksehug
     m_Metadata:
       m_Items: []
   - m_Id: 7280171181662208
@@ -383,11 +383,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280172997795840
-    m_Localized: "Bers\xE6rkerrasen"
+    m_Localized: Bers?rkerrasen
     m_Metadata:
       m_Items: []
   - m_Id: 7280174600019968
-    m_Localized: "Sv\xE6rdhug"
+    m_Localized: Sv?rdhug
     m_Metadata:
       m_Items: []
   - m_Id: 7280176390987776
@@ -395,7 +395,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280177808662528
-    m_Localized: "Kraftens H\xE6nder"
+    m_Localized: Kraftens H?nder
     m_Metadata:
       m_Items: []
   - m_Id: 7280179318611968
@@ -407,7 +407,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280182250430464
-    m_Localized: "Tilintetg\xF8relsessf\xE6re"
+    m_Localized: Tilintetg?relsessf?re
     m_Metadata:
       m_Items: []
   - m_Id: 7314553179201536
@@ -415,7 +415,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7314598947446784
-    m_Localized: "N\xE6ste rang ved <color=#775027>niveau {0}</color>"
+    m_Localized: N?ste rang ved <color=#775027>niveau {0}</color>
     m_Metadata:
       m_Items: []
   - m_Id: 7359834620944384
@@ -424,8 +424,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7411562842152960
-    m_Localized: "Utilstr\xE6kkelige midler til <color=#F8BB19>{0}</color>. K\xF8b
-      mere <color=#F8BB19>{1}</color>."
+    m_Localized: Utilstr?kkelige midler til <color=#F8BB19>{0}</color>. K?b mere
+      <color=#F8BB19>{1}</color>.
     m_Metadata:
       m_Items: []
   - m_Id: 7411606907510784
@@ -433,15 +433,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7411614566309888
-    m_Localized: "<color=#F8BB19>{0}</color> tilf\xF8jet til inventar."
+    m_Localized: <color=#F8BB19>{0}</color> tilf?jet til inventar.
     m_Metadata:
       m_Items: []
   - m_Id: 7411617997250560
-    m_Localized: "<color=#F8BB19>{0} {1}{2}</color> tilf\xF8jet til inventar."
+    m_Localized: <color=#F8BB19>{0} {1}{2}</color> tilf?jet til inventar.
     m_Metadata:
       m_Items: []
   - m_Id: 7411611013734400
-    m_Localized: "Utilstr\xE6kkelige potioner til at stige i niveau."
+    m_Localized: Utilstr?kkelige potioner til at stige i niveau.
     m_Metadata:
       m_Items: []
   - m_Id: 7430279634345984

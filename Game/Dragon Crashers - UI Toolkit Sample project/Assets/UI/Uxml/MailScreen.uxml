@@ -8,14 +8,14 @@
         <ui:VisualElement name="mail__container" picking-mode="Ignore" class="mail-content">
             <ui:VisualElement name="tabs__container" class="tab__container">
                 <ui:VisualElement name="tabs__inbox-tab" class="selected-mailtab mailtab" style="height: 100%; position: absolute; left: 0; width: 37%; top: 7%; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_B.png?fileID=2800000&amp;guid=f3c815d95da3a483385620d7bd8fc545&amp;type=3#Cursor_B&quot;);">
-                    <ui:Label text="Inbox" display-tooltip-when-elided="true" name="tabs__inbox-tab-label" picking-mode="Ignore" class="mail-panel-tab-label" style="text-shadow: 3px 3px 1px rgb(1, 2, 2);">
+                    <ui:Label text="收件箱" display-tooltip-when-elided="true" name="tabs__inbox-tab-label" picking-mode="Ignore" class="mail-panel-tab-label" style="text-shadow: 3px 3px 1px rgb(1, 2, 2);">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6187370209599488)" />
                         </Bindings>
                     </ui:Label>
                 </ui:VisualElement>
                 <ui:VisualElement name="tabs__deleted-tab" class="mailtab" style="height: 100%; position: absolute; width: 37%; left: 40%; top: 6%; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_B.png?fileID=2800000&amp;guid=f3c815d95da3a483385620d7bd8fc545&amp;type=3#Cursor_B&quot;);">
-                    <ui:Label text="Deleted" display-tooltip-when-elided="true" name="tabs__deleted-tab-label" picking-mode="Ignore" class="mail-panel-tab-label" style="text-shadow: 3px 3px 1px rgb(8, 12, 17);">
+                    <ui:Label text="已删除" display-tooltip-when-elided="true" name="tabs__deleted-tab-label" picking-mode="Ignore" class="mail-panel-tab-label" style="text-shadow: 3px 3px 1px rgb(8, 12, 17);">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6187396377862144)" />
                         </Bindings>
@@ -36,10 +36,10 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="content__container" picking-mode="Ignore" class="message__container">
                     <ui:VisualElement name="content__background" picking-mode="Ignore" class="content__background">
-                        <ui:Label text="Message 1 title" display-tooltip-when-elided="true" name="content__message-subject" class="content__message-subject" />
+                        <ui:Label text="消息 1 标题" display-tooltip-when-elided="true" name="content__message-subject" class="content__message-subject" />
                         <ui:VisualElement name="content__message-body" picking-mode="Ignore" class="content__message-body">
                             <ui:ScrollView horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto" horizontal-page-size="-1" vertical-page-size="-1" name="content__scroll-view" style="align-items: center; flex-grow: 1; flex-basis: 79%; margin-bottom: 1%; padding-right: 2%; width: 100%; padding-top: 0; margin-top: 2%; padding-left: 0; padding-bottom: 0; flex-shrink: 0;">
-                                <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." display-tooltip-when-elided="true" name="content__message-text" style="width: 100%; height: auto; white-space: normal; -unity-font-style: normal; font-size: 29px; flex-basis: auto; align-items: center; margin-bottom: 39px; padding-left: 12%; padding-right: 15%; color: rgb(163, 137, 103);" />
+                                <ui:Label text="素常研习，当以勤勉为基，循时序而进，探微求知，于文辞章句间寻真意。或观山川风物，感四时流转，云霞明灭，林泉清响，皆可入思；或品史传经典，察兴替之理，贤愚行迹，谋略韬光，尽藏智识。\n执笔为文，常思结构经纬，起笔若初绽繁花，引人探幽；承转如溪流迂曲，递接自然；收束似暮鼓沉钟，余韵悠长。字词斟酌，求精准达意，雅俗相宜，使读之者或悟哲理，或感情韵，心有所会。\n虽为 placeholder（占位之用），亦盼合文理，助设计排版时观整体风貌，待实际内容充盈，再成精彩篇章。若论学识涵养，当积跬步，汇涓流，久之自成格局，如匠人琢器，渐至佳境，方不负求知问道之诚 。" display-tooltip-when-elided="true" name="content__message-text" style="width: 100%; height: auto; white-space: normal; -unity-font-style: normal; font-size: 29px; flex-basis: auto; align-items: center; margin-bottom: 39px; padding-left: 12%; padding-right: 15%; color: rgb(163, 137, 103);" />
                                 <ui:VisualElement name="content__message-attachment" style="width: 100%; height: 400px; flex-basis: auto; align-items: center; -unity-background-scale-mode: scale-to-fit; white-space: nowrap; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=706818794082692949&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Bundle_icon_03&quot;);" />
                             </ui:ScrollView>
                             <ui:VisualElement name="content__frame" picking-mode="Ignore" style="position: absolute; display: flex; width: 100%; height: 100%; justify-content: flex-end; top: 0; margin-bottom: 1%; margin-left: 0; margin-right: 0; margin-top: 0;">
@@ -56,14 +56,14 @@
                         <ui:VisualElement name="content__buttons" class="content__buttons">
                             <ui:Button display-tooltip-when-elided="true" name="content__undelete-button" text="&#10;" class="mail-delete-button" style="background-image: url(&quot;project://database/Assets/UI/Textures/Misc/Undelete.png?fileID=21300000&amp;guid=2709433b36115d040ab3046cfe6377ed&amp;type=3#Undelete&quot;);" />
                             <ui:Button display-tooltip-when-elided="true" name="content__delete-button" text="&#10;" class="mail-delete-button" />
-                            <ui:Button text="Claim" display-tooltip-when-elided="true" name="content__gift-button" class="mail-gift-button">
+                            <ui:Button text="领取" display-tooltip-when-elided="true" name="content__gift-button" class="mail-gift-button">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6187432310464512)" />
                                 </Bindings>
                             </ui:Button>
                         </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:Label text="No message selected." display-tooltip-when-elided="true" name="content__no-messages" picking-mode="Ignore" class="mail-no-messages mail-no-messages--inactive" />
+                    <ui:Label text="未选择消息" display-tooltip-when-elided="true" name="content__no-messages" picking-mode="Ignore" class="mail-no-messages mail-no-messages--inactive" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

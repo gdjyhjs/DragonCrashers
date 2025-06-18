@@ -17,7 +17,7 @@
                 <ui:VisualElement name="settings-header__decoration-left--christmas" picking-mode="Ignore" class="settings-header-decoration-left theme__decoration--christmas" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=-963673561422133642&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Christmas_Deco_02&quot;); -unity-background-scale-mode: scale-to-fit; rotate: 56deg; translate: -8px 9px; scale: -1 1.1;" />
                 <ui:VisualElement name="settings-header__decoration-right--christmas" picking-mode="Ignore" class="settings-header-decoration-right theme__decoration--christmas" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=-963673561422133642&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Christmas_Deco_02&quot;); -unity-background-scale-mode: scale-to-fit; rotate: -71deg; translate: 3px 8px; scale: 1.1 1.1;" />
                 <ui:VisualElement name="settings-header__banner-christmas" picking-mode="Ignore" class="settings-header-banner theme__decoration--christmas" style="background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=3364424403186932412&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Header_bg_christmas&quot;);" />
-                <ui:Label text="Settings" display-tooltip-when-elided="true" name="settings__panel-label" picking-mode="Ignore" class="settings-title-label">
+                <ui:Label text="账户" display-tooltip-when-elided="true" name="settings__panel-label" picking-mode="Ignore" class="settings-title-label">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5962506102104064)" />
                     </Bindings>
@@ -29,24 +29,24 @@
             <ui:VisualElement name="settings__body-container" picking-mode="Ignore" class="settings__body-container">
                 <ui:VisualElement name="settings__left-container" picking-mode="Ignore" class="settings__panel-body">
                     <ui:VisualElement name="settings__account" picking-mode="Ignore" class="settings__account text__size--medium">
-                        <ui:Label text="Account" display-tooltip-when-elided="true" name="settings__social-label" picking-mode="Ignore" class="settings__panel-label">
+                        <ui:Label text="重置玩家等级" display-tooltip-when-elided="true" name="settings__social-label" picking-mode="Ignore" class="settings__panel-label">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(2386939600896)" />
                             </Bindings>
                         </ui:Label>
-                        <ui:Button text="Reset Player Level" display-tooltip-when-elided="true" name="settings__social-button1" class="settings__account-button cursor-b settings__social-button-1">
+                        <ui:Button text="重置玩家货币" display-tooltip-when-elided="true" name="settings__social-button1" class="settings__account-button cursor-b settings__social-button-1">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(2480212533248)" />
                             </Bindings>
                         </ui:Button>
-                        <ui:Button text="Reset Player Currency" display-tooltip-when-elided="true" name="settings__social-button2" class="settings__account-button cursor-b settings__social-button-2">
+                        <ui:Button text="玩家名称" display-tooltip-when-elided="true" name="settings__social-button2" class="settings__account-button cursor-b settings__social-button-2">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(2581387534336)" />
                             </Bindings>
                         </ui:Button>
                     </ui:VisualElement>
                     <ui:VisualElement name="settings__player-settings" picking-mode="Ignore" class="settings__player-settings">
-                        <ui:Label text="Player Name" display-tooltip-when-elided="true" name="settings__player-label" picking-mode="Ignore" class="settings__player-label">
+                        <ui:Label text="主题" display-tooltip-when-elided="true" name="settings__player-label" picking-mode="Ignore" class="settings__player-label">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(2252730261504)" />
                             </Bindings>
@@ -58,7 +58,7 @@
                             </Bindings>
                         </ui:Toggle>
                         <ui:VisualElement name="settings__theme-container" picking-mode="Ignore" class="settings__theme-container">
-                            <ui:Label text="Theme" display-tooltip-when-elided="true" name="settings__theme-label" picking-mode="Ignore" class="settings__panel-label" style="margin-top: 0; position: relative; flex-basis: 31%; height: 100%; margin-left: 0; margin-right: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center;">
+                            <ui:Label text="下拉示例" display-tooltip-when-elided="true" name="settings__theme-label" picking-mode="Ignore" class="settings__panel-label" style="margin-top: 0; position: relative; flex-basis: 31%; height: 100%; margin-left: 0; margin-right: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-text-align: middle-center;">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(1899318206464)" />
                                 </Bindings>
@@ -70,7 +70,7 @@
                 <ui:VisualElement name="settings__separator" picking-mode="Ignore" class="settings__separator" />
                 <ui:VisualElement name="settings__right-container" picking-mode="Ignore" class="settings__panel-body" style="flex-basis: 48%;">
                     <ui:VisualElement name="settings__dropdown-container" picking-mode="Ignore" class="settings_dropdown-container">
-                        <ui:Label text="Dropdown example" display-tooltip-when-elided="true" name="settings__dropdown-label" picking-mode="Ignore" class="settings__panel-label settings__dropdown-label">
+                        <ui:Label text="音乐音量" display-tooltip-when-elided="true" name="settings__dropdown-label" picking-mode="Ignore" class="settings__panel-label settings__dropdown-label">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(21377310720)" />
                             </Bindings>
@@ -83,7 +83,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="settings__slider1-container" picking-mode="Ignore" class="settings__slider1-container">
-                        <ui:Label text="Music volume" display-tooltip-when-elided="true" name="settings__slider1-label" picking-mode="Ignore" class="settings__panel-label" style="flex-basis: 29%; height: 96px; -unity-text-align: middle-left; flex-wrap: wrap; font-size: 36px; white-space: normal; translate: 18px 0; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_A.png?fileID=2800000&amp;guid=0fc53ad8e877049c3aef54a3f8a1e01a&amp;type=3#Cursor_A&quot;);">
+                        <ui:Label text="音效音量" display-tooltip-when-elided="true" name="settings__slider1-label" picking-mode="Ignore" class="settings__panel-label" style="flex-basis: 29%; height: 96px; -unity-text-align: middle-left; flex-wrap: wrap; font-size: 36px; white-space: normal; translate: 18px 0; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_A.png?fileID=2800000&amp;guid=0fc53ad8e877049c3aef54a3f8a1e01a&amp;type=3#Cursor_A&quot;);">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(1830770696192)" />
                             </Bindings>
@@ -93,7 +93,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement name="settings__slider2-container" picking-mode="Ignore" class="settings__slider2-container">
-                        <ui:Label text="SFX volume" display-tooltip-when-elided="true" name="settings__slider2-label" picking-mode="Ignore" class="settings__panel-label" style="flex-basis: 29%; height: 96px; -unity-text-align: middle-left; flex-wrap: wrap; font-size: 36px; white-space: normal; translate: 16px 0; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_A.png?fileID=2800000&amp;guid=0fc53ad8e877049c3aef54a3f8a1e01a&amp;type=3#Cursor_A&quot;);">
+                        <ui:Label text="目标帧率" display-tooltip-when-elided="true" name="settings__slider2-label" picking-mode="Ignore" class="settings__panel-label" style="flex-basis: 29%; height: 96px; -unity-text-align: middle-left; flex-wrap: wrap; font-size: 36px; white-space: normal; translate: 16px 0; cursor: url(&quot;project://database/Assets/UI/Textures/Cursors/Cursor_A.png?fileID=2800000&amp;guid=0fc53ad8e877049c3aef54a3f8a1e01a&amp;type=3#Cursor_A&quot;);">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(1870314594304)" />
                             </Bindings>
@@ -110,7 +110,7 @@
                         </MyUILibrary.SlideToggle>
                     </ui:VisualElement>
                     <ui:VisualElement name="settings__radio-button-group-container" picking-mode="Ignore" class="settings__radio-button-container">
-                        <ui:Label text="Target Frame Rate" display-tooltip-when-elided="true" name="settings__radio-button-group-label" picking-mode="Ignore" class="settings__panel-label settings__radio-button-group-label">
+                        <ui:Label text="金币" display-tooltip-when-elided="true" name="settings__radio-button-group-label" picking-mode="Ignore" class="settings__panel-label settings__radio-button-group-label">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(1878497681408)" />
                             </Bindings>

@@ -1,0 +1,12 @@
+# ninja log v5
+425	928	7719350758238150	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	237df29607151660
+931	1829	7719350765451447	G:/Users/Admin/Documents/GitHub/DragonCrashers/Game/Dragon Crashers - UI Toolkit Sample project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6b153d5j/obj/arm64-v8a/libswappywrapper.so	3c595cd4279aa000
+104	2515	7719350773924201	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	dac2ba31cc780688
+204	2527	7719350774311919	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	98791817f329577f
+54	2763	7719350776724676	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	48bb140af8f19b6b
+305	2841	7719350777517983	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	ff4a6e070407491a
+151	2870	7719350777817744	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	a9601235349d71d3
+356	3103	7719350780169297	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	fa5143839414610e
+2	3119	7719350780271258	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	85e1c3f3e0a4b758
+255	3340	7719350782475323	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	bceafeace705d51b
+3340	3560	7719350784719516	G:/Users/Admin/Documents/GitHub/DragonCrashers/Game/Dragon Crashers - UI Toolkit Sample project/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6b153d5j/obj/arm64-v8a/libgame.so	6d1b46a0c0e04a2f

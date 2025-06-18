@@ -1,0 +1,35 @@
+{
+  "buildFiles": [
+    "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\CMakeLists.txt",
+    "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\FramePacing\\CMakeLists.txt",
+    "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\GameActivity\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "F:\\Unity\\Hub\\Editor\\6000.1.6f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\.utmp\\RelWithDebInfo\\6b153d5j\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "F:\\Unity\\Hub\\Editor\\6000.1.6f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\.utmp\\RelWithDebInfo\\6b153d5j\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "game::@d02bb112ea9f9c2ed29f": {
+      "artifactName": "game",
+      "abi": "arm64-v8a",
+      "output": "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\RelWithDebInfo\\6b153d5j\\obj\\arm64-v8a\\libgame.so",
+      "runtimeFiles": []
+    },
+    "swappywrapper::@7e25bd1f32ce224db4e9": {
+      "artifactName": "swappywrapper",
+      "abi": "arm64-v8a",
+      "output": "G:\\Users\\Admin\\Documents\\GitHub\\DragonCrashers\\Game\\Dragon Crashers - UI Toolkit Sample project\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\RelWithDebInfo\\6b153d5j\\obj\\arm64-v8a\\libswappywrapper.so",
+      "runtimeFiles": []
+    }
+  }
+}

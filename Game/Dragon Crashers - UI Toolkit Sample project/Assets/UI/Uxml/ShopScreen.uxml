@@ -22,15 +22,15 @@
             <ui:VisualElement name="shop__tab-container" picking-mode="Ignore" class="shop-screen-tabs cursor-b">
                 <ui:VisualElement name="shop-gold-shoptab" class="shoptab selected-shoptab" style="background-color: rgba(0, 0, 0, 0);">
                     <ui:VisualElement name="shop-gold-icon" picking-mode="Ignore" style="flex-grow: 1; position: absolute; width: 100px; height: 100px; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=6161000958321840084&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#icon_soft_currency&quot;); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="GOLD" display-tooltip-when-elided="true" name="shop-gold-label" style="display: none;" />
+                    <ui:Label text="金币" display-tooltip-when-elided="true" name="shop-gold-label" style="display: none;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="shop-gem-shoptab" class="shoptab" style="background-color: rgba(0, 0, 0, 0);">
                     <ui:VisualElement name="shop-gem-icon" picking-mode="Ignore" style="flex-grow: 1; position: absolute; width: 100px; height: 100px; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=7429233924804342823&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#icon_hard_currency&quot;); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="GEM" display-tooltip-when-elided="true" name="shop-gem-label" style="display: none;" />
+                    <ui:Label text="灵石" display-tooltip-when-elided="true" name="shop-gem-label" style="display: none;" />
                 </ui:VisualElement>
                 <ui:VisualElement name="shop-potion-shoptab" class="shoptab" style="background-color: rgba(0, 0, 0, 0);">
                     <ui:VisualElement name="shop-potion-icon" picking-mode="Ignore" style="flex-grow: 1; position: absolute; width: 100px; height: 100px; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=121253912005250350&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#icon_potions&quot;); -unity-background-scale-mode: scale-to-fit;" />
-                    <ui:Label text="POTION" display-tooltip-when-elided="true" name="shop-potion-label" style="display: none;" />
+                    <ui:Label text="药水" display-tooltip-when-elided="true" name="shop-potion-label" style="display: none;" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:GroupBox>

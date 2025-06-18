@@ -7,21 +7,21 @@
         <ui:VisualElement name="char-data__container" class="char-data__container">
             <ui:VisualElement name="char-data-tabs" class="char-data__tabs">
                 <ui:VisualElement name="char-data-stats-chartab" class="chartab selected-chartab" style="flex-basis: 33%; align-items: center; justify-content: center;">
-                    <ui:Label text="Stats" display-tooltip-when-elided="true" name="char-data-stats-label" picking-mode="Ignore" class="char-data__label">
+                    <ui:Label text="属性" display-tooltip-when-elided="true" name="char-data-stats-label" picking-mode="Ignore" class="char-data__label">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6315048011030528)" />
                         </Bindings>
                     </ui:Label>
                 </ui:VisualElement>
                 <ui:VisualElement name="char-data-skills-chartab" class="chartab" style="flex-basis: 33%; align-items: center; justify-content: center; display: flex;">
-                    <ui:Label text="Skills" display-tooltip-when-elided="true" name="char-data__skills-label" picking-mode="Ignore" class="char-data__label">
+                    <ui:Label text="技能" display-tooltip-when-elided="true" name="char-data__skills-label" picking-mode="Ignore" class="char-data__label">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6315080336531456)" />
                         </Bindings>
                     </ui:Label>
                 </ui:VisualElement>
                 <ui:VisualElement name="char-data-bio-chartab" class="chartab" style="flex-basis: 33%; justify-content: center; align-items: center;">
-                    <ui:Label text="Bio" display-tooltip-when-elided="true" name="char-data__bio-label" picking-mode="Ignore" class="char-data__label">
+                    <ui:Label text="背景" display-tooltip-when-elided="true" name="char-data__bio-label" picking-mode="Ignore" class="char-data__label">
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6315104374087680)" />
                         </Bindings>
@@ -32,7 +32,7 @@
                 <ui:VisualElement name="char-data-stats-content" class="char-data__stats-charcontent">
                     <ui:VisualElement name="char-stats__header" picking-mode="Ignore" class="char-stats__header">
                         <ui:Label display-tooltip-when-elided="true" name="char-stats__level-group" style="-unity-font-style: normal; font-size: 80px; justify-content: center; -unity-text-align: middle-center; color: rgb(118, 80, 39); text-shadow: 5px 5px 3px rgb(157, 127, 91); width: 40%; height: 100%; flex-direction: row;">
-                            <ui:Label text="Level" display-tooltip-when-elided="true" name="char-stats__level-prefix" style="-unity-font-style: normal; font-size: 80px; justify-content: flex-start; -unity-text-align: middle-left; color: rgb(118, 80, 39); text-shadow: 5px 5px 3px rgb(157, 127, 91); position: relative;">
+                            <ui:Label text="等级" display-tooltip-when-elided="true" name="char-stats__level-prefix" style="-unity-font-style: normal; font-size: 80px; justify-content: flex-start; -unity-text-align: middle-left; color: rgb(118, 80, 39); text-shadow: 5px 5px 3px rgb(157, 127, 91); position: relative;">
                                 <Bindings>
                                     <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(5966988399599616)" />
                                 </Bindings>
@@ -54,7 +54,7 @@
                                         </Bindings>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:Label text="Class" display-tooltip-when-elided="true" name="char-stats__class-label" class="char-stats__class-label" style="height: 25%;" />
+                                <ui:Label text="职业" display-tooltip-when-elided="true" name="char-stats__class-label" class="char-stats__class-label" style="height: 25%;" />
                             </ui:VisualElement>
                             <ui:VisualElement name="char-stats__rarity" class="char-stats__class-group" style="flex-basis: 30%; justify-content: center;">
                                 <ui:VisualElement name="char-stats__rarity-background" class="char-stats__crest" style="width: 100%; height: 75%; align-items: center; justify-content: center;">
@@ -64,7 +64,7 @@
                                         </Bindings>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:Label text="Rarity" display-tooltip-when-elided="true" name="char-stats__rarity-label" class="char-stats__class-label" style="height: 25%;" />
+                                <ui:Label text="稀有度" display-tooltip-when-elided="true" name="char-stats__rarity-label" class="char-stats__class-label" style="height: 25%;" />
                             </ui:VisualElement>
                             <ui:VisualElement name="char-stats__attack-type" class="char-stats__class-group" style="flex-basis: 33%; justify-content: center;">
                                 <ui:VisualElement name="char-stats__attack-type-background" class="char-stats__crest" style="width: 100%; height: 75%; align-items: center; justify-content: center;">
@@ -74,7 +74,7 @@
                                         </Bindings>
                                     </ui:VisualElement>
                                 </ui:VisualElement>
-                                <ui:Label text="Type" display-tooltip-when-elided="true" name="char-stats__attack-type-label" class="char-stats__class-label" style="height: 25%; white-space: normal; -unity-text-align: upper-center; width: 100%;" />
+                                <ui:Label text="类型" display-tooltip-when-elided="true" name="char-stats__attack-type-label" class="char-stats__class-label" style="height: 25%; white-space: normal; -unity-text-align: upper-center; width: 100%;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -164,12 +164,12 @@
                         <ui:VisualElement name="char-skills__active" picking-mode="Ignore" style="width: 184px; height: 195px; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=388259727027779221&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Frame_skill_selected&quot;); position: absolute; -unity-background-scale-mode: scale-to-fit; left: -8px; top: 9px; transform-origin: left top;" />
                     </ui:VisualElement>
                     <ui:VisualElement name="char-skills__body" style="flex-basis: 61%; width: 100%; align-items: center; top: 5%;">
-                        <ui:Label text="Skill Name" display-tooltip-when-elided="true" name="char-skills__label" style="font-size: 60px; color: rgb(118, 80, 39); -unity-font-style: normal; -unity-text-align: lower-center;">
+                        <ui:Label text="技能名称" display-tooltip-when-elided="true" name="char-skills__label" style="font-size: 60px; color: rgb(118, 80, 39); -unity-font-style: normal; -unity-text-align: lower-center;">
                             <Bindings>
                                 <ui:DataBinding property="text" data-source-path="SkillName" data-source-type="UIToolkitDemo.SkillSO, Assembly-CSharp" binding-mode="ToTarget" />
                             </Bindings>
                         </ui:Label>
-                        <ui:Label text="Description" display-tooltip-when-elided="true" name="char-skills__category-label" style="font-size: 40px; color: rgb(140, 129, 103); -unity-font-style: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; top: -4%;">
+                        <ui:Label text="描述" display-tooltip-when-elided="true" name="char-skills__category-label" style="font-size: 40px; color: rgb(140, 129, 103); -unity-font-style: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; top: -4%;">
                             <Bindings>
                                 <ui:DataBinding property="text" data-source-path="CategoryText" data-source-type="UIToolkitDemo.SkillSO, Assembly-CSharp" binding-mode="ToTarget" />
                             </Bindings>
@@ -179,12 +179,12 @@
                                 <ui:Button text="&#10;" display-tooltip-when-elided="true" name="char-skills__last-button" class="char-data__skill-next-last-button" style="width: 70px; height: 70px; left: -8%; border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=3631226721192414999&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#bt_07&quot;); -unity-background-scale-mode: scale-to-fit; background-color: rgba(188, 188, 188, 0);" />
                             </ui:VisualElement>
                             <ui:VisualElement name="char-skills__tier-button" style="flex-basis: 68%; background-image: url(&quot;project://database/Assets/UI/Textures/UI_atlas.psd?fileID=2841462034448977479&amp;guid=68de98d899585b7469e0fb40a0fcbc56&amp;type=3#Frame_02&quot;); padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; height: 111%;">
-                                <ui:Label text="Tier 1" display-tooltip-when-elided="true" name="char-skills__tier-label" style="font-size: 40px; color: rgb(233, 224, 200); -unity-font-style: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; justify-content: center; -unity-text-align: upper-center;">
+                                <ui:Label text="第一等级" display-tooltip-when-elided="true" name="char-skills__tier-label" style="font-size: 40px; color: rgb(233, 224, 200); -unity-font-style: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; justify-content: center; -unity-text-align: upper-center;">
                                     <Bindings>
                                         <ui:DataBinding property="text" data-source-path="TierText" data-source-type="UIToolkitDemo.SkillSO, Assembly-CSharp" binding-mode="ToTarget" />
                                     </Bindings>
                                 </ui:Label>
-                                <ui:Label text="Deal x Damage points to enemy every x seconds" display-tooltip-when-elided="true" name="char-skills__tier-damage-label" style="font-size: 27px; flex-basis: 75%; flex-wrap: wrap; white-space: normal; padding-left: 5%; padding-right: 5%; padding-top: 2%; padding-bottom: 3%; -unity-font-style: normal; color: rgb(163, 137, 103);">
+                                <ui:Label text="每 x 秒对敌人造成 x 点伤害" display-tooltip-when-elided="true" name="char-skills__tier-damage-label" style="font-size: 27px; flex-basis: 75%; flex-wrap: wrap; white-space: normal; padding-left: 5%; padding-right: 5%; padding-top: 2%; padding-bottom: 3%; -unity-font-style: normal; color: rgb(163, 137, 103);">
                                     <Bindings>
                                         <ui:DataBinding property="text" data-source-path="DamageText" data-source-type="UIToolkitDemo.SkillSO, Assembly-CSharp" binding-mode="ToTarget" />
                                     </Bindings>
@@ -194,7 +194,7 @@
                                 <ui:Button text="&#10;" display-tooltip-when-elided="true" name="char-skills__next-button" class="char-data__skill-next-button char-data__skill-next-last-button" style="scale: -1 1;" />
                             </ui:VisualElement>
                         </ui:VisualElement>
-                        <ui:Label text="Next tier at Level X" display-tooltip-when-elided="true" name="char-skills__next-tier-label" style="font-size: 35px; top: 5%; color: rgb(163, 137, 103); -unity-font-style: normal;">
+                        <ui:Label text="下一级解锁等级为 x" display-tooltip-when-elided="true" name="char-skills__next-tier-label" style="font-size: 35px; top: 5%; color: rgb(163, 137, 103); -unity-font-style: normal;">
                             <Bindings>
                                 <ui:DataBinding property="text" data-source-path="NextTierLevelText" data-source-type="UIToolkitDemo.SkillSO, Assembly-CSharp" binding-mode="ToTarget" />
                             </Bindings>
@@ -203,11 +203,11 @@
                 </ui:VisualElement>
                 <ui:VisualElement name="char-data-bio-content" class="unselected-charcontent" style="width: 93%; height: 86%; position: absolute; left: 2%; top: 2%; align-items: center; justify-content: center;">
                     <ui:VisualElement name="char-bio__header" style="flex-grow: 0; flex-basis: 16%; align-items: center; position: relative; width: 100%; left: 4px; top: 0; justify-content: center;">
-                        <ui:Label text="The title of the biography" display-tooltip-when-elided="true" name="char-bio__title" style="-unity-font-style: normal; font-size: 32px; justify-content: flex-start; -unity-text-align: middle-center; color: rgb(118, 80, 39);" />
+                        <ui:Label text="传记标题" display-tooltip-when-elided="true" name="char-bio__title" style="-unity-font-style: normal; font-size: 32px; justify-content: flex-start; -unity-text-align: middle-center; color: rgb(118, 80, 39);" />
                     </ui:VisualElement>
                     <ui:VisualElement name="char-bio__tracker" class="char-bio__tracker" style="display: none; right: -4%;" />
                     <ui:ScrollView name="char-bio__scrollview" vertical-scroller-visibility="AlwaysVisible" horizontal-scroller-visibility="Hidden" style="height: 90%; width: 100%; position: relative; left: 1%; top: 4%; flex-basis: 76%; -unity-font-style: bold; display: flex;">
-                        <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \n&#10;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \n&#10;Duis aute irurrsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et &lt;b&gt;dolore &lt;/b&gt;magna aliqua. \n&#10;Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \n&#10;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. \n&#10;Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." display-tooltip-when-elided="true" name="char-bio__text" style="width: 94%; height: 100%; white-space: normal; font-size: 24px; color: rgb(118, 80, 39); -unity-font-style: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 4%;">
+                        <ui:Label text="素常研习，当以勤勉为基，循时序而进，探微求知，于文辞章句间寻真意。或观山川风物，感四时流转，云霞明灭，林泉清响，皆可入思；或品史传经典，察兴替之理，贤愚行迹，谋略韬光，尽藏智识。\n执笔为文，常思结构经纬，起笔若初绽繁花，引人探幽；承转如溪流迂曲，递接自然；收束似暮鼓沉钟，余韵悠长。字词斟酌，求精准达意，雅俗相宜，使读之者或悟哲理，或感情韵，心有所会。\n虽为 placeholder（占位之用），亦盼合文理，助设计排版时观整体风貌，待实际内容充盈，再成精彩篇章。若论学识涵养，当积跬步，汇涓流，久之自成格局，如匠人琢器，渐至佳境，方不负求知问道之诚 。\n你也可以根据实际场景（比如文艺、商务、科普等风格倾向 ），调整内容侧重，以下再给一段偏商务风格的：\n在业务推进进程中，需聚焦核心目标，统筹资源配置。从市场洞察起步，剖析需求趋势、竞争态势，精准锚定客群痛点；继而规划策略，产品迭代注重体验优化，服务流程强调高效协同，营销推广寻求精准触达。\n跨部门协作时，信息流通要顺畅及时，打破壁垒，让创意与实操深度融合。面对挑战，以数据为锚，理性研判，灵活调整路径。虽此为临时占位文案，亦望契合业务文档框架，辅助排版布局，待真实案例、方案填充，便能展现专业决策逻辑，驱动业务稳步前行，筑就价值增长闭环 。" display-tooltip-when-elided="true" name="char-bio__text" style="width: 94%; height: 100%; white-space: normal; font-size: 24px; color: rgb(118, 80, 39); -unity-font-style: normal; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; left: 4%;">
                             <Bindings>
                                 <ui:DataBinding property="text" data-source-path="Bio" data-source-type="UIToolkitDemo.CharacterBaseSO, Assembly-CSharp" binding-mode="ToTarget" />
                             </Bindings>

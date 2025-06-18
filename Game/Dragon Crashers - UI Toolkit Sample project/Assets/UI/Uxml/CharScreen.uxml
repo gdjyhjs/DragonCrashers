@@ -12,7 +12,7 @@
         <ui:VisualElement name="char__main-container" class="char__main-container">
             <ui:GroupBox name="char__header" class="header__container">
                 <ui:VisualElement name="char__panel-banner" class="header__panel-banner" style="display: flex;">
-                    <ui:Label text="Sir Jarek" display-tooltip-when-elided="true" name="char__label" class="text__shadow--large color__text--white alignment--center text__align--middle-center text__size--large" />
+                    <ui:Label text="男刀" display-tooltip-when-elided="true" name="char__label" class="text__shadow--large color__text--white alignment--center text__align--middle-center text__size--large" />
                 </ui:VisualElement>
                 <ui:VisualElement name="char__power-panel" class="header__power-panel" style="padding-right: 0; width: 50%; flex-direction: row;">
                     <ui:VisualElement name="char__power-icon" class="header__power-icon" style="top: 0; left: 0; height: 75px; width: 75px; align-items: flex-end; position: relative; max-height: 75px; max-width: 75px; min-height: 75px; min-width: 75px;" />
@@ -20,7 +20,7 @@
                 </ui:VisualElement>
             </ui:GroupBox>
             <ui:GroupBox name="char__footer" class="footer__container">
-                <ui:Button text="Auto-equip" display-tooltip-when-elided="true" name="char__auto-equip-button" class="button-gray text__size--small footer__equip-button">
+                <ui:Button text="自动装备" display-tooltip-when-elided="true" name="char__auto-equip-button" class="button-gray text__size--small footer__equip-button">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6315128545861632)" />
                     </Bindings>
@@ -35,15 +35,15 @@
                             <ui:Label text="/250" display-tooltip-when-elided="true" name="char__potion-to-advance" class="color__text--white footer__potion-to-advance" />
                         </ui:Label>
                     </ui:Label>
-                    <ui:Button text="Level up&#10;" display-tooltip-when-elided="true" name="char__level-up-button" class="footer__level-up-button--inactive text__size--large color__text--white footer__level-up-button button-orange" style="position: absolute; width: 100%; bottom: -17%; top: initial; height: 63%; -unity-text-align: upper-center;">
-                        <ui:Label text="Level up" display-tooltip-when-elided="true" name="char__level-up-button-label" picking-mode="Ignore" style="display: none;" />
+                    <ui:Button text="升级&#10;" display-tooltip-when-elided="true" name="char__level-up-button" class="footer__level-up-button--inactive text__size--large color__text--white footer__level-up-button button-orange" style="position: absolute; width: 100%; bottom: -17%; top: initial; height: 63%; -unity-text-align: upper-center;">
+                        <ui:Label text="升级" display-tooltip-when-elided="true" name="char__level-up-button-label" picking-mode="Ignore" style="display: none;" />
                         <ui:VisualElement name="char__level-up-button-vfx" picking-mode="Ignore" tabindex="0" class="level-up-button-vfx" style="background-color: rgba(243, 243, 243, 0); background-image: url(&quot;project://database/Assets/UI/Textures/RenderTextures/VFXRenderTexture.renderTexture?fileID=8400000&amp;guid=9ee6b38a810bc1c47bea7f1c5017238b&amp;type=2#VFXRenderTexture&quot;); -unity-background-scale-mode: scale-to-fit;" />
                         <Bindings>
                             <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6315225115516928)" />
                         </Bindings>
                     </ui:Button>
                 </ui:VisualElement>
-                <ui:Button text="Unequip" display-tooltip-when-elided="true" name="char__unequip-button" class="button-gray text__size--small equip-button footer__equip-button">
+                <ui:Button text="卸下装备" display-tooltip-when-elided="true" name="char__unequip-button" class="button-gray text__size--small equip-button footer__equip-button">
                     <Bindings>
                         <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6315248591036416)" />
                     </Bindings>

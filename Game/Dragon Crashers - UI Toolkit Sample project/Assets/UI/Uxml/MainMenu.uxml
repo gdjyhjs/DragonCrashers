@@ -24,8 +24,10 @@
     </ui:VisualElement>
     <ui:Instance template="InventoryScreen" name="InventoryScreen" picking-mode="Ignore" style="position: absolute; width: 100%; height: 100%; display: none;" />
     <ui:Instance template="OptionsScreen" name="SettingsScreen" style="position: absolute; width: 100%; height: 100%; display: none;" />
-    <ui:Instance template="PopUpText" name="PopUpText" picking-mode="Ignore" style="width: 100%; height: 100%;" />
+    <ui:Instance template="PopUpText" name="PopUpText" picking-mode="Ignore" style="width: 100%; height: 100%;">
+        <AttributeOverrides element-name="main-menu-popup_text" text="这是一个非常有趣的故事，讲述的是一个伟大的故事。" />
+    </ui:Instance>
     <ui:VisualElement name="overlay-vfx" picking-mode="Ignore" class="overlay-vfx">
-        <ui:Label tabindex="-1" text="FPS:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="fps-counter" picking-mode="Ignore" class="fps-counter" />
+        <ui:Label tabindex="-1" text="帧率:" parse-escape-sequences="true" display-tooltip-when-elided="true" name="fps-counter" picking-mode="Ignore" class="fps-counter" />
     </ui:VisualElement>
 </ui:UXML>
