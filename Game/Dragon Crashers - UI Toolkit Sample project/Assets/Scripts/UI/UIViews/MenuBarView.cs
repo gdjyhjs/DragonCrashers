@@ -4,10 +4,10 @@ using UnityEngine.UIElements;
 
 namespace UIToolkitDemo
 {
-    // Shows the menu buttons
+    // 显示菜单按钮
     public class MenuBarView : UIView
     {
-        // Classes/selectors for toggling between active and inactive states
+        // 用于在活动和非活动状态之间切换的类/选择器
         const string k_LabelInactiveClass = "menu__label";
         const string k_LabelActiveClass = "menu__label--active";
 
@@ -17,12 +17,12 @@ namespace UIToolkitDemo
         const string k_ButtonInactiveClass = "menu__button";
         const string k_ButtonActiveClass = "menu__button--active";
 
-        // Constants for marker movement animation
+        // 标记移动动画的常量
         const int k_MoveTime = 150;
         const float k_Spacing = 100f;
         const float k_yOffset = -8f;
 
-        // UI Buttons
+        // UI 按钮
         Button m_HomeScreenMenuButton;
         Button m_CharScreenMenuButton;
         Button m_InfoScreenMenuButton;
@@ -32,15 +32,15 @@ namespace UIToolkitDemo
         Button m_ActiveButton;
         bool m_InterruptAnimation;
 
-        // Represents the currently active menu
+        // 表示当前活动的菜单
         VisualElement m_MenuMarker;
 
         public MenuBarView(VisualElement topElement) : base(topElement)
         {
-            // Listen for aspect ratio / viewport changes
+            // 监听纵横比/视口变化
             MediaQueryEvents.AspectRatioUpdated += OnAspectRatioUpdated;
 
-            // Update the active menu marker if clicking the OptionsBarView's gold/gem icons
+            // 如果点击 OptionsBarView 的金币/宝石图标，则更新活动菜单标记
             MainMenuUIEvents.OptionsBarShopScreenShown += OnOptionsBarShopScreenShown;
         }
 
@@ -48,14 +48,14 @@ namespace UIToolkitDemo
         {
             base.Dispose();
 
-            // Unsubscribe from events
+            // 取消订阅事件
             MediaQueryEvents.AspectRatioUpdated -= OnAspectRatioUpdated;
             MainMenuUIEvents.OptionsBarShopScreenShown -= OnOptionsBarShopScreenShown;
 
             UnregisterButtonCallbacks();
         }
 
-        // Set up Menu elements
+        // 设置菜单元素
         protected override void SetVisualElements()
         {
             base.SetVisualElements();
@@ -69,25 +69,24 @@ namespace UIToolkitDemo
             m_MenuMarker = m_TopElement.Q("menu__current-marker");
         }
 
-        // Register callbacks for button clicks
+        // 注册按钮点击的回调
         protected override void RegisterButtonCallbacks()
         {
             base.RegisterButtonCallbacks();
 
-            // Register action when each button is clicked
+            // 注册每个按钮点击时的操作
             m_HomeScreenMenuButton.RegisterCallback<ClickEvent>(ClickHomeButton);
             m_CharScreenMenuButton.RegisterCallback<ClickEvent>(ClickCharButton);
             m_InfoScreenMenuButton.RegisterCallback<ClickEvent>(ClickInfoButton);
             m_ShopScreenMenuButton.RegisterCallback<ClickEvent>(ClickShopButton);
             m_MailScreenMenuButton.RegisterCallback<ClickEvent>(ClickMailButton);
 
-            // Waits for interface to build (GeometryChangedEvent), otherwise marker can miss target
+            // 等待界面构建完成（GeometryChangedEvent），否则标记可能会错过目标
             m_MenuMarker.RegisterCallback<GeometryChangedEvent>(OnGeometryChangedEvent);
         }
 
-        // Optional: Unregistering the button callbacks is not strictly necessary
-        // in most cases and depends on your application's lifecycle management.
-        // You can choose to unregister them if needed for specific scenarios.
+        // 可选：在大多数情况下，取消注册按钮回调并不是严格必要的，这取决于应用程序的生命周期管理。
+        // 如果需要特定场景，可以选择取消注册它们。
         protected void UnregisterButtonCallbacks()
         {
             m_HomeScreenMenuButton.UnregisterCallback<ClickEvent>(ClickHomeButton);
@@ -99,14 +98,14 @@ namespace UIToolkitDemo
             m_MenuMarker.UnregisterCallback<GeometryChangedEvent>(OnGeometryChangedEvent);
         }
 
-        // Notify the MainMenuUIManager to show a MenuScreen. Highlight the clicked Button and
-        // move the active marker to that button
+        // 通知 MainMenuUIManager 显示一个菜单屏幕。高亮显示点击的按钮并
+        // 将活动标记移动到该按钮
 
         void ClickHomeButton(ClickEvent evt)
         {
             ActivateButton(m_HomeScreenMenuButton);
             MainMenuUIEvents.HomeScreenShown?.Invoke();
-          
+
             MoveMarkerToClick(evt);
         }
 
@@ -138,29 +137,29 @@ namespace UIToolkitDemo
             MoveMarkerToClick(evt);
         }
 
-        // Activate a button, highlight its label and icon
+        // 激活一个按钮，高亮显示其标签和图标
         void ActivateButton(Button menuButton)
         {
-            // Store this to refresh the marker if switching aspect ratios
+            // 存储此按钮，以便在切换纵横比时刷新标记
             m_ActiveButton = menuButton;
 
             HighlightElement(menuButton, k_ButtonInactiveClass, k_ButtonActiveClass, m_TopElement);
 
-            // Enable the label and disable others
+            // 启用标签并禁用其他标签
             Label label = menuButton.Q<Label>(className: k_LabelInactiveClass);
             HighlightElement(label, k_LabelInactiveClass, k_LabelActiveClass, m_TopElement);
 
-            // Enable the icon and disable others
+            // 启用图标并禁用其他图标
             VisualElement icon = menuButton.Q<VisualElement>(className: k_IconInactiveClass);
             HighlightElement(icon, k_IconInactiveClass, k_IconActiveClass, m_TopElement);
 
         }
 
-        //  Move the marker when a target VisualElement is clicked
+        // 当点击目标 VisualElement 时移动标记
         void MoveMarkerToClick(ClickEvent evt)
         {
-            // Move the marker when we click the target VisualElement and the ClickEvent has already been processed; wait for the "BubbleUp" phase
-            // to make sure the target element has fully processed the event
+            // 当我们点击目标 VisualElement 并且 ClickEvent 已经处理完毕时移动标记；等待 "BubbleUp" 阶段
+            // 以确保目标元素已经完全处理了事件
             if (evt.propagationPhase == PropagationPhase.BubbleUp)
             {
                 MoveMarkerToElement(evt.target as VisualElement);
@@ -168,33 +167,33 @@ namespace UIToolkitDemo
             AudioManager.PlayDefaultButtonSound();
         }
 
-        // Move the active marker to a target VisualElement
+        // 将活动标记移动到目标 VisualElement
         void MoveMarkerToElement(VisualElement targetElement)
         {
 
-            // world space position
+            // 世界空间位置
             Vector2 targetInWorldSpace = targetElement.parent.LocalToWorld(targetElement.layout.position);
 
-            // convert to local space of menu marker's parent
+            // 转换为菜单标记父元素的局部空间
             Vector3 targetInRootSpace = m_MenuMarker.parent.WorldToLocal(targetInWorldSpace);
 
-            // difference between image sizes
+            // 图像大小之间的差异
             Vector3 offset = new Vector3(0f, targetElement.parent.layout.height - targetElement.layout.height + k_yOffset, 0f);
 
             Vector3 newPosition = targetInRootSpace - offset;
 
-            // If the aspect ratio/theme changes, use a duration of 0; otherwise, calculation based on distance
+            // 如果纵横比/主题改变，使用持续时间为 0；否则，根据距离计算
             int duration = m_InterruptAnimation ? 0 : CalculateDuration(newPosition);
 
-            // Use the tweening tool for animation
+            // 使用补间工具进行动画
             m_MenuMarker.experimental.animation.Position(targetInRootSpace - offset, duration);
 
         }
 
-        // Calculate duration for marker animation based on distance
+        // 根据距离计算标记动画的持续时间
         int CalculateDuration(Vector3 newPosition)
         {
-            // add extra animation time if moving more than one space 
+            // 如果移动超过一个空间，则增加额外的动画时间
             Vector3 delta = m_MenuMarker.transform.position - newPosition;
 
             float distanceInPixels = Mathf.Abs(delta.y / k_Spacing);
@@ -203,34 +202,34 @@ namespace UIToolkitDemo
             return duration;
         }
 
-        // Enable the Highlight style for currently selected button/element
+        // 为当前选定的按钮/元素启用高亮样式
         void HighlightElement(VisualElement targetElement, string inactiveClass, string activeClass, VisualElement root)
         {
             if (targetElement == null)
                 return;
 
-            // Locate the currently active element 
+            // 找到当前活动的元素 
             VisualElement currentSelection = root.Query<VisualElement>(className: activeClass);
 
-            // If we have selected what is already currently active, do nothing
+            // 如果我们选择了已经是当前活动的元素，则不执行任何操作
             if (currentSelection == targetElement)
             {
                 return;
             }
 
-            // De-highlight the currently active element
+            // 取消高亮显示当前活动的元素
             currentSelection.RemoveFromClassList(activeClass);
             currentSelection.AddToClassList(inactiveClass);
 
-            // Highlight the target element
+            // 高亮显示目标元素
             targetElement.RemoveFromClassList(inactiveClass);
             targetElement.AddToClassList(activeClass);
         }
 
 
-        // Event-handling methods
+        // 事件处理方法
 
-        // When starting the scene or if switching aspect ratios
+        // 当启动场景或切换纵横比时
         void OnGeometryChangedEvent(GeometryChangedEvent evt)
         {
 
@@ -241,7 +240,7 @@ namespace UIToolkitDemo
             MoveMarkerToElement(m_ActiveButton);
         }
 
-        // Interrupt animation and move the marker to active button when switching aspect ratios
+        // 切换纵横比时中断动画并将标记移动到活动按钮
         void OnAspectRatioUpdated(MediaAspectRatio newAspectRatio)
         {
             m_InterruptAnimation = true;
@@ -252,17 +251,17 @@ namespace UIToolkitDemo
             m_InterruptAnimation = false;
         }
 
-        // Open the ShopScreen from the OptionsBar. Activate the Button and move the marker without
-        // a ClickEvent.
+        // 从 OptionsBar 打开商店屏幕。激活按钮并移动标记，无需
+        // 点击事件。
         private void OnOptionsBarShopScreenShown()
         {
-            // Invoke the event to switch to the shop screen
+            // 调用事件以切换到商店屏幕
             MainMenuUIEvents.ShopScreenShown?.Invoke();
 
-            // Activate the corresponding menu button
+            // 激活相应的菜单按钮
             ActivateButton(m_ShopScreenMenuButton);
 
-            // Move the marker to the 'Shop' button
+            // 将标记移动到 "商店" 按钮
             MoveMarkerToElement(m_ShopScreenMenuButton);
         }
 

@@ -5,8 +5,8 @@ using UnityEngine.UIElements;
 
 namespace UIToolkitDemo
 {
-    // High-level manager for the various parts of the Main Menu UI. Here we use one master UXML and one UIDocument.
- 
+    // 主菜单 UI 各个部分的高级管理器。这里我们使用一个主 UXML 和一个 UIDocument。
+
     [RequireComponent(typeof(UIDocument))]
     public class UIManager : MonoBehaviour
     {
@@ -16,26 +16,26 @@ namespace UIToolkitDemo
         UIView m_CurrentView;
         UIView m_PreviousView;
 
-        // List of all UIViews
+        // 所有 UIView 的列表
         List<UIView> m_AllViews = new List<UIView>();
 
-        // Modal screens
-        UIView m_HomeView;  // Landing screen
-        UIView m_CharView;  // Character screen
-        UIView m_InfoView;  // Resource links for more information
-        UIView m_ShopView;  // Shop screen for gold/gem/potions
-        UIView m_MailView;  // Mail screen
+        // 模态屏幕
+        UIView m_HomeView;  // 着陆屏幕
+        UIView m_CharView;  // 角色屏幕
+        UIView m_InfoView;  // 更多信息的资源链接
+        UIView m_ShopView;  // 金币/宝石/药水的商店屏幕
+        UIView m_MailView;  // 邮件屏幕
 
-        // Overlay screens
-        UIView m_InventoryView;  // Inventory from character screen
-        UIView m_SettingsView;  // Overlay screen for settings
+        // 覆盖屏幕
+        UIView m_InventoryView;  // 角色屏幕的库存
+        UIView m_SettingsView;  // 设置的覆盖屏幕
 
-        // Toolbars
-        UIView m_OptionsBarView;  // Quick access to gold/gem and Settings
-        UIView m_MenuBarView;  // Navigation bar for menu screens
-        UIView m_LevelMeterView;  // Radial progress bar that show total character progression
+        // 工具栏
+        UIView m_OptionsBarView;  // 快速访问金币/宝石和设置
+        UIView m_MenuBarView;  // 菜单屏幕的导航栏
+        UIView m_LevelMeterView;  // 显示总角色进度的径向进度条
 
-        // VisualTree string IDs for UIViews; each represents one branch of the tree
+        // UIView 的 VisualTree 字符串 ID；每个代表树的一个分支
         const string k_HomeViewName = "HomeScreen";
         const string k_InfoViewName = "InfoScreen";
         const string k_CharViewName = "CharScreen";
@@ -46,16 +46,16 @@ namespace UIToolkitDemo
         const string k_OptionsBarViewName = "OptionsBar";
         const string k_MenuBarViewName = "MenuBar";
         const string k_LevelMeterViewName = "LevelMeter";
-        
+
         void OnEnable()
         {
             m_MainMenuDocument = GetComponent<UIDocument>();
- 
+
             SetupViews();
-            
+
             SubscribeToEvents();
-      
-            // Start with the home screen
+
+            // 从主页屏幕开始
             ShowModalView(m_HomeView);
 
         }
@@ -97,7 +97,7 @@ namespace UIToolkitDemo
             MainMenuUIEvents.SettingsScreenShown -= OnSettingsScreenShown;
             MainMenuUIEvents.SettingsScreenHidden -= OnSettingsScreenHidden;
         }
-        
+
         void Start()
         {
             Time.timeScale = 1f;
@@ -107,26 +107,26 @@ namespace UIToolkitDemo
         {
             VisualElement root = m_MainMenuDocument.rootVisualElement;
 
-            // Create full-screen modal views: HomeView, CharView, InfoView, ShopView, MailView
-            m_HomeView = new HomeView(root.Q<VisualElement>(k_HomeViewName)); // Landing modal screen
-            m_CharView = new CharView(root.Q<VisualElement>(k_CharViewName)); // Character screen
-            m_InfoView = new InfoView(root.Q<VisualElement>(k_InfoViewName)); // Links and resources screen
-            m_ShopView = new ShopView(root.Q<VisualElement>(k_ShopViewName)); // Shop screen
-            m_MailView = new MailView(root.Q<VisualElement>(k_MailViewName)); // Mail screen
+            // 创建全屏模态视图：HomeView、CharView、InfoView、ShopView、MailView
+            m_HomeView = new HomeView(root.Q<VisualElement>(k_HomeViewName)); // 着陆模态屏幕
+            m_CharView = new CharView(root.Q<VisualElement>(k_CharViewName)); // 角色屏幕
+            m_InfoView = new InfoView(root.Q<VisualElement>(k_InfoViewName)); // 链接和资源屏幕
+            m_ShopView = new ShopView(root.Q<VisualElement>(k_ShopViewName)); // 商店屏幕
+            m_MailView = new MailView(root.Q<VisualElement>(k_MailViewName)); // 邮件屏幕
 
-            // Overlay views (popup modal with background)
-            m_InventoryView = new InventoryView(root.Q<VisualElement>(k_InventoryViewName));  // Gear equipment overlay
-            m_SettingsView = new SettingsView(root.Q<VisualElement>(k_SettingsViewName)); // Game settings overlay
+            // 覆盖视图（带有背景的弹出模态）
+            m_InventoryView = new InventoryView(root.Q<VisualElement>(k_InventoryViewName));  // 装备覆盖层
+            m_SettingsView = new SettingsView(root.Q<VisualElement>(k_SettingsViewName)); // 游戏设置覆盖层
 
-            // Toolbars 
+            // 工具栏 
             LevelMeterData meterData = CharEvents.GetLevelMeterData.Invoke();
-            m_LevelMeterView = new LevelMeterView(root.Q<VisualElement>(k_LevelMeterViewName), meterData); // Radial level meter
+            m_LevelMeterView = new LevelMeterView(root.Q<VisualElement>(k_LevelMeterViewName), meterData); // 径向等级计量器
             m_LevelMeterView.Initialize();
-            
-            m_OptionsBarView = new OptionsBarView(root.Q<VisualElement>(k_OptionsBarViewName)); // Settings/Shop toolbar
-            m_MenuBarView = new MenuBarView(root.Q<VisualElement>(k_MenuBarViewName)); // Screen selection toolbar
-            
-            // Track modal UI Views in a List for disposal 
+
+            m_OptionsBarView = new OptionsBarView(root.Q<VisualElement>(k_OptionsBarViewName)); // 设置/商店工具栏
+            m_MenuBarView = new MenuBarView(root.Q<VisualElement>(k_MenuBarViewName)); // 屏幕选择工具栏
+
+            // 在列表中跟踪模态 UI 视图以进行处置 
             m_AllViews.Add(m_HomeView);
             m_AllViews.Add(m_CharView);
             m_AllViews.Add(m_InfoView);
@@ -138,14 +138,14 @@ namespace UIToolkitDemo
             m_AllViews.Add(m_OptionsBarView);
             m_AllViews.Add(m_MenuBarView);
 
-            // UI Views enabled by default
+            // 默认启用的 UI 视图
             m_HomeView.Show();
             m_OptionsBarView.Show();
             m_MenuBarView.Show();
             m_LevelMeterView.Show();
         }
 
-        // Toggle modal screens on/off
+        // 切换模态屏幕的开/关
         void ShowModalView(UIView newView)
         {
             if (m_CurrentView != null)
@@ -154,7 +154,7 @@ namespace UIToolkitDemo
             m_PreviousView = m_CurrentView;
             m_CurrentView = newView;
 
-            // Show the screen and notify any listeners that the main menu has updated
+            // 显示屏幕并通知任何监听器主菜单已更新
 
             if (m_CurrentView != null)
             {
@@ -163,7 +163,7 @@ namespace UIToolkitDemo
             }
         }
 
-        // Modal screen methods. 
+        // 模态屏幕方法。 
         void OnHomeScreenShown()
         {
             ShowModalView(m_HomeView);
@@ -189,7 +189,7 @@ namespace UIToolkitDemo
             ShowModalView(m_MailView);
         }
 
-        // Overlay Screen Methods. These open up modal UIViews but with a reference to the previous screen.
+        // 覆盖屏幕方法。这些打开模态 UIView，但带有对前一个屏幕的引用。
 
         void OnSettingsScreenShown()
         {
@@ -218,10 +218,10 @@ namespace UIToolkitDemo
 
         void OnInventoryScreenHidden()
         {
-            // Hide the Inventory screen
+            // 隐藏库存屏幕
             m_InventoryView.Hide();
 
-            // Update the current screen to the previous screen
+            // 将当前屏幕更新为前一个屏幕
             if (m_PreviousView != null)
             {
                 m_PreviousView.Show();

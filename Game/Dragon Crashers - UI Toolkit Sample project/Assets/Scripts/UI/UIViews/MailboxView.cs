@@ -6,28 +6,26 @@ namespace UIToolkitDemo
 {
     public class MailboxView : UIView
     {
-        // Sprites
+        // 精灵
         Sprite m_NewMailIcon;
         Sprite m_OldMailIcon;
         GameIconsSO m_GameIcons;
 
-
         VisualTreeAsset m_MailMessageAsset;
         VisualElement m_MailboxContainer;
 
-        // Currently selected mail item (from the currently selected mailbox tab), defaults to top item
+        // 当前选中的邮件项目（来自当前选中的邮箱标签），默认为顶部项目
         int m_CurrentMessageIndex = 0;
 
         const string k_MailMessageClass = "mail-message";
         const string k_MailMessageSelectedClass = "mail-message-selected";
         const string k_MailMessageDeletedClass = "mail-message-deleted";
 
-
-        // Class selector names
+        // 类选择器名称
         const string k_IconResourcePath = "GameData/GameIcons";
-        const string k_MailMessageAssetPath = "MailMessage"; 
+        const string k_MailMessageAssetPath = "MailMessage";
 
-        // Constructor
+        // 构造函数
         public MailboxView(VisualElement topElement) : base(topElement)
         {
             m_MailMessageAsset = Resources.Load<VisualTreeAsset>(k_MailMessageAssetPath);
@@ -36,16 +34,17 @@ namespace UIToolkitDemo
             m_NewMailIcon = m_GameIcons.newMailIcon;
             m_OldMailIcon = m_GameIcons.oldMailIcon;
 
+            // 注册邮箱更新事件
             MailEvents.MailboxUpdated += OnMailboxUpdated;
+            // 注册删除点击事件
             MailEvents.DeleteClicked += OnDeleteClicked;
-
         }
 
         protected override void SetVisualElements()
         {
             base.SetVisualElements();
 
-            // Store mail messages under the ScrollView
+            // 将邮件消息存储在滚动视图下
             m_MailboxContainer = m_TopElement.Q<VisualElement>("unity-content-container");
         }
 
@@ -53,72 +52,77 @@ namespace UIToolkitDemo
         {
             base.Dispose();
 
+            // 取消注册邮箱更新事件
             MailEvents.MailboxUpdated -= OnMailboxUpdated;
+            // 取消注册删除点击事件
             MailEvents.DeleteClicked -= OnDeleteClicked;
         }
 
+        // 重置当前索引
         void ResetCurrentIndex()
         {
             m_CurrentMessageIndex = 0;
+            // 高亮显示第一条消息
             HighlightFirstMessage();
+            // 将第一条邮件元素标记为已读
             MarkMailElementAsRead(GetFirstMailElement());
         }
 
-        // Clears the 
+        // 注意：为了优化性能，请使用ListView
 
-        // Note: use a ListView for optimized performance
-
+        // 更新邮箱
         void UpdateMailbox(List<MailMessageSO> messageList, VisualElement container)
         {
-            // Clear existing or placeholder mail messages
+            // 清除现有的或占位的邮件消息
             container.Clear();
 
             if (messageList.Count == 0)
                 return;
 
-            // Instantiate mail messages to fill the mailbox
+            // 实例化邮件消息以填充邮箱
             foreach (MailMessageSO msg in messageList)
             {
                 if (msg != null)
                     CreateMailMessage(msg, container);
             }
 
-            // Set the index back to the beginning and highlight first message
+            // 将索引重置为开头并高亮显示第一条消息
             ResetCurrentIndex();
 
-            // Update Content with selected index 
+            // 使用选中的索引更新内容
             MailEvents.MessageSelected?.Invoke(m_CurrentMessageIndex);
         }
 
-        // process a clicked item in the mailbox
+        // 处理邮箱中点击的项目
         void ClickMessage(ClickEvent evt)
         {
-            // the clicked mail item
+            // 被点击的邮件项目
             VisualElement clickedElement = evt.currentTarget as VisualElement;
 
-            // highlight and mark the mail message read 
+            // 高亮显示并将邮件消息标记为已读
             MarkMailElementAsRead(clickedElement);
 
             VisualElement backgroundElement = clickedElement.Q(className: k_MailMessageClass);
+            // 高亮显示消息
             HighlightMessage(backgroundElement);
 
+            // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
 
-            // Update Content with selected index 
+            // 使用选中的索引更新内容
             m_CurrentMessageIndex = clickedElement.parent.IndexOf(clickedElement);
             MailEvents.MessageSelected?.Invoke(m_CurrentMessageIndex);
         }
 
+        // 高亮显示方法
 
-        // Highlight methods
-
-        // Highlight a given element
+        // 高亮显示给定元素
         void HighlightMessage(VisualElement elementToHighlight)
         {
             if (elementToHighlight == null)
                 return;
 
-            // Deselect all other visuals
+            // 取消选择所有其他视觉元素
             GetAllMailElements().
                 Where((element) => element.ClassListContains(k_MailMessageSelectedClass)).
                 ForEach(UnhighlightMessage);
@@ -126,7 +130,7 @@ namespace UIToolkitDemo
             elementToHighlight.AddToClassList(k_MailMessageSelectedClass);
         }
 
-        // Unhighlight a given element
+        // 取消高亮显示给定元素
         void UnhighlightMessage(VisualElement elementToUnhighlight)
         {
             if (elementToUnhighlight == null)
@@ -135,6 +139,7 @@ namespace UIToolkitDemo
             elementToUnhighlight.RemoveFromClassList(k_MailMessageSelectedClass);
         }
 
+        // 高亮显示第一条消息
         void HighlightFirstMessage()
         {
             VisualElement firstElement = GetFirstMailElement();
@@ -144,7 +149,7 @@ namespace UIToolkitDemo
             }
         }
 
-        // Generate one mail message and add it to the mailbox container
+        // 生成一条邮件消息并将其添加到邮箱容器中
         void CreateMailMessage(MailMessageSO mailData, VisualElement mailboxContainer)
         {
             if (mailboxContainer == null || mailData == null || m_MailMessageAsset == null)
@@ -152,25 +157,24 @@ namespace UIToolkitDemo
                 return;
             }
 
-            // Instantiate the VisualTreeAsset of the mail message
-            // note: this creates an extra TemplateContainer element above the instance
+            // 实例化邮件消息的VisualTreeAsset
+            // 注意：这会在实例上方创建一个额外的TemplateContainer元素
             TemplateContainer instance = m_MailMessageAsset.Instantiate();
 
-            // Assign mail message class to first child of TemplateContainer (the mail message)
+            // 为TemplateContainer的第一个子元素（邮件消息）分配邮件消息类
             instance.hierarchy[0].AddToClassList(k_MailMessageClass);
 
             mailboxContainer.Add(instance);
             instance.RegisterCallback<ClickEvent>(ClickMessage);
 
-            // Fill out the date, subject, badge, etc.
+            // 填充日期、主题、徽章等信息
             ReadMailData(mailData, instance);
-
         }
 
-        // Get data from ScriptableObject
+        // 从ScriptableObject获取数据
         void ReadMailData(MailMessageSO mailData, TemplateContainer instance)
         {
-            // read ScriptableObject data
+            // 读取ScriptableObject数据
             Label subjectLine = instance.Q<Label>("mail-item__subject");
             subjectLine.text = mailData.SubjectLine;
 
@@ -184,7 +188,7 @@ namespace UIToolkitDemo
             newIcon.style.backgroundImage = (mailData.IsNew) ? new StyleBackground(m_NewMailIcon) : new StyleBackground(m_OldMailIcon);
         }
 
-        // Changes unread icon (NewIcon) to read
+        // 将未读图标（NewIcon）更改为已读
         void MarkMailElementAsRead(VisualElement messageElement)
         {
             if (messageElement == null)
@@ -196,32 +200,33 @@ namespace UIToolkitDemo
             newIcon.style.backgroundImage = new StyleBackground(m_OldMailIcon);
         }
 
-        // Get all VisualElements with mail message class
+        // 获取所有具有邮件消息类的VisualElement
         UQueryBuilder<VisualElement> GetAllMailElements()
         {
             return m_TopElement.Query<VisualElement>(className: k_MailMessageClass);
         }
 
-        // Returns the currently selected mail message
+        // 返回当前选中的邮件消息
         VisualElement GetSelectedMailMessage()
         {
             return m_TopElement.Query<VisualElement>(className: k_MailMessageSelectedClass);
         }
 
-        // Returns the first mail message
+        // 返回第一条邮件消息
         VisualElement GetFirstMailElement()
         {
             return m_MailboxContainer.Query<VisualElement>(className: k_MailMessageClass);
         }
 
-        // Event-handling methods
+        // 事件处理方法
 
+        // 邮箱更新时的处理方法
         void OnMailboxUpdated(List<MailMessageSO> messagesToShow)
         {
             UpdateMailbox(messagesToShow, m_MailboxContainer);
-
         }
 
+        // 删除点击时的处理方法
         void OnDeleteClicked()
         {
             VisualElement elemToDelete = GetSelectedMailMessage().parent;

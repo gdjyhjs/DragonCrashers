@@ -19,164 +19,163 @@ MonoBehaviour:
     m_Items: []
   m_TableData:
   - m_Id: 1830770696192
-    m_Localized: "魔法"
+    m_Localized: "音乐音量"
     m_Metadata:
       m_Items: []
   - m_Id: 1870314594304
-    m_Localized: "近战"
+    m_Localized: "音效音量"
     m_Metadata:
       m_Items: []
   - m_Id: 1878497681408
-    m_Localized: "远程"
+    m_Localized: "目标帧率"
     m_Metadata:
       m_Items: []
   - m_Id: 478749429587968
-    m_Localized: "满月之下"
+    m_Localized: "最大"
     m_Metadata:
       m_Items: []
   - m_Id: 2233855893504
-    m_Localized: "骨之主"
+    m_Localized: "复选框示例"
     m_Metadata:
       m_Items: []
   - m_Id: 2252730261504
-    m_Localized: "王国圣骑"
+    m_Localized: "玩家姓名"
     m_Metadata:
       m_Items: []
   - m_Id: 2386939600896
-    m_Localized: "女巫传说"
+    m_Localized: "账户"
     m_Metadata:
       m_Items: []
   - m_Id: 2480212533248
-    m_Localized: "自动装备"
+    m_Localized: "重置玩家等级"
     m_Metadata:
       m_Items: []
   - m_Id: 2581387534336
-    m_Localized: "传记"
+    m_Localized: "重置玩家货币"
     m_Metadata:
       m_Items: []
   - m_Id: 1899318206464
-    m_Localized: "升级"
+    m_Localized: "主题"
     m_Metadata:
       m_Items: []
   - m_Id: 476952254210048
-    m_Localized: "技能"
+    m_Localized: "默认"
     m_Metadata:
       m_Items: []
   - m_Id: 476985498263552
-    m_Localized: "属性"
+    m_Localized: "万圣节"
     m_Metadata:
       m_Items: []
   - m_Id: 477015936327680
-    m_Localized: "卸下装备"
+    m_Localized: "圣诞节"
     m_Metadata:
       m_Items: []
   - m_Id: 1874093662208
-    m_Localized: "野蛮人"
+    m_Localized: "帧率计数器"
     m_Metadata:
       m_Items: []
   - m_Id: 477196048130048
-    m_Localized: "necromancer（死灵法师，游戏语境常用 “死灵法师” ）"
+    m_Localized: "开启"
     m_Metadata:
       m_Items: []
   - m_Id: 477945775775744
-    m_Localized: "圣骑士"
+    m_Localized: "关闭"
     m_Metadata:
       m_Items: []
   - m_Id: 21377310720
-    m_Localized: "巫师"
+    m_Localized: "语言"
     m_Metadata:
       m_Items: []
   - m_Id: 482007850147840
-    m_Localized: "等级"
+    m_Localized: "英语"
     m_Metadata:
       m_Items: []
   - m_Id: 482054406922240
-    m_Localized: "龙巢"
+    m_Localized: "丹麦语"
     m_Metadata:
       m_Items: []
   - m_Id: 482117585723392
-    m_Localized: "游玩"
+    m_Localized: "西班牙语"
     m_Metadata:
       m_Items: []
   - m_Id: 482163551100928
-    m_Localized: "资源商店"
+    m_Localized: "法语"
     m_Metadata:
       m_Items: []
   - m_Id: 5962506102104064
-    m_Localized: "博客"
+    m_Localized: "设置"
     m_Metadata:
       m_Items: []
   - m_Id: 5964450430443520
-    m_Localized: "在我们的免费电子书中探索 UI Toolkit 解决方案和工作流"
+    m_Localized: "主页"
     m_Metadata:
       m_Items: []
   - m_Id: 5964432071974912
-    m_Localized: "论坛"
+    m_Localized: "英雄"
     m_Metadata:
       m_Items: []
   - m_Id: 5964407635959808
-    m_Localized: "获取电子书"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5964384655368192
-    m_Localized: "手册"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5964322869075968
-    m_Localized: "Unity 更多 UI 内容"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5966959018500096
     m_Localized: "资源"
     m_Metadata:
       m_Items: []
+  - m_Id: 5964384655368192
+    m_Localized: "商店"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5964322869075968
+    m_Localized: "邮件"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5966959018500096
+    m_Localized: "游玩"
+    m_Metadata:
+      m_Items: []
   - m_Id: 5966988399599616
-    m_Localized: "全部"
+    m_Localized: "关卡"
     m_Metadata:
       m_Items: []
   - m_Id: 6117969045217280
-    m_Localized: "普通"
+    m_Localized: "龙穴"
     m_Metadata:
       m_Items: []
   - m_Id: 6153065827655680
-    m_Localized: "稀有"
+    m_Localized: "更多来自 Unity 的 UI 内容"
     m_Metadata:
       m_Items: []
   - m_Id: 6153195121270784
-    m_Localized: "特殊"
-      Toolkit dans notre e-book gratuit"
+    m_Localized: "资源商店"
     m_Metadata:
       m_Items: []
   - m_Id: 6153262058168320
-    m_Localized: "靴子"
+    m_Localized: "博客"
     m_Metadata:
       m_Items: []
   - m_Id: 6153414135242752
-    m_Localized: "手套"
+    m_Localized: "讨论"
     m_Metadata:
       m_Items: []
   - m_Id: 6153318945513472
-    m_Localized: "头盔"
+    m_Localized: "手册"
     m_Metadata:
       m_Items: []
   - m_Id: 6153345629675520
-    m_Localized: "盾牌"
+    m_Localized: "获取电子书"
     m_Metadata:
       m_Items: []
   - m_Id: 6153387891482624
-    m_Localized: "武器"
+    m_Localized: "在我们的免费电子书中探索 UI Toolkit 解决方案及工作流程"
     m_Metadata:
       m_Items: []
   - m_Id: 6153368325054464
-    m_Localized: "装备背包"
+    m_Localized: "资源"
     m_Metadata:
       m_Items: []
   - m_Id: 6187479865483264
-    m_Localized: "领取"
+    m_Localized: "未选择消息。"
     m_Metadata:
       m_Items: []
   - m_Id: 6187432310464512
-    m_Localized: "已删除"
+    m_Localized: "领取"
     m_Metadata:
       m_Items: []
   - m_Id: 6187396377862144
@@ -184,270 +183,267 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6187370209599488
-    m_Localized: "未选中消息。"
+    m_Localized: "已删除"
     m_Metadata:
       m_Items: []
   - m_Id: 6199224092844032
-    m_Localized: "英雄"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6192167281221632
-    m_Localized: "主页"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199112465637376
-    m_Localized: "邮件"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199149585227776
-    m_Localized: "商店"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199980577513472
-    m_Localized: "<color=#F8BB19>{0}</color> 已装备。"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6200181723750400
-    m_Localized: "购买 <color=#F8BB19>{0}</color> 资金不足，请购买更多 <color=#F8BB19>{1}</color> 。"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199273661128704
-    m_Localized: "升级药水不足。"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199404519219200
-    m_Localized: "<color=#F8BB19>{0}</color> 已加入背包。"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199438241423360
-    m_Localized: "<color=#F8BB19>{0} {1}{2}</color> 已加入背包。"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199491098042368
-    m_Localized: "欢迎 <color=#F8BB19>{0}</color> ！"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199927095943168
-    m_Localized: "账户"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199884184018944
-    m_Localized: "复选框示例"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199952576339968
-    m_Localized: "帧率计数器"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6297508480278528
     m_Localized: "关闭"
     m_Metadata:
       m_Items: []
-  - m_Id: 6309153927585792
-    m_Localized: "开启"
+  - m_Id: 6192167281221632
+    m_Localized: "最优优惠"
     m_Metadata:
       m_Items: []
-  - m_Id: 6309216842145792
-    m_Localized: "目标帧率"
+  - m_Id: 6199112465637376
+    m_Localized: "最畅销"
     m_Metadata:
       m_Items: []
-  - m_Id: 6309247292792832
-    m_Localized: "最大"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309275289772032
-    m_Localized: "语言"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309305736224768
-    m_Localized: "丹麦语"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309338455990272
-    m_Localized: "英语"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309367530905600
-    m_Localized: "法语"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309398291931136
-    m_Localized: "西班牙语"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309426343436288
-    m_Localized: "音乐音量"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309045907480576
-    m_Localized: "玩家名称"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315048011030528
-    m_Localized: "重置玩家等级"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315080336531456
-    m_Localized: "重置玩家货币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315104374087680
-    m_Localized: "音效音量"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315225115516928
-    m_Localized: "主题"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315248591036416
-    m_Localized: "默认"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315128545861632
-    m_Localized: "万圣节"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6920435546447872
-    m_Localized: "圣诞节"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6920577112596480
-    m_Localized: "设置"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7048026030858240
-    m_Localized: "最优套餐"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7048384320888832
+  - m_Id: 6199149585227776
     m_Localized: "免费"
     m_Metadata:
       m_Items: []
-  - m_Id: 7052321920901120
-    m_Localized: "一大堆宝石"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7052242984099840
-    m_Localized: "一满袋宝石"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7052367135498240
-    m_Localized: "几颗宝石"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7062895983583232
-    m_Localized: "一箱金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7062891260796928
-    m_Localized: "一满袋金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7062893907402752
-    m_Localized: "一大堆金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7229870013669376
+  - m_Id: 6199980577513472
     m_Localized: "几枚金币"
     m_Metadata:
       m_Items: []
-  - m_Id: 7229777718009856
-    m_Localized: "治疗药水"
+  - m_Id: 6200181723750400
+    m_Localized: "一大堆金币"
     m_Metadata:
       m_Items: []
-  - m_Id: 7229742183866368
-    m_Localized: "销量最高"
+  - m_Id: 6199273661128704
+    m_Localized: "一袋金币"
     m_Metadata:
       m_Items: []
-  - m_Id: 7229657865773056
-    m_Localized: "折扣"
+  - m_Id: 6199404519219200
+    m_Localized: "一箱金币"
     m_Metadata:
       m_Items: []
-  - m_Id: 7241299408183296
+  - m_Id: 6199438241423360
     m_Localized: "力量药水"
     m_Metadata:
       m_Items: []
-  - m_Id: 7241336636825600
-    m_Localized: "每 <color=#775027>{1} 秒</color> 对敌人造成 <color=#775027>{0} 点伤害</color>"
+  - m_Id: 6199491098042368
+    m_Localized: "治疗药水"
     m_Metadata:
       m_Items: []
-  - m_Id: 7241382312796160
-    m_Localized: "<color=#775027> 等级 {0}</color> 解锁下一阶"
+  - m_Id: 6199927095943168
+    m_Localized: "一袋宝石"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280168564416512
-    m_Localized: "<color=#775027> 阶 {0}</color>"
+  - m_Id: 6199884184018944
+    m_Localized: "几颗宝石"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280172997795840
-    m_Localized: "进阶攻击"
+  - m_Id: 6199952576339968
+    m_Localized: "一大堆宝石"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280171181662208
+  - m_Id: 6297508480278528
+    m_Localized: "装备库存"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309153927585792
+    m_Localized: "全部"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309216842145792
+    m_Localized: "普通"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309247292792832
+    m_Localized: "手套"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309275289772032
+    m_Localized: "靴子"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309305736224768
+    m_Localized: "头盔"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309338455990272
+    m_Localized: "盾牌"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309367530905600
+    m_Localized: "武器"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309398291931136
+    m_Localized: "全部"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309426343436288
+    m_Localized: "特殊"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6309045907480576
+    m_Localized: "稀有"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315048011030528
+    m_Localized: "自动装备"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315080336531456
+    m_Localized: "升级"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315104374087680
+    m_Localized: "卸下装备"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315225115516928
+    m_Localized: "背景故事"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315248591036416
+    m_Localized: "技能"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315128545861632
+    m_Localized: "属性"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6920435546447872
+    m_Localized: "圣骑士"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6920577112596480
+    m_Localized: "巫师"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7048026030858240
+    m_Localized: "野蛮人"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7048384320888832
+    m_Localized: "necromancer（可译为 “死灵法师” ）"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7052321920901120
+    m_Localized: "稀有"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7052242984099840
+    m_Localized: "特殊"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7052367135498240
+    m_Localized: "普通"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7062895983583232
+    m_Localized: "远程"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7062891260796928
+    m_Localized: "近战"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7062893907402752
+    m_Localized: "魔法"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7229870013669376
+    m_Localized: "王国的神圣骑士"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7229777718009856
+    m_Localized: "骨之领主"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7229742183866368
+    m_Localized: "女巫的传说"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7229657865773056
+    m_Localized: "满月之下"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7241299408183296
     m_Localized: "基础攻击"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280177808662528
+  - m_Id: 7241336636825600
     m_Localized: "中级攻击"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280176390987776
+  - m_Id: 7241382312796160
+    m_Localized: "高级攻击"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7280168564416512
     m_Localized: "斧击"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280174600019968
-    m_Localized: "破盾"
+  - m_Id: 7280172997795840
+    m_Localized: "破盾攻击"
     m_Metadata:
       m_Items: []
-  - m_Id: 7280179318611968
+  - m_Id: 7280171181662208
     m_Localized: "狂战士之怒"
     m_Metadata:
       m_Items: []
+  - m_Id: 7280177808662528
+    m_Localized: "剑斩"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7280176390987776
+    m_Localized: "召唤元素生物"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7280174600019968
+    m_Localized: "力量之手"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7280179318611968
+    m_Localized: "魔法箭"
+    m_Metadata:
+      m_Items: []
   - m_Id: 7280182250430464
-    m_Localized: "挥砍"
+    m_Localized: "火球术"
     m_Metadata:
       m_Items: []
   - m_Id: 7280180828561408
-    m_Localized: "召唤元素"
+    m_Localized: "湮灭之球"
     m_Metadata:
       m_Items: []
   - m_Id: 7314553179201536
-    m_Localized: "能量之手"
+    m_Localized: "<color=#775027> 第 {0} 阶</color>"
     m_Metadata:
       m_Items: []
   - m_Id: 7314598947446784
-    m_Localized: "魔法飞弹"
+    m_Localized: "下一阶在 <color=#775027> 等级 {0}</color> 解锁"
     m_Metadata:
       m_Items: []
   - m_Id: 7359834620944384
-    m_Localized: "火球术"
-      \uFFFD\uFFFD un ennemi toutes les <color=#775027>{1} secondes</color>"
+    m_Localized: "每次对敌人造成 <color=#775027>{0} 点伤害</color>"
     m_Metadata:
       m_Items: []
   - m_Id: 7411562842152960
-    m_Localized: "湮灭之球"
-      de <color=#F8BB19>{1}</color>.
+    m_Localized: "购买 <color=#F8BB19>{0}</color> 资金不足。请购买更多 <color=#F8BB19>{1}</color>。"
     m_Metadata:
       m_Items: []
   - m_Id: 7411606907510784
-    m_Localized: "召唤元素"
+    m_Localized: "<color=#F8BB19>{0}</color> 已装备。"
     m_Metadata:
       m_Items: []
   - m_Id: 7411614566309888
-    m_Localized: "能量之手"
+    m_Localized: "<color=#F8BB19>{0}</color> 已加入库存。"
     m_Metadata:
       m_Items: []
   - m_Id: 7411617997250560
-    m_Localized: "魔法飞弹"
-      l'inventaire."
+    m_Localized: "<color=#F8BB19>{0} {1}{2}</color> 已加入库存。"
     m_Metadata:
       m_Items: []
   - m_Id: 7411611013734400
-    m_Localized: "火球术"
+    m_Localized: "药水不足，无法升级。"
     m_Metadata:
       m_Items: []
   - m_Id: 7430279634345984
-    m_Localized: "湮灭之球"
+    m_Localized: "欢迎 <color=#F8BB19>{0}</color>！"
     m_Metadata:
       m_Items: []
   references:

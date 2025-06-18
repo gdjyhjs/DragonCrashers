@@ -16,9 +16,6 @@ Thumbs.db
 [Ll]ogs/
 [Uu]ser[Pp]refs/
 
-# 导出的包
-ExportedObj/
-
 # Visual Studio 解决方案和项目文件
 *.sln
 *.csproj
@@ -32,6 +29,12 @@ ExportedObj/
 *.dll
 *.exe
 *.pdb
+
+# Visual Studio 2017+ 解决方案缓存和配置
+.vs/
+
+# 导出的包
+ExportedObj/
 
 # 测试结果
 TestResults/

@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -10,22 +9,22 @@ namespace UIToolkitDemo
     /// </summary>
     public class ShopView : UIView
     {
-        // Class selector for a clickable tab button
+        // 可点击标签按钮的类选择器
         const string k_TabClass = "shoptab";
 
-        // Class selector for currently selected tab button
+        // 当前选定标签按钮的类选择器
         const string k_SelectedTabClass = "selected-shoptab";
         const string k_ShopTemplateContainerClass = "shop-item__template-container";
 
-        // Resource location for sprites/icons
+        // 精灵/图标的资源位置
         const string k_ResourcePath = "GameData/GameIcons";
 
-        [Header("Shop Item")]
-        [Tooltip("ShopItem Element Asset to instantiate ")]
+        [Header("商店物品")]
+        [Tooltip("要实例化的 ShopItem 元素资产")]
         [SerializeField] VisualTreeAsset m_ShopItemAsset;
         [SerializeField] GameIconsSO m_GameIconsData;
 
-        // Visual elements
+        // 视觉元素
         VisualElement m_ShopScrollView;
 
         VisualElement m_GoldTabButton;
@@ -37,8 +36,8 @@ namespace UIToolkitDemo
             ShopEvents.ShopUpdated += OnShopUpdated;
             ShopEvents.TabSelected += OnTabSelected;
 
-            // This ScriptableObject pairs data types (ShopItems, Skills, Rarity, Classes, etc.) with specific icons 
-            // (default path = Resources/GameData/GameIcons)
+            // 这个 ScriptableObject 将数据类型（商店物品、技能、稀有度、类别等）与特定图标配对 
+            // （默认路径 = Resources/GameData/GameIcons）
             m_GameIconsData = Resources.Load<GameIconsSO>(k_ResourcePath);
             m_ShopItemAsset = Resources.Load<VisualTreeAsset>("ShopItem") as VisualTreeAsset;
         }
@@ -68,9 +67,8 @@ namespace UIToolkitDemo
             m_PotionTabButton = m_TopElement.Q<VisualElement>("shop-potion-shoptab");
         }
 
-        // Optional: Unregistering the button callbacks is not strictly necessary
-        // in most cases and depends on your application's lifecycle management.
-        // You can choose to unregister them if needed for specific scenarios.
+        // 可选：在大多数情况下，取消注册按钮回调并不是严格必要的，这取决于应用程序的生命周期管理。
+        // 如果需要特定场景，可以选择取消注册它们。
         protected void UnregisterButtonCallbacks()
         {
             m_GoldTabButton.UnregisterCallback<ClickEvent>(SelectGoldTab);
@@ -103,7 +101,7 @@ namespace UIToolkitDemo
             ShopEvents.GoldSelected?.Invoke();
         }
 
-        // Handle click action for the tab buttons using ClickEvent
+        // 使用 ClickEvent 处理标签按钮的点击操作
         void ClickTabButton(ClickEvent evt)
         {
             VisualElement clickedTab = evt.currentTarget as VisualElement;
@@ -111,30 +109,30 @@ namespace UIToolkitDemo
             ClickTabButton(clickedTab);
         }
 
-        // Handle click action for the tab buttons using VisualElement
+        // 使用 VisualElement 处理标签按钮的点击操作
         void ClickTabButton(VisualElement clickedTab)
         {
-            // if the clicked tab is not already selected, select it
+            // 如果点击的标签尚未选中，则选中它
             if (!IsTabSelected(clickedTab))
             {
-                // de-select any other tabs that are currently active
+                // 取消选择当前活动的其他标签
                 UnselectOtherTabs(clickedTab);
 
-                // select the clicked tab
+                // 选择点击的标签
                 SelectTab(clickedTab);
 
-                // Play a default sound
+                // 播放默认声音
                 AudioManager.PlayDefaultButtonSound();
             }
         }
 
-        // Locate all VisualElements that have the tab class name
+        // 定位所有具有标签类名的 VisualElement
         UQueryBuilder<VisualElement> GetAllTabs()
         {
             return m_TopElement.Query<VisualElement>(className: k_TabClass);
         }
 
-        // De-select a specific tab
+        // 取消选择特定标签
         void UnselectTab(VisualElement tab)
         {
             tab.RemoveFromClassList(k_SelectedTabClass);
@@ -145,7 +143,7 @@ namespace UIToolkitDemo
             tab.AddToClassList(k_SelectedTabClass);
         }
 
-        // Select a specific tab by name, e.g. "gold" or "gem" 
+        // 通过名称选择特定标签，例如 "gold" 或 "gem" 
         public void SelectTab(string tabName)
         {
             switch (tabName)
@@ -181,13 +179,13 @@ namespace UIToolkitDemo
                 ForEach(UnselectTab);
         }
 
-        // Fill a tab with content
+        // 用内容填充标签
         public void OnShopUpdated(List<ShopItemSO> shopItems)
         {
             if (shopItems == null || shopItems.Count == 0)
                 return;
 
-            // generate items for each tab (gold, gems, potions)
+            // 为每个标签（金币、宝石、药水）生成物品
             VisualElement parentTab = m_ShopScrollView;
 
             ScrollView scrollView = parentTab.Q<ScrollView>(className: "unity-scroll-view");
@@ -206,11 +204,11 @@ namespace UIToolkitDemo
             if (parentElement == null || shopItemData == null || m_ShopItemAsset == null)
                 return;
 
-            // instantiate a new Visual Element from a template UXML
+            // 从模板 UXML 实例化一个新的 Visual Element
             TemplateContainer shopItemElem = m_ShopItemAsset.Instantiate();
             shopItemElem.AddToClassList(k_ShopTemplateContainerClass);
 
-            // sets up the VisualElements and game data per ShopItem
+            // 为每个商店物品设置 VisualElement 和游戏数据
             ShopItemComponent shopItemController = new ShopItemComponent(m_GameIconsData, shopItemData);
 
             shopItemController.SetVisualElements(shopItemElem);
@@ -223,4 +221,3 @@ namespace UIToolkitDemo
         }
     }
 }
-

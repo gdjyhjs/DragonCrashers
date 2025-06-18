@@ -7,53 +7,63 @@ namespace UIToolkitDemo
 {
     public class DebugLogView : MonoBehaviour
     {
-        [SerializeField] private UIDocument m_UILogDocument;  // Your UI Document that contains the UI
+        // UI日志文档
+        [SerializeField] private UIDocument m_UILogDocument;  // 包含UI的UI文档
+        // 日志标签
         private Label m_LogLabel;
-        private const int MaxLogs = 10;  // Maximum number of log lines to show
-        private string[] m_LogMessages = new string[MaxLogs]{ "", "", "", "", "", "", "", "", "", "" };  // Store the log messages
+        // 最大日志行数
+        private const int MaxLogs = 10;  // 要显示的最大日志行数
+        // 日志消息数组
+        private string[] m_LogMessages = new string[MaxLogs] { "", "", "", "", "", "", "", "", "", "" };  // 存储日志消息
+        // 日志索引
         private int m_LogIndex = 0;
-        
+
         void OnEnable()
         {
-            // Subscribe to the logMessageReceived event
+            // 订阅日志消息接收事件
             Application.logMessageReceived += HandleLog;
         }
 
         void OnDisable()
         {
             if (m_LogLabel != null)
+                // 清空日志标签文本
                 m_LogLabel.text = string.Empty;
-            // Unsubscribe when the script is disabled
+            // 脚本禁用时取消订阅
             Application.logMessageReceived -= HandleLog;
         }
-        
+
         void Start()
         {
-            // Find the Label element in the UI to display the logs
+            // 查找UI中的Label元素以显示日志
             var rootElement = m_UILogDocument.rootVisualElement;
-            m_LogLabel = rootElement.Q<Label>("log__label"); 
-            
+            // 获取日志标签
+            m_LogLabel = rootElement.Q<Label>("log__label");
+
+            // 更新日志UI
             UpdateLogUI();
         }
-        
-        // Method that gets called every time a log is created
+
+        // 每次创建日志时调用的方法
         void HandleLog(string logString, string stackTrace, LogType type)
         {
-            // Add the new log message to the array
+            // 将新的日志消息添加到数组中
             m_LogMessages[m_LogIndex] = logString;
-            m_LogIndex = (m_LogIndex + 1) % MaxLogs;  // Circular buffer
+            // 循环缓冲区
+            m_LogIndex = (m_LogIndex + 1) % MaxLogs;
 
-            // Update the UI with the latest logs
+            // 使用最新的日志更新UI
             UpdateLogUI();
         }
 
-        // Update the UI to show the latest log messages
+        // 更新UI以显示最新的日志消息
         void UpdateLogUI()
         {
-            // Join all the logs into a single string and update the Label text
+            // 将所有日志连接成一个字符串并更新Label文本
             string combinedLogs = string.Join("\n", m_LogMessages);
             if (m_LogLabel != null)
             {
+                // 设置日志标签文本
                 m_LogLabel.text = combinedLogs;
             }
         }

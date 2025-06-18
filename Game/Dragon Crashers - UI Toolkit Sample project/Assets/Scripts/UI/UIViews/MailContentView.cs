@@ -34,34 +34,33 @@ namespace UIToolkitDemo
 
         Label m_NoMessagesLabel;
 
-        // LocalizedString for "No message selected"
+        // "未选择消息" 的本地化字符串
         LocalizedString m_NoMessagesLocalizedString;
 
-        // currently selected mail item (from the currently selected mailbox tab), defaults to top item
+        // 当前选中的邮件项目（来自当前选中的邮箱标签），默认为顶部项目
         int m_CurrentMessageIndex = 0;
 
-
         /// <summary>
-        /// Constructor assigns game icons from Resources.
+        /// 构造函数从资源中分配游戏图标。
         /// </summary>
         /// <param name="topElement"></param>
         public MailContentView(VisualElement topElement) : base(topElement)
         {
-            // Reference the LocalizedString
+            // 引用本地化字符串
             m_NoMessagesLocalizedString = new LocalizedString()
             {
                 TableReference = "SettingsTable",
                 TableEntryReference = "Mail_NoMessage"
             };
-            
-            // Listen for locale changes
+
+            // 监听语言环境变化
             m_NoMessagesLocalizedString.StringChanged += OnNoMessagesStringChanged;
         }
 
         /// <summary>
-        /// Update the NoMessages Label when the localized string updates.
+        /// 当本地化字符串更新时，更新 "未选择消息" 标签。
         /// </summary>
-        /// <param name="localizedText">The new localized text.</param>
+        /// <param name="localizedText">新的本地化文本。</param>
         void OnNoMessagesStringChanged(string localizedText)
         {
             m_NoMessagesLabel.text = localizedText;
@@ -71,36 +70,43 @@ namespace UIToolkitDemo
         {
             base.Initialize();
 
-            // Get the current message index selected from the Mailbox
+            // 获取从邮箱中选中的当前消息索引
             MailEvents.MessageSelected += OnMessageSelected;
 
-            // Show label that no message is available
+            // 显示没有可用消息的标签
             MailEvents.ShowEmptyMessage += OnShowEmptyMessage;
 
-            // Show a specific mail message in the MailContent
+            // 在邮件内容中显示特定的邮件消息
             MailEvents.MessageShown += OnMessageShown;
 
+            // 绑定元素
             BindElements();
         }
 
+        // 消息选择事件处理方法
         void OnMessageSelected(int index)
         {
             m_CurrentMessageIndex = index;
         }
 
         /// <summary>
-        /// Unsubscribe from events to prevent memory leaks.
+        /// 取消订阅事件以防止内存泄漏。
         /// </summary>
         public override void Dispose()
         {
             base.Dispose();
 
+            // 取消注册消息选择事件
             MailEvents.MessageSelected -= OnMessageSelected;
+            // 取消注册显示空消息事件
             MailEvents.ShowEmptyMessage -= OnShowEmptyMessage;
+            // 取消注册消息显示事件
             MailEvents.MessageShown -= OnMessageShown;
 
+            // 取消注册本地化字符串更改事件
             m_NoMessagesLocalizedString.StringChanged -= OnNoMessagesStringChanged;
-            
+
+            // 注销按钮回调
             UnregisterButtonCallbacks();
         }
 
@@ -108,34 +114,49 @@ namespace UIToolkitDemo
         {
             base.SetVisualElements();
 
+            // 获取领取奖励按钮
             m_ClaimButton = m_TopElement.Q<Button>("content__gift-button");
+            // 获取删除邮件按钮
             m_DeleteButton = m_TopElement.Q<Button>("content__delete-button");
+            // 获取恢复邮件按钮
             m_UndeleteButton = m_TopElement.Q<Button>("content__undelete-button");
 
+            // 获取邮件主题标签
             m_MessageSubject = m_TopElement.Q<Label>("content__message-subject");
+            // 获取邮件文本标签
             m_MessageText = m_TopElement.Q<Label>("content__message-text");
+            // 获取邮件附件元素
             m_MessageAttachment = m_TopElement.Q("content__message-attachment");
 
+            // 获取礼物图标元素
             m_GiftIcon = m_TopElement.Q("content__gift-icon");
+            // 获取礼物数量标签
             m_GiftAmount = m_TopElement.Q<Label>("content__gift-amount");
 
+            // 获取页脚元素
             m_Footer = m_TopElement.Q("content__footer");
+            // 获取框架边框元素
             m_FrameBorder = m_TopElement.Q("content__frame-border");
+            // 获取框架条元素
             m_FrameBar = m_TopElement.Q("content__frame-bar");
 
+            // 获取无消息标签
             m_NoMessagesLabel = m_TopElement.Q<Label>("content__no-messages");
         }
 
         protected override void RegisterButtonCallbacks()
         {
+            // 注册领取奖励按钮点击事件
             m_ClaimButton.RegisterCallback<ClickEvent>(ClaimReward);
+            // 注册删除邮件按钮点击事件
             m_DeleteButton.RegisterCallback<ClickEvent>(DeleteMailMessage);
+            // 注册恢复邮件按钮点击事件
             m_UndeleteButton.RegisterCallback<ClickEvent>(UndeleteMailMessage);
         }
 
-        // Optional: Unregistering the button callbacks is not strictly necessary
-        // in most cases and depends on your application's lifecycle management.
-        // You can choose to unregister them if needed for specific scenarios.
+        // 可选：注销按钮回调在大多数情况下不是严格必要的
+        // 这取决于你的应用程序的生命周期管理。
+        // 你可以根据具体情况选择注销它们。
         void UnregisterButtonCallbacks()
         {
             m_ClaimButton.UnregisterCallback<ClickEvent>(ClaimReward);
@@ -143,11 +164,10 @@ namespace UIToolkitDemo
             m_UndeleteButton.UnregisterCallback<ClickEvent>(UndeleteMailMessage);
         }
 
-        // Show "No messages selected" label
-
+        // 显示 "未选择消息" 标签
         void ShowEmptyMessage()
         {
-            // Manually disable styles and events when no active mail message is available
+            // 当没有活动的邮件消息时，手动禁用样式和事件
             m_MessageSubject.style.display = DisplayStyle.None;
             m_MessageText.style.display = DisplayStyle.None;
             m_MessageAttachment.style.display = DisplayStyle.None;
@@ -158,12 +178,14 @@ namespace UIToolkitDemo
             m_ClaimButton.SetEnabled(false);
             m_DeleteButton.SetEnabled(false);
 
+            // 显示无消息标签
             ShowNoMessages(true);
 
-            // Hide the footer
+            // 隐藏页脚
             ShowFooter(false);
         }
 
+        // 显示或隐藏无消息标签
         void ShowNoMessages(bool state)
         {
             if (state)
@@ -178,10 +200,10 @@ namespace UIToolkitDemo
             }
         }
 
-        // fill the right panel with the email text
+        // 在右侧面板中填充邮件文本
         void ShowMailContents(MailMessageSO msg)
         {
-            // empty message, nothing in current mailbox
+            // 空消息，当前邮箱中没有内容
             if (msg == null)
             {
                 ShowEmptyMessage();
@@ -197,9 +219,9 @@ namespace UIToolkitDemo
             m_DeleteButton.style.display = DisplayStyle.Flex;
             m_UndeleteButton.style.display = DisplayStyle.Flex;
 
-
             m_DeleteButton.SetEnabled(true);
 
+            // 隐藏无消息标签
             ShowNoMessages(false);
 
             m_TopElement.dataSource = msg;
@@ -210,13 +232,14 @@ namespace UIToolkitDemo
                 m_GiftIcon.RemoveFromClassList(k_GiftDeletedClass);
             }
 
-            // Show the footer only if the message is not deleted and the gift is not claimed
+            // 仅当消息未删除且礼物未领取时显示页脚
             ShowFooter(!msg.IsDeleted && !msg.IsClaimed);
         }
 
+        // 绑定元素
         void BindElements()
         {
-            // Bind UI elements to MailMessageSO properties using Unity's runtime data binding
+            // 使用Unity的运行时数据绑定将UI元素绑定到MailMessageSO属性
             m_MessageSubject.SetBinding("text", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.SubjectLine)),
@@ -235,21 +258,21 @@ namespace UIToolkitDemo
                 bindingMode = BindingMode.ToTarget
             });
 
-            // Bind reward elements (gift amount and icon)
+            // 绑定奖励元素（礼物数量和图标）
             m_GiftAmount.SetBinding("text", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.RewardValue)),
                 bindingMode = BindingMode.ToTarget
             });
 
-            // Bind the visibility of gift amount
+            // 绑定礼物数量的可见性
             m_GiftAmount.SetBinding("style.display", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.GiftAmountDisplayStyle)),
                 bindingMode = BindingMode.ToTarget
             });
 
-            // Bind the reward icon (based on reward type)
+            // 绑定奖励图标（基于奖励类型）
             m_GiftIcon.SetBinding("style.backgroundImage", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.RewardIcon)),
@@ -262,21 +285,21 @@ namespace UIToolkitDemo
                 bindingMode = BindingMode.ToTarget
             });
 
-            // Bind the visibility of claim button
+            // 绑定领取按钮的可见性
             m_ClaimButton.SetBinding("style.display", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.ClaimButtonDisplayStyle)),
                 bindingMode = BindingMode.ToTarget
             });
 
-            // Bind the visibility of delete button
+            // 绑定删除按钮的可见性
             m_DeleteButton.SetBinding("style.display", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.DeleteButtonDisplayStyle)),
                 bindingMode = BindingMode.ToTarget
             });
 
-            // Bind the visibility of undelete button
+            // 绑定恢复按钮的可见性
             m_UndeleteButton.SetBinding("style.display", new DataBinding
             {
                 dataSourcePath = new PropertyPath(nameof(MailMessageSO.UndeleteButtonDisplayStyle)),
@@ -284,12 +307,12 @@ namespace UIToolkitDemo
             });
         }
 
-        // Shows/hides the bottom of the content window
+        // 显示/隐藏内容窗口的底部
         void ShowFooter(bool state)
         {
             m_Footer.style.display = (state) ? DisplayStyle.Flex : DisplayStyle.None;
 
-            // show the frame border and bar
+            // 显示框架边框和条
             if (state)
             {
                 m_FrameBar.RemoveFromClassList(k_FrameBarClaimedClass);
@@ -298,7 +321,7 @@ namespace UIToolkitDemo
                 m_FrameBorder.RemoveFromClassList(k_FrameBorderClaimedClass);
                 m_FrameBorder.AddToClassList(k_FrameBorderUnclaimedClass);
             }
-            // hide the frame border and bar
+            // 隐藏框架边框和条
             else
             {
                 m_FrameBar.RemoveFromClassList(k_FrameBarUnclaimedClass);
@@ -309,86 +332,94 @@ namespace UIToolkitDemo
             }
         }
 
-        // Reward methods
+        // 奖励方法
 
-        // Tell the MailController/GameDataManager to claim the gift
+        // 通知MailController/GameDataManager领取礼物
         void ClaimReward(ClickEvent evt)
         {
-            // Convert the ClickEvent's position into pixel screen coordinates
+            // 将点击事件的位置转换为像素屏幕坐标
             Vector2 clickPos = new Vector2(evt.position.x, evt.position.y);
 
-            // Get the screen coordinates relative to the whole screen / root element
+            // 获取相对于整个屏幕/根元素的屏幕坐标
             VisualElement rootElement = m_TopElement.panel.visualTree;
             Vector2 screenPos = clickPos.GetScreenCoordinate(rootElement);
 
-            // Fire and forget, discard the Task
+            // 启动领取奖励的异步任务
             _ = ClaimRewardRoutineAsync();
 
-            // Notify the MailController with the screen position
+            // 通知MailController点击位置
             MailEvents.ClaimRewardClicked?.Invoke(m_CurrentMessageIndex, screenPos);
 
-            // Play a click sound
+            // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
         }
 
-        // Use async await for non-MonoBehaviours
+        // 非MonoBehaviours使用异步等待
         async Task ClaimRewardRoutineAsync()
         {
-            // Apply USS transitions for gift icon and label
+            // 应用USS过渡效果到礼物图标和标签
             m_GiftAmount.AddToClassList(k_GiftDeletedClass);
             m_GiftIcon.AddToClassList(k_GiftDeletedClass);
 
-            // Convert seconds to milliseconds
+            // 将秒转换为毫秒
             await Task.Delay((int)(k_TransitionTime * 1000));
 
-            // Animate the footer off and disable the claim button
+            // 动画化页脚消失并禁用领取按钮
             ShowFooter(false);
         }
 
-        // Delete-undelete methods
+        // 删除 - 恢复方法
 
+        // 删除邮件消息
         void DeleteMailMessage(ClickEvent evt)
         {
-            // Notify the mailbox to play the animation
+            // 通知邮箱播放动画
             MailEvents.DeleteClicked?.Invoke();
 
-            // Discard, fire and forget
+            // 启动删除邮件消息的异步任务
             _ = DeleteMailMessageRoutine();
         }
 
-        // Wait for USS transition and then notify the controller
+        // 等待USS过渡，然后通知控制器
         async Task DeleteMailMessageRoutine()
         {
+            // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
 
-            // Wait for transition
+            // 等待过渡
             await Task.Delay(TimeSpan.FromSeconds(k_TransitionTime));
 
-            // Tells the Mail Presenter/Controller to delete the current message, then rebuild the interface
+            // 通知Mail Presenter/Controller删除当前消息，然后重建界面
             MailEvents.MessageDeleted?.Invoke(m_CurrentMessageIndex);
 
             m_MessageAttachment.style.backgroundImage = null;
         }
 
-        // Notify the Controller to undelete the current selection
+        // 通知控制器恢复当前选择
         void UndeleteMailMessage(ClickEvent evt)
         {
+            // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
+            // 触发恢复点击事件
             MailEvents.UndeleteClicked?.Invoke(m_CurrentMessageIndex);
         }
 
-        // Event-handling methods
+        // 事件处理方法
 
+        // 消息显示时的处理方法
         void OnMessageShown(MailMessageSO msg)
         {
             if (msg != null)
             {
+                // 显示邮件内容
                 ShowMailContents(msg);
             }
         }
 
+        // 显示空消息时的处理方法
         void OnShowEmptyMessage()
         {
+            // 显示空消息提示
             ShowEmptyMessage();
         }
     }

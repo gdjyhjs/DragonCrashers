@@ -8,17 +8,17 @@ using UnityEngine.Localization.Settings;
 namespace UIToolkitDemo
 {
     /// <summary>
-    /// This controls general settings for the game. Some of these options are non-functional in this demo but
-    /// show how to send data to the GameDataManager.
+    /// 这控制游戏的一般设置。在这个演示中，其中一些选项没有实际功能，但
+    /// 展示了如何将数据发送到 GameDataManager。
     /// </summary>
     public class SettingsView : UIView
     {
-        // These class selectors hide/show the settings screen overlay; this allows USS transitions to
-        // fade the UI on/off.
+        // 这些类选择器用于隐藏/显示设置屏幕覆盖层；这允许 USS 过渡
+        // 淡入/淡出 UI。
         const string k_ScreenActiveClass = "settings__screen";
         const string k_ScreenInactiveClass = "settings__screen--inactive";
 
-        // Visual elements
+        // 视觉元素
         Button m_BackButton;
         Button m_ResetLevelButton;
         Button m_ResetFundsButton;
@@ -30,36 +30,36 @@ namespace UIToolkitDemo
         Slider m_SfxSlider;
         SlideToggle m_SlideToggle;
         RadioButtonGroup m_FrameRateRadioButtonsGroup;
-        VisualElement m_ScreenContainer; // Top UI element for transitions
+        VisualElement m_ScreenContainer; // 用于过渡的顶级 UI 元素
 
-        // Temporary storage to send settings data back to SettingsController
+        // 临时存储，用于将设置数据发送回 SettingsController
         GameData m_LocalUISettings = new GameData();
 
         LocalizationManager m_LocalizationManager;
 
-        // Because they are localized and not fixed strings, we use these arrays to map the dropdown options to 
-        // their internal values. We use arrays (not dictionaries) to preserve the intended order.
+        // 因为它们是本地化的而不是固定字符串，我们使用这些数组将下拉选项映射到
+        // 它们的内部值。我们使用数组（而不是字典）来保留预期的顺序。
 
-        // Dropdown options for language selection (names match first name of Locale)
-        public static readonly string[] LanguageKeys = { "English", "Spanish", "French", "Danish" };
+        // 语言选择的下拉选项（名称与 Locale 的第一个名称匹配）
+        public static readonly string[] LanguageKeys = { "英语", "西班牙语", "法语", "丹麦语", "中文" };
 
-        // Dropdown options for Theme selection (names match Theme Style Sheets)
-        public static readonly string[] ThemeOptionKeys = { "Default", "Halloween", "Christmas" };
+        // 主题选择的下拉选项（名称与主题样式表匹配）
+        public static readonly string[] ThemeOptionKeys = { "默认", "万圣节", "圣诞节" };
 
-        // Constructor and life cycle methods
+        // 构造函数和生命周期方法
 
         /// <summary>
-        /// Constructor.
+        /// 构造函数。
         /// </summary>
         /// <param name="topElement"></param>
         public SettingsView(VisualElement topElement) : base(topElement)
         {
-            // Sets m_SettingsData using previously saved data
+            // 使用之前保存的数据设置 m_SettingsData
             SettingsEvents.GameDataLoaded += OnGameDataLoaded;
 
             base.SetVisualElements();
 
-            // Hide/disable by default
+            // 默认隐藏/禁用
             m_ScreenContainer.AddToClassList(k_ScreenInactiveClass);
             m_ScreenContainer.RemoveFromClassList(k_ScreenActiveClass);
 
@@ -69,7 +69,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Disposes of the <see cref="SettingsView"/> instance and unregisters event handlers.
+        /// 释放 <see cref="SettingsView"/> 实例并取消注册事件处理程序。
         /// </summary>
         public override void Dispose()
         {
@@ -82,24 +82,24 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Shows the settings view and triggers UI transitions.
+        /// 显示设置视图并触发 UI 过渡。
         /// </summary>
         public override void Show()
         {
             base.Show();
 
-            // Use styles to fade in with transition
+            // 使用样式进行淡入过渡
             m_ScreenContainer.RemoveFromClassList(k_ScreenInactiveClass);
             m_ScreenContainer.AddToClassList(k_ScreenActiveClass);
 
-            // Notify GameDataManager
+            // 通知 GameDataManager
             SettingsEvents.SettingsShown?.Invoke();
         }
 
-        // UI Initialization methods
+        // UI 初始化方法
 
         /// <summary>
-        /// Initializes and caches the visual UI elements from the UI document.
+        /// 从 UI 文档中初始化并缓存视觉 UI 元素。
         /// </summary>
         protected override void SetVisualElements()
         {
@@ -122,7 +122,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Registers callback methods for UI element events.
+        /// 为 UI 元素事件注册回调方法。
         /// </summary>
         protected override void RegisterButtonCallbacks()
         {
@@ -159,11 +159,11 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Unregisters callback methods from UI elements to prevent memory leaks.
+        /// 从 UI 元素取消注册回调方法以防止内存泄漏。
         /// </summary>
         void UnregisterButtonCallbacks()
         {
-            // Unregister all callbacks from UI elements
+            // 从 UI 元素取消注册所有回调
             m_BackButton?.UnregisterCallback<ClickEvent>(CloseWindow);
             m_ResetLevelButton?.UnregisterCallback<ClickEvent>(ResetLevel);
             m_ResetFundsButton?.UnregisterCallback<ClickEvent>(ResetFunds);
@@ -177,24 +177,24 @@ namespace UIToolkitDemo
             m_FrameRateRadioButtonsGroup?.UnregisterCallback<ChangeEvent<int>>(ChangeRadioButton);
         }
 
-        // Localization methods
+        // 本地化方法
 
         /// <summary>
-        /// Updates the localization settings based on the selected language.
+        /// 根据所选语言更新本地化设置。
         /// </summary>
         void UpdateLocalization()
         {
-            // Don't proceed if dropdown is not initialized
+            // 如果下拉菜单未初始化，则不继续
             if (m_LanguageDropdown == null)
                 return;
 
-            // First set the locale based on saved selection
+            // 首先根据保存的选择设置区域设置
             if (!string.IsNullOrEmpty(m_LocalUISettings.LanguageSelection))
             {
                 string localeCode = LocalizationManager.GetLocaleCode(m_LocalUISettings.LanguageSelection);
                 m_LocalizationManager?.SetLocale(localeCode);
 
-                // Wait one frame to ensure locale is set before updating text
+                // 等待一帧以确保区域设置设置完成后再更新文本
                 m_TopElement.schedule.Execute(() => { UpdateLocalizedText(); });
             }
             else
@@ -204,12 +204,12 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Updates the localized text for dynamic UI elements not set up in UI Builder (theme dropdown, language dropdown, slide toggle, and frame rate
-        /// radio button)
+        /// 更新动态 UI 元素的本地化文本，这些元素未在 UI Builder 中设置（主题下拉菜单、语言下拉菜单、滑动切换和帧率
+        /// 单选按钮）
         /// </summary>
         void UpdateLocalizedText()
         {
-            // Update the theme dropdown options
+            // 更新主题下拉菜单选项
             string[] themeChoices = new string[]
             {
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
@@ -219,10 +219,10 @@ namespace UIToolkitDemo
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
                     "Settings_ThemeDropdown_Option3")
             };
-            
+
             m_ThemeDropdown.UpdateLocalizedChoices(themeChoices, m_LocalUISettings.Theme, ThemeOptionKeys);
 
-            // Get localized names for languages using the correct keys from your localization table
+            // 使用本地化表中的正确键获取语言的本地化名称
             string[] languageChoices = new string[]
             {
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
@@ -238,7 +238,7 @@ namespace UIToolkitDemo
             m_LanguageDropdown.UpdateLocalizedChoices(languageChoices, m_LocalUISettings.LanguageSelection,
                 LanguageKeys);
 
-            // Update the on/off Slide Toggle labels
+            // 更新开/关滑动切换标签
             string onLabel =
                 m_SlideToggle.OffLabel =
                     LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
@@ -248,7 +248,7 @@ namespace UIToolkitDemo
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable", "Settings_FpsSlideToggle_On");
             m_SlideToggle.SetValueWithoutNotify(m_SlideToggle.value);
 
-            // Update the Max frame rate radio button label
+            // 更新最大帧率单选按钮标签
             var radioButtons = m_FrameRateRadioButtonsGroup.Query<RadioButton>().ToList();
             radioButtons[0].text =
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
@@ -256,7 +256,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Event handler triggered when changing Locales.
+        /// 更改区域设置时触发的事件处理程序。
         /// </summary>
         /// <param name="newLocale"></param>
         void OnSelectedLocaleChanged(Locale newLocale)
@@ -264,12 +264,12 @@ namespace UIToolkitDemo
             UpdateLocalizedText();
         }
 
-        // General event-handling methods
+        // 一般事件处理方法
 
         /// <summary>
-        /// Handles the event when game data is loaded, updating UI elements with saved values.
+        /// 处理游戏数据加载事件，用保存的值更新 UI 元素。
         /// </summary>
-        /// <param name="loadedGameData">The loaded game data.</param>
+        /// <param name="loadedGameData">加载的游戏数据。</param>
         void OnGameDataLoaded(GameData loadedGameData)
         {
             if (loadedGameData == null)
@@ -277,7 +277,7 @@ namespace UIToolkitDemo
 
             m_LocalUISettings = loadedGameData;
 
-            // Update non-localized UI elements first
+            // 首先更新非本地化 UI 元素
             m_PlayerTextfield.value = loadedGameData.UserName;
             m_ThemeDropdown.value = loadedGameData.Theme;
             m_FrameRateRadioButtonsGroup.value = loadedGameData.TargetFrameRateSelection;
@@ -286,16 +286,16 @@ namespace UIToolkitDemo
             m_SlideToggle.value = loadedGameData.IsFpsCounterEnabled;
             m_ExampleToggle.value = loadedGameData.IsToggled;
 
-            // Then handle localization, which will update the language dropdown
+            // 然后处理本地化，这将更新语言下拉菜单
             UpdateLocalization();
 
             SettingsEvents.UIGameDataUpdated?.Invoke(m_LocalUISettings);
         }
 
         /// <summary>
-        /// Closes the settings window and triggers UI transitions.
+        /// 关闭设置窗口并触发 UI 过渡。
         /// </summary>
-        /// <param name="evt">The click event triggering the close action.</param>
+        /// <param name="evt">触发关闭操作的点击事件。</param>
         void CloseWindow(ClickEvent evt)
         {
             m_ScreenContainer.RemoveFromClassList(k_ScreenActiveClass);
@@ -309,7 +309,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Handles changes to the player name TextField when hitting Return/Enter.
+        /// 处理玩家名称文本字段在按下 Return/Enter 键时的更改。
         /// </summary>
         /// <param name="evt"></param>
         void SetPlayerTextfield(KeyDownEvent evt)
@@ -322,12 +322,12 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Handles changes to the FPS counter Slide Toggle.
+        /// 处理 FPS 计数器滑动切换的更改。
         /// </summary>
         /// <param name="evt"></param>
         void ChangeSlideToggle(ChangeEvent<bool> evt)
         {
-            // Toggles the SlideToggle value (enables/disables the FPS counter)
+            // 切换滑动切换的值（启用/禁用 FPS 计数器）
             m_LocalUISettings.IsFpsCounterEnabled = evt.newValue;
 
             SettingsEvents.UIGameDataUpdated?.Invoke(m_LocalUISettings);
@@ -337,18 +337,18 @@ namespace UIToolkitDemo
         /// 
         /// </summary>
         /// <param name="evt"></param>
-        // Callback function for Toggle change event
+        // 切换事件的回调函数
         void ChangeToggle(ChangeEvent<bool> evt)
         {
-            // non-functional setting for demo purposes
+            // 用于演示目的的无实际功能的设置
             m_LocalUISettings.IsToggled = evt.newValue;
 
-            // notify the GameDataManager
+            // 通知 GameDataManager
             SettingsEvents.UIGameDataUpdated?.Invoke(m_LocalUISettings);
         }
 
         /// <summary>
-        /// Handles changes to the sound effects volume slider.
+        /// 处理音效音量滑块的更改。
         /// </summary>
         /// <param name="evt"></param>
         void ChangeSfxVolume(ChangeEvent<float> evt)
@@ -358,9 +358,9 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Handles changes to the music volume slider.
+        /// 处理音乐音量滑块的更改。
         /// </summary>
-        /// <param name="evt">The change event containing the new float value.</param>
+        /// <param name="evt">包含新浮点值的更改事件。</param>
         void ChangeMusicVolume(ChangeEvent<float> evt)
         {
             evt.StopPropagation();
@@ -368,34 +368,34 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Handles changes to the theme selection dropdown.
+        /// 处理主题选择下拉菜单的更改。
         /// </summary>
-        /// <param name="evt">The change event containing the new string value (not used here).</param>
+        /// <param name="evt">包含新字符串值的更改事件（此处未使用）。</param>
         void ChangeThemeDropdown(ChangeEvent<string> evt)
         {
-            // Get the selected index from the dropdown
+            // 从下拉菜单中获取所选索引
             int selectedIndex = m_ThemeDropdown.index;
 
-            // Validate the selected index
+            // 验证所选索引
             if (selectedIndex >= 0 && selectedIndex < ThemeOptionKeys.Length)
             {
-                // Map the index to the logical key
+                // 将索引映射到逻辑键
                 m_LocalUISettings.Theme = ThemeOptionKeys[selectedIndex];
             }
             else
             {
-                // Handle error or default case
-                m_LocalUISettings.Theme = ThemeOptionKeys[0]; // Default theme (original name)
+                // 处理错误或默认情况
+                m_LocalUISettings.Theme = ThemeOptionKeys[0]; // 默认主题（原始名称）
             }
 
-            // Notify other components of the change
+            // 通知其他组件更改
             SettingsEvents.UIGameDataUpdated?.Invoke(m_LocalUISettings);
         }
 
         /// <summary>
-        /// Handles changes to the language selection dropdown.
+        /// 处理语言选择下拉菜单的更改。
         /// </summary>
-        /// <param name="evt">The change event containing the new string value (not used here).</param>
+        /// <param name="evt">包含新字符串值的更改事件（此处未使用）。</param>
         void ChangeLanguageDropdown(ChangeEvent<string> evt)
         {
             int selectedIndex = m_LanguageDropdown.index;
@@ -404,11 +404,11 @@ namespace UIToolkitDemo
             {
                 m_LocalUISettings.LanguageSelection = LanguageKeys[selectedIndex];
 
-                // Set the locale first
+                // 首先设置区域设置
                 string localeCode = LocalizationManager.GetLocaleCode(m_LocalUISettings.LanguageSelection);
                 m_LocalizationManager?.SetLocale(localeCode);
 
-                // Then update the UI
+                // 然后更新 UI
                 UpdateLocalizedText();
             }
 
@@ -417,24 +417,24 @@ namespace UIToolkitDemo
 
 
         /// <summary>
-        /// Handles changes to the frame rate radio button selection.
+        /// 处理帧率单选按钮选择的更改。
         /// </summary>
-        /// <param name="evt">The change event containing the new selected index.</param>
+        /// <param name="evt">包含新所选索引的更改事件。</param>
         void ChangeRadioButton(ChangeEvent<int> evt)
         {
             AudioManager.PlayDefaultButtonSound();
 
-            // non-functional setting for demo purposes
+            // 用于演示目的的无实际功能的设置
             m_LocalUISettings.TargetFrameRateSelection = evt.newValue;
 
-            // notify the GameDataManager
+            // 通知 GameDataManager
             SettingsEvents.UIGameDataUpdated?.Invoke(m_LocalUISettings);
         }
 
         /// <summary>
-        /// Handles the click event for the Reset Level button.
+        /// 处理重置等级按钮的点击事件。
         /// </summary>
-        /// <param name="evt">The click event triggering the reset action.</param>
+        /// <param name="evt">触发重置操作的点击事件。</param>
         void ResetLevel(ClickEvent evt)
         {
             AudioManager.PlayDefaultButtonSound();
@@ -443,9 +443,9 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Handles the click event for the Reset Funds button.
+        /// 处理重置资金按钮的点击事件。
         /// </summary>
-        /// <param name="evt">The click event triggering the reset action.</param>
+        /// <param name="evt">触发重置操作的点击事件。</param>
         void ResetFunds(ClickEvent evt)
         {
             AudioManager.PlayDefaultButtonSound();

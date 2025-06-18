@@ -7,108 +7,108 @@ using Unity.Properties;
 namespace UIToolkitDemo
 {
     /// <summary>
-    /// The InfoView manages a set of buttons that link to external resources. Use the ScriptableObjects in "GameData/Links"
-    /// to define button details (element name, label, and URL)  in the Inspector.
-    ///
-    /// This allows non-programmers, such as designers, to modify these values without changing code.
+    /// InfoView管理一组链接到外部资源的按钮。使用"GameData/Links"中的ScriptableObjects在Inspector中定义按钮详细信息（元素名称、标签和URL）。
+    /// 这允许非程序员（如设计师）在不更改代码的情况下修改这些值。
     /// </summary>
     public class InfoView : UIView
     {
-       
+        // 按钮列表
         List<Button> m_Buttons;
-        List<ResourceLinkSO> m_ResourceLinks ;
-        
+        // 资源链接列表
+        List<ResourceLinkSO> m_ResourceLinks;
+
+        // 资源路径
         const string k_ResourcePath = "GameData/Links";
 
         /// <summary>
-        /// Constructor for InfoView. Loads resource link data and sets up buttons dynamically.
+        /// InfoView的构造函数。加载资源链接数据并动态设置按钮。
         /// </summary>
-        /// <param name="topElement">The root VisualElement .</param>
+        /// <param name="topElement">根VisualElement。</param>
         public InfoView(VisualElement topElement) : base(topElement)
         {
+            // 加载资源链接数据
             m_ResourceLinks = Resources.LoadAll<ResourceLinkSO>(k_ResourcePath).ToList();
             m_Buttons = new List<Button>();
-            
-            // Use a separate method for setting up buttons since the base.SetVisualElements
-            // and base.RegisterButtonCallbacks has already run
+
+            // 使用单独的方法设置按钮，因为基类的SetVisualElements和RegisterButtonCallbacks已经运行
             SetupButtons();
-           
         }
-        
-        // Note: unregistering the button callbacks is optional and omitted in this case. Use the
-        // UnregisterCallback and UnregisterValueChangedCallback methods to unregister callbacks
-        // when necessary.
+
+        // 注意：注销按钮回调是可选的，在这种情况下省略。必要时使用UnregisterCallback和UnregisterValueChangedCallback方法注销回调。
 
         /// <summary>
-        /// Sets up buttons by assigning text labels and registering click events
+        /// 通过分配文本标签和注册点击事件来设置按钮
         /// </summary>
         void SetupButtons()
         {
-            // Register URL for each button
+            // 为每个按钮注册URL
             for (int i = 0; i < m_ResourceLinks.Count; i++)
             {
-                // Copy index to avoid closure in lambda expression
-                int index = i; 
-  
-                // Use the element id in the ResourceLink to locate the button in the visual tree
+                // 复制索引以避免lambda表达式中的闭包
+                int index = i;
+
+                // 使用ResourceLink中的元素ID在视觉树中定位按钮
                 m_Buttons.Add(m_TopElement.Q<Button>(m_ResourceLinks[index].ButtonElementId));
-                
-                // If we find a button element, then set up its label and click event
+
+                // 如果找到按钮元素，则设置其标签和点击事件
                 if (m_Buttons[index] != null)
                 {
+                    // 绑定按钮标签
                     BindButtonLabel(m_Buttons[index], m_ResourceLinks[index]);
+                    // 绑定按钮URL
                     BindURL(m_Buttons[index], m_ResourceLinks[index]);
                 }
             }
         }
-        
+
         /// <summary>
-        /// Binds the button's label (LocalizedText property) to the ResourceLink's ButtonText property.
+        /// 将按钮的标签（LocalizedText属性）绑定到ResourceLink的ButtonText属性。
         /// </summary>
-        /// <param name="button">The button to bind the label to.</param>
-        /// <param name="resourceLink">The ResourceLinkSO to bind the label from.</param>
+        /// <param name="button">要绑定标签的按钮。</param>
+        /// <param name="resourceLink">要绑定标签的ResourceLinkSO。</param>
         void BindButtonLabel(Button button, ResourceLinkSO resourceLink)
         {
             if (resourceLink.ButtonLabel != null)
             {
-                // Assign the LocalizedString as the binding; the data source is implicit in this case, since
-                // LocalizedString serves as its own data source
-                button.SetBinding("text", resourceLink.ButtonLabel );
+                // 分配LocalizedString作为绑定；在这种情况下，数据源是隐式的，因为LocalizedString本身就是数据源
+                button.SetBinding("text", resourceLink.ButtonLabel);
             }
         }
 
         /// <summary>
-        /// Binds the button's click event to the TargetURL property of the ResourceLinkSO. This updates the button's
-        /// clickEvent target URL when making changes in the Inspector.
+        /// 将按钮的点击事件绑定到ResourceLinkSO的TargetURL属性。这在Inspector中进行更改时更新按钮的clickEvent目标URL。
         /// </summary>
-        /// <param name="button">The button whose click event will be bound.</param>
-        /// <param name="resourceLink">The ResourceLinkSO that provides the URL data.</param>
+        /// <param name="button">其点击事件将被绑定的按钮。</param>
+        /// <param name="resourceLink">提供URL数据的ResourceLinkSO。</param>
         void BindURL(Button button, ResourceLinkSO resourceLink)
         {
             var dataBinding = new DataBinding
             {
-                dataSource = resourceLink,  // The object to bind to
-                dataSourcePath = new PropertyPath(nameof(resourceLink.TargetURL)), // The specific property within the object
-                bindingMode = BindingMode.ToTarget // One-way binding from data source to UI
+                // 要绑定的对象
+                dataSource = resourceLink,
+                // 对象内的特定属性
+                dataSourcePath = new PropertyPath(nameof(resourceLink.TargetURL)),
+                // 从数据源到UI的单向绑定
+                bindingMode = BindingMode.ToTarget
             };
-            
-            // Ensure only the most recent click event is registered with the updated TargetURL
+
+            // 确保只注册最近的点击事件，并使用更新后的TargetURL
             button.UnregisterCallback<ClickEvent>(evt => OpenURL(resourceLink.TargetURL));
             button.RegisterCallback<ClickEvent>(evt => OpenURL(resourceLink.TargetURL));
-            
-            // Assign the binding between the target button and data source
-            button.SetBinding("clickEvent", dataBinding);
-            
 
+            // 分配目标按钮和数据源之间的绑定
+            button.SetBinding("clickEvent", dataBinding);
         }
-        
+
         /// <summary>
-        /// Opens the specified URL in the default web browser and plays a click sound.
+        /// 在默认浏览器中打开指定的URL并播放点击音效。
         /// </summary>
-        /// <param name="URL">The URL to open.</param>
+        /// <param name="URL">要打开的URL。</param>
         static void OpenURL(string URL)
         {
+            // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
+            // 打开URL
             Application.OpenURL(URL);
         }
     }

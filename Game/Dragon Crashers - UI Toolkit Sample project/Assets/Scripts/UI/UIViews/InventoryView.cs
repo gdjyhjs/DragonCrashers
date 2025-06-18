@@ -8,15 +8,15 @@ using UnityEngine.UIElements;
 namespace UIToolkitDemo
 {
     /// <summary>
-    /// Manages inventory UI including filtering and selection state.
-    /// Filter dropdowns use localized strings.
+    /// 管理库存用户界面，包括过滤和选择状态。
+    /// 过滤下拉菜单使用本地化字符串。
     /// </summary>
     public class InventoryView : UIView
     {
         /// <summary>
-        /// These arrays define the internal values used for filtering. Using arrays allows us to 
-        /// stay in sync with the localization table keys (e.g. "Inventory_Rarity_Common") and maintain
-        /// dropdown order.
+        /// 这些数组定义了用于过滤的内部值。使用数组可以让我们
+        /// 与本地化表键（例如 "Inventory_Rarity_Common"）保持同步，并维护
+        /// 下拉菜单的顺序。
         /// </summary>
         public static readonly string[] RarityKeys = { "All", "Common", "Rare", "Special" };
         public static readonly string[] SlotTypeKeys = { "All", "Weapon", "Shield", "Helmet", "Boots", "Gloves" };
@@ -29,25 +29,26 @@ namespace UIToolkitDemo
         DropdownField m_InventoryRarityDropdown;
         DropdownField m_InventorySlotTypeDropdown;
 
-        // Template asset for each gear item 
+        // 每个装备物品的模板资源
         VisualTreeAsset m_GearItemAsset;
 
-        // Actively checked gear
+        // 当前选中的装备
         GearItemComponent m_SelectedGear;
 
-        public InventoryView(VisualElement topElement): base(topElement)
+        public InventoryView(VisualElement topElement) : base(topElement)
         {
             InventoryEvents.GearItemClicked += OnGearItemClicked;
             InventoryEvents.InventorySetup += OnInventorySetup;
             InventoryEvents.InventoryUpdated += OnInventoryUpdated;
 
             LocalizationSettings.SelectedLocaleChanged += OnSelectedLocaleChanged;
-            
+
             m_GearItemAsset = Resources.Load("GearItem") as VisualTreeAsset;
         }
 
         void OnSelectedLocaleChanged(Locale obj)
         {
+            // 更新本地化文本
             UpdateLocalizedText();
         }
 
@@ -57,13 +58,14 @@ namespace UIToolkitDemo
             InventoryEvents.GearItemClicked -= OnGearItemClicked;
             InventoryEvents.InventorySetup -= OnInventorySetup;
             InventoryEvents.InventoryUpdated -= OnInventoryUpdated;
-            
+
             LocalizationSettings.SelectedLocaleChanged -= OnSelectedLocaleChanged;
-            
+
+            // 注销按钮回调
             UnregisterButtonCallbacks();
         }
-        
-        
+
+
         protected override void SetVisualElements()
         {
             base.SetVisualElements();
@@ -73,80 +75,78 @@ namespace UIToolkitDemo
             m_InventoryRarityDropdown = m_TopElement.Q<DropdownField>("inventory__rarity-dropdown");
             m_InventorySlotTypeDropdown = m_TopElement.Q<DropdownField>("inventory__slot-type-dropdown");
 
-            // define row elements under the scrollview
+            // 定义滚动视图下的行元素
             m_ScrollViewParent = m_TopElement.Q<ScrollView>("inventory__scrollview");
 
+            // 更新本地化文本
             UpdateLocalizedText();
         }
 
         protected override void RegisterButtonCallbacks()
         {
+            // 注册返回按钮点击事件
             m_InventoryBackButton.RegisterCallback<ClickEvent>(CloseWindow);
 
-            // register callbacks when value in a dropdown field changes
+            // 当下拉框值改变时注册回调
             m_InventoryRarityDropdown.RegisterValueChangedCallback(UpdateFilters);
             m_InventorySlotTypeDropdown.RegisterValueChangedCallback(UpdateFilters);
         }
 
-        // Optional: Unregistering the button callbacks is not strictly necessary
-        // in most cases and depends on your application's lifecycle management.
-        // You can choose to unregister them if needed for specific scenarios.
+        // 可选：注销按钮回调在大多数情况下不是严格必要的
+        // 这取决于你的应用程序的生命周期管理。
+        // 你可以根据具体情况选择注销它们。
         protected void UnregisterButtonCallbacks()
         {
             m_InventoryBackButton.UnregisterCallback<ClickEvent>(CloseWindow);
 
-            // register callbacks when value in a dropdown field changes
+            // 注销下拉框值改变时的回调
             m_InventoryRarityDropdown.UnregisterValueChangedCallback(UpdateFilters);
             m_InventorySlotTypeDropdown.UnregisterValueChangedCallback(UpdateFilters);
         }
 
-        // convert string to Rarity enum
+        // 将字符串转换为稀有度枚举
         Rarity GetRarity(string rarityString)
         {
-
             Rarity rarity = Rarity.Common;
 
             if (!Enum.TryParse<Rarity>(rarityString, out rarity))
             {
-                Debug.Log("String " + rarityString + " failed to convert");
+                Debug.Log("字符串 " + rarityString + " 转换失败");
             }
             return rarity;
         }
 
-        // convert string to EquipmentType enum
+        // 将字符串转换为装备类型枚举
         EquipmentType GetGearType(string gearTypeString)
         {
-
             EquipmentType gearType = EquipmentType.Weapon;
 
             if (!Enum.TryParse<EquipmentType>(gearTypeString, out gearType))
             {
-                Debug.LogWarning("Converted " + gearTypeString + " failed to convert");
+                Debug.LogWarning("转换 " + gearTypeString + " 失败");
             }
             return gearType;
         }
 
-       
         /// <summary>
-        /// Updates filters based on dropdown selection. Uses array indices rather than string values
-        /// to maintain correct mapping to localized display text.
+        /// 根据下拉菜单的选择更新过滤器。使用数组索引而不是字符串值
+        /// 以保持与本地化显示文本的正确映射。
         /// </summary>
         void UpdateFilters(ChangeEvent<string> evt)
         {
             string gearTypeKey = SlotTypeKeys[m_InventorySlotTypeDropdown.index];
             string rarityKey = RarityKeys[m_InventoryRarityDropdown.index];
-        
+
             EquipmentType gearType = GetGearType(gearTypeKey);
             Rarity rarity = GetRarity(rarityKey);
-        
+
             InventoryEvents.GearFiltered?.Invoke(rarity, gearType);
         }
 
-        // loop through the available slots and create a button for each gear item
+        // 遍历可用的槽位并为每个装备物品创建一个按钮
         void ShowGearItems(List<EquipmentSO> gearToShow)
         {
-
-            // Find the element under the ScrollView to store gear item buttons and clear existing inventory
+            // 找到滚动视图下用于存储装备物品按钮的元素并清除现有库存
             VisualElement contentContainer = m_ScrollViewParent.Q<VisualElement>("unity-content-container");
             contentContainer.Clear();
 
@@ -156,12 +156,12 @@ namespace UIToolkitDemo
             }
         }
 
-        // generate one item for the inventory and add a clickable button to select it
+        // 为库存生成一个物品并添加一个可点击的按钮来选择它
         void CreateGearItemButton(EquipmentSO gearData, VisualElement container)
         {
             if (container == null)
             {
-                Debug.Log("InventoryScreen.CreateGearItemButton: missing parent element");
+                Debug.Log("InventoryScreen.CreateGearItemButton: 缺少父元素");
                 return;
             }
 
@@ -170,16 +170,16 @@ namespace UIToolkitDemo
 
             GearItemComponent gearItem = new GearItemComponent(gearData);
 
-            // set visual element for gearItemComponent
+            // 为GearItemComponent设置可视化元素
             gearItem.SetVisualElements(gearUIElement);
             gearItem.SetGameData(gearUIElement);
             gearItem.RegisterButtonCallbacks();
 
-            // add to the parent element
+            // 添加到父元素
             container.Add(gearUIElement);
         }
 
-        // select or deselect an item
+        // 选择或取消选择一个物品
         void SelectGearItem(GearItemComponent gearItem, bool state)
         {
             if (gearItem == null)
@@ -189,7 +189,7 @@ namespace UIToolkitDemo
             gearItem.CheckItem(state);
         }
 
-        // methods to hide and show the screen
+        // 显示和隐藏屏幕的方法
         public override void Show()
         {
             base.Show();
@@ -197,11 +197,12 @@ namespace UIToolkitDemo
             InventoryEvents.ScreenEnabled?.Invoke();
             UpdateFilters(null);
 
-            // add short transition
+            // 添加短过渡效果
             m_InventoryPanel.transform.scale = new Vector3(0.1f, 0.1f, 0.1f);
             m_InventoryPanel.experimental.animation.Scale(1f, 200);
         }
 
+        // 关闭窗口
         void CloseWindow(ClickEvent evt)
         {
             Hide();
@@ -211,48 +212,52 @@ namespace UIToolkitDemo
         {
             base.Hide();
 
+            // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
 
-            // set the selected Gear, notify the InventoryScreenController
+            // 设置选中的装备，并通知InventoryScreenController
             if (m_SelectedGear != null)
                 InventoryEvents.GearSelected?.Invoke(m_SelectedGear.GearData);
 
             m_SelectedGear = null;
-
         }
 
-        // event handling methods
+        // 事件处理方法
         void OnInventorySetup()
         {
+            // 设置可视化元素
             SetVisualElements();
+            // 注册按钮回调
             RegisterButtonCallbacks();
         }
 
-        // Load a list of Equipment ScriptableObjects to show in the Inventory
+        // 加载要在库存中显示的装备ScriptableObject列表
         void OnInventoryUpdated(List<EquipmentSO> gearToLoad)
         {
+            // 显示装备物品
             ShowGearItems(gearToLoad);
         }
 
-        // Add a check mark on a GearItem to show selection
+        // 在装备物品上添加选中标记以显示选择状态
         void OnGearItemClicked(GearItemComponent gearItem)
         {
-
+            // 播放备用按钮音效
             AudioManager.PlayAltButtonSound();
 
-            // deselect previously selected
+            // 取消之前选中的物品
             SelectGearItem(m_SelectedGear, false);
 
-            // select the new gear item
+            // 选择新的装备物品
             SelectGearItem(gearItem, true);
         }
-        
+
+        // 更新本地化文本
         void UpdateLocalizedText()
         {
             if (m_InventoryRarityDropdown == null || m_InventorySlotTypeDropdown == null)
                 return;
 
-            // Update Rarity dropdown using an extension method
+            // 使用扩展方法更新稀有度下拉菜单
             string[] rarityChoices = new string[]
             {
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable", "Inventory_Rarity_All"),
@@ -262,7 +267,7 @@ namespace UIToolkitDemo
             };
             m_InventoryRarityDropdown.UpdateLocalizedChoices(rarityChoices, RarityKeys[m_InventoryRarityDropdown.index], RarityKeys);
 
-            // Update Slot Type dropdown using an extension method
+            // 使用扩展方法更新槽位类型下拉菜单
             string[] slotTypeChoices = new string[]
             {
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable", "Inventory_SlotType_All"),
@@ -272,9 +277,7 @@ namespace UIToolkitDemo
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable", "Inventory_SlotType_Boots"),
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable", "Inventory_SlotType_Gloves")
             };
-            m_InventorySlotTypeDropdown.UpdateLocalizedChoices( slotTypeChoices, SlotTypeKeys[m_InventorySlotTypeDropdown.index], SlotTypeKeys);
-            
+            m_InventorySlotTypeDropdown.UpdateLocalizedChoices(slotTypeChoices, SlotTypeKeys[m_InventorySlotTypeDropdown.index], SlotTypeKeys);
         }
-        
     }
 }

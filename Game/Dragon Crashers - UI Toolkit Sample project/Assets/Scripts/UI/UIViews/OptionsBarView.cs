@@ -4,8 +4,8 @@ using Unity.Properties;
 namespace UIToolkitDemo
 {
     /// <summary>
-    /// Manages task bar UI for opening SettingsView and ShopView. Updates the gem and gold totals with simple
-    /// text animation.
+    /// 管理任务栏 UI，用于打开设置视图和商店视图。使用简单的
+    /// 文本动画更新宝石和金币总数。
     /// </summary>
     public class OptionsBarView : UIView
     {
@@ -16,31 +16,31 @@ namespace UIToolkitDemo
         Label m_GemLabel;
 
         /// <summary>
-        /// Constructor.
+        /// 构造函数。
         /// </summary>
         /// <param name="topElement"></param>
         public OptionsBarView(VisualElement topElement) : base(topElement)
         {
-            // Subscribe to the GameDataReceived event, which triggers when new game data is received.
+            // 订阅 GameDataReceived 事件，该事件在收到新游戏数据时触发。
             GameDataManager.GameDataReceived += OnGameDataReceived;
 
-            // Requests the game data from the GameDataManager.
+            // 向 GameDataManager 请求游戏数据。
             GameDataManager.GameDataRequested?.Invoke();
         }
 
         /// <summary>
-        /// Handles game data reception and binds the gold and gem values to their respective labels.
+        /// 处理游戏数据接收，并将金币和宝石值绑定到各自的标签。
         /// </summary>
-        /// <param name="gameData">Received game data.</param>
+        /// <param name="gameData">收到的游戏数据。</param>
         void OnGameDataReceived(GameData gameData)
         {
-            // Data Binding here
+            // 这里进行数据绑定
             m_GoldLabel.SetBinding("text", new AnimatedTextBinding()
             {
                 dataSource = gameData,
                 dataSourcePath = new PropertyPath(nameof(GameData.Gold)),
             });
-            
+
             m_GemLabel.SetBinding("text", new AnimatedTextBinding()
             {
                 dataSource = gameData,
@@ -49,7 +49,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Unsubscribes from events and unregisters button callbacks.
+        /// 取消订阅事件并取消注册按钮回调。
         /// </summary>
         public override void Dispose()
         {
@@ -60,7 +60,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Sets the references for visual elements in the options bar UI.
+        /// 设置选项栏 UI 中的视觉元素引用。
         /// </summary>
         protected override void SetVisualElements()
         {
@@ -74,7 +74,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Set up button click events
+        /// 设置按钮点击事件
         /// </summary>
         protected override void RegisterButtonCallbacks()
         {
@@ -84,7 +84,7 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Unregisters click event handlers for the options and shop buttons.
+        /// 取消注册选项和商店按钮的点击事件处理程序。
         /// </summary>
         void UnregisterButtonCallbacks()
         {
@@ -94,9 +94,9 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Opens the SettingsView when the options button is clicked.
+        /// 点击选项按钮时打开设置视图。
         /// </summary>
-        /// <param name="evt">The click event.</param>
+        /// <param name="evt">点击事件。</param>
         void ShowOptionsScreen(ClickEvent evt)
         {
             AudioManager.PlayDefaultButtonSound();
@@ -105,32 +105,32 @@ namespace UIToolkitDemo
         }
 
         /// <summary>
-        /// Opens the gold shop tab when the gold button is clicked.
+        /// 点击金币按钮时打开金币商店标签。
         /// </summary>
-        /// <param name="evt">The click event.</param>
+        /// <param name="evt">点击事件。</param>
         void OpenGoldShop(ClickEvent evt)
         {
             AudioManager.PlayDefaultButtonSound();
 
-            // Show the ShopScreen
+            // 显示商店屏幕
             MainMenuUIEvents.OptionsBarShopScreenShown?.Invoke();
 
-            // Open the tab to the gold products
+            // 打开到金币产品的标签
             ShopEvents.TabSelected?.Invoke("gold");
         }
-        
+
         /// <summary>
-        /// Opens the gem shop tab when the gem button is clicked.
+        /// 点击宝石按钮时打开宝石商店标签。
         /// </summary>
-        /// <param name="evt">The click event.</param>
+        /// <param name="evt">点击事件。</param>
         void OpenGemShop(ClickEvent evt)
         {
             AudioManager.PlayDefaultButtonSound();
 
-            // Show the ShopScreen
+            // 显示商店屏幕
             MainMenuUIEvents.OptionsBarShopScreenShown?.Invoke();
 
-            // Open the tab to the gem product
+            // 打开到宝石产品的标签
             ShopEvents.TabSelected?.Invoke("gem");
         }
     }

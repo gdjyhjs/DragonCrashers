@@ -4,29 +4,29 @@ using System;
 namespace UIToolkitDemo
 {
     /// <summary>
-    /// This is a base class for a functional unit of the UI. This can make up a full-screen interface or just
-    /// part of one.
+    /// 这是 UI 的一个功能单元的基类。它可以构成一个全屏界面，也可以只是
+    /// 其中的一部分。
     /// </summary>
-    
+
     public class UIView : IDisposable
     {
         protected bool m_HideOnAwake = true;
 
-        // UI reveals other underlaying UIs, partially see-through
+        // UI 显示其他底层 UI，部分透明
         protected bool m_IsOverlay;
 
         protected VisualElement m_TopElement;
 
-        // Properties
+        // 属性
         public VisualElement Root => m_TopElement;
         public bool IsTransparent => m_IsOverlay;
         public bool IsHidden => m_TopElement.style.display == DisplayStyle.None;
 
-        // Constructor
+        // 构造函数
         /// <summary>
-        /// Initializes a new instance of the UIView class.
+        /// 初始化 UIView 类的新实例。
         /// </summary>
-        /// <param name="topElement">The topmost VisualElement in the UXML hierarchy.</param>
+        /// <param name="topElement">UXML 层次结构中最顶层的 VisualElement。</param>
         public UIView(VisualElement topElement)
         {
             m_TopElement = topElement ?? throw new ArgumentNullException(nameof(topElement));
@@ -43,35 +43,34 @@ namespace UIToolkitDemo
             RegisterButtonCallbacks();
         }
 
-        // Sets up the VisualElements for the UI. Override to customize.
+        // 设置 UI 的 VisualElement。重写以自定义。
         protected virtual void SetVisualElements()
         {
-  
+
         }
 
-        // Registers callbacks for buttons in the UI. Override to customize.
+        // 注册 UI 中按钮的回调。重写以自定义。
         protected virtual void RegisterButtonCallbacks()
         {
 
         }
 
-        // Displays the UI.
+        // 显示 UI。
         public virtual void Show()
         {
             m_TopElement.style.display = DisplayStyle.Flex;
         }
 
-        // Hides the UI.
+        // 隐藏 UI。
         public virtual void Hide()
         {
             m_TopElement.style.display = DisplayStyle.None;
         }
 
-        // Unregisters any callbacks or event handlers. Override to customize.
+        // 取消注册任何回调或事件处理程序。重写以自定义。
         public virtual void Dispose()
         {
 
         }
     }
 }
-
