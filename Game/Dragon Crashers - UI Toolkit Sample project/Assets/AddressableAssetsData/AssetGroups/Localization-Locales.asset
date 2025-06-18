@@ -27,14 +27,14 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6ec5d21a130ae43cb99659a13f4dd922
-    m_Address: English (en)
+  - m_GUID: 29e4e9e60d05d334db5331118384d28a
+    m_Address: Chinese (Simplified) (zh)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf7b68d1ccdd9214787c607f06308f45
-    m_Address: Chinese (Simplified) (zh-Hans)
+  - m_GUID: 6ec5d21a130ae43cb99659a13f4dd922
+    m_Address: English (en)
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
