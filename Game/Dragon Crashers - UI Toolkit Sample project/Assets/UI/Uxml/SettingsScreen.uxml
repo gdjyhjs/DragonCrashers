@@ -75,7 +75,7 @@
                                 <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(21377310720)" />
                             </Bindings>
                         </ui:Label>
-                        <ui:DropdownField choices="Item1,Item2,Item3" name="settings__dropdown" class="settings__panel-label settings__dropdown" />
+                        <ui:DropdownField choices="Item1,Item2,Item3,Item4" name="settings__dropdown" class="settings__panel-label settings__dropdown" />
                         <ui:VisualElement name="settings__language-icon" style="flex-grow: 0; flex-basis: 12%; height: 40%; background-image: none; -unity-background-scale-mode: scale-to-fit; top: 10%; left: 3%;">
                             <Bindings>
                                 <UnityEngine.Localization.LocalizedTexture property="style.backgroundImage" table="GUID:659aafbdf1869488a834fd194fdc236a" entry="Id(13420716032)" />

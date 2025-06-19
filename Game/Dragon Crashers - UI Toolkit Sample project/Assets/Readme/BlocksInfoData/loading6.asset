@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8968f816b0b445da941f88624e5f8e, type: 3}
+  m_Name: loading6
+  m_EditorClassIdentifier: 
+  title: "\u6155\u5BB9\u4E16\u5BB6\u30FB\u5251\u5F71\u6D41\u5149"
+  subTitle: "\u6155\u5BB9\u4E16\u5BB6\u7956\u5B85\u7684\u53E4\u8001\u5251\u9635\uFF0C\u4E03\u628A\u9752\u94DC\u53E4\u5251\u60AC\u6D6E\u6210\u9635\uFF0C\u5251\u6C14\u5212\u7834\u4E91\u96FE\u3002"
+  darkenBackground: 1
+  backgroundImage: {fileID: 21300000, guid: c50a92c154cdb42a89aed1bebe272104, type: 3}
+  resourceURL: https://www.yellowshange.com
+  blockSize: {x: 1, y: 1}

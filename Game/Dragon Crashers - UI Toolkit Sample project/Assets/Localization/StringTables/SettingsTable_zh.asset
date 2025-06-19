@@ -107,11 +107,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5964450430443520
-    m_Localized: "主页"
+    m_Localized: "邮件"
     m_Metadata:
       m_Items: []
   - m_Id: 5964432071974912
-    m_Localized: "英雄"
+    m_Localized: "商店"
     m_Metadata:
       m_Items: []
   - m_Id: 5964407635959808
@@ -119,11 +119,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 5964384655368192
-    m_Localized: "商店"
+    m_Localized: "英雄"
     m_Metadata:
       m_Items: []
   - m_Id: 5964322869075968
-    m_Localized: "邮件"
+    m_Localized: "主页"
     m_Metadata:
       m_Items: []
   - m_Id: 5966959018500096
@@ -139,19 +139,19 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153065827655680
-    m_Localized: "更多来自 Unity 的 UI 内容"
+    m_Localized: "资源"
     m_Metadata:
       m_Items: []
   - m_Id: 6153195121270784
-    m_Localized: "资源商店"
+    m_Localized: "与八荒大鬼一起讨论游戏吧"
     m_Metadata:
       m_Items: []
   - m_Id: 6153262058168320
-    m_Localized: "博客"
+    m_Localized: "获取联系方式"
     m_Metadata:
       m_Items: []
   - m_Id: 6153414135242752
-    m_Localized: "讨论"
+    m_Localized: "更多来自八荒大鬼的内容"
     m_Metadata:
       m_Items: []
   - m_Id: 6153318945513472
@@ -159,15 +159,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153345629675520
-    m_Localized: "获取电子书"
+    m_Localized: "讨论"
     m_Metadata:
       m_Items: []
   - m_Id: 6153387891482624
-    m_Localized: "在我们的免费电子书中探索 UI Toolkit 解决方案及工作流程"
+    m_Localized: "资源商店"
     m_Metadata:
       m_Items: []
   - m_Id: 6153368325054464
-    m_Localized: "资源"
+    m_Localized: "博客"
     m_Metadata:
       m_Items: []
   - m_Id: 6187479865483264
@@ -179,11 +179,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6187396377862144
-    m_Localized: "收件箱"
+    m_Localized: "已删除"
     m_Metadata:
       m_Items: []
   - m_Id: 6187370209599488
-    m_Localized: "已删除"
+    m_Localized: "收件箱"
     m_Metadata:
       m_Items: []
   - m_Id: 6199224092844032
@@ -191,7 +191,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6192167281221632
-    m_Localized: "最优优惠"
+    m_Localized: "免费"
     m_Metadata:
       m_Items: []
   - m_Id: 6199112465637376
@@ -199,31 +199,31 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6199149585227776
-    m_Localized: "免费"
+    m_Localized: "最优优惠"
     m_Metadata:
       m_Items: []
   - m_Id: 6199980577513472
-    m_Localized: "几枚金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6200181723750400
-    m_Localized: "一大堆金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199273661128704
-    m_Localized: "一袋金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199404519219200
-    m_Localized: "一箱金币"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6199438241423360
     m_Localized: "力量药水"
     m_Metadata:
       m_Items: []
-  - m_Id: 6199491098042368
+  - m_Id: 6200181723750400
     m_Localized: "治疗药水"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6199273661128704
+    m_Localized: "几枚金币"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6199404519219200
+    m_Localized: "一大堆金币"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6199438241423360
+    m_Localized: "一袋金币"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6199491098042368
+    m_Localized: "一箱金币"
     m_Metadata:
       m_Items: []
   - m_Id: 6199927095943168
@@ -243,23 +243,23 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309153927585792
-    m_Localized: "全部"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6309216842145792
     m_Localized: "普通"
     m_Metadata:
       m_Items: []
+  - m_Id: 6309216842145792
+    m_Localized: "稀有"
+    m_Metadata:
+      m_Items: []
   - m_Id: 6309247292792832
-    m_Localized: "手套"
+    m_Localized: "特殊"
     m_Metadata:
       m_Items: []
   - m_Id: 6309275289772032
-    m_Localized: "靴子"
+    m_Localized: "全部"
     m_Metadata:
       m_Items: []
   - m_Id: 6309305736224768
-    m_Localized: "头盔"
+    m_Localized: "武器"
     m_Metadata:
       m_Items: []
   - m_Id: 6309338455990272
@@ -267,43 +267,43 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6309367530905600
-    m_Localized: "武器"
+    m_Localized: "头盔"
     m_Metadata:
       m_Items: []
   - m_Id: 6309398291931136
-    m_Localized: "全部"
+    m_Localized: "靴子"
     m_Metadata:
       m_Items: []
   - m_Id: 6309426343436288
-    m_Localized: "特殊"
+    m_Localized: "手套"
     m_Metadata:
       m_Items: []
   - m_Id: 6309045907480576
-    m_Localized: "稀有"
+    m_Localized: "全部"
     m_Metadata:
       m_Items: []
   - m_Id: 6315048011030528
-    m_Localized: "自动装备"
+    m_Localized: "属性"
     m_Metadata:
       m_Items: []
   - m_Id: 6315080336531456
-    m_Localized: "升级"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315104374087680
-    m_Localized: "卸下装备"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315225115516928
-    m_Localized: "背景故事"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 6315248591036416
     m_Localized: "技能"
     m_Metadata:
       m_Items: []
+  - m_Id: 6315104374087680
+    m_Localized: "背景故事"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315225115516928
+    m_Localized: "升级"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6315248591036416
+    m_Localized: "卸下装备"
+    m_Metadata:
+      m_Items: []
   - m_Id: 6315128545861632
-    m_Localized: "属性"
+    m_Localized: "自动装备"
     m_Metadata:
       m_Items: []
   - m_Id: 6920435546447872
@@ -319,39 +319,39 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7048384320888832
-    m_Localized: "necromancer（可译为 “死灵法师” ）"
+    m_Localized: “死灵法师”
     m_Metadata:
       m_Items: []
   - m_Id: 7052321920901120
-    m_Localized: "稀有"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7052242984099840
     m_Localized: "特殊"
     m_Metadata:
       m_Items: []
-  - m_Id: 7052367135498240
+  - m_Id: 7052242984099840
     m_Localized: "普通"
     m_Metadata:
       m_Items: []
+  - m_Id: 7052367135498240
+    m_Localized: "稀有"
+    m_Metadata:
+      m_Items: []
   - m_Id: 7062895983583232
-    m_Localized: "远程"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7062891260796928
-    m_Localized: "近战"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7062893907402752
     m_Localized: "魔法"
     m_Metadata:
       m_Items: []
+  - m_Id: 7062891260796928
+    m_Localized: "远程"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7062893907402752
+    m_Localized: "近战"
+    m_Metadata:
+      m_Items: []
   - m_Id: 7229870013669376
-    m_Localized: "王国的神圣骑士"
+    m_Localized: "骨之领主"
     m_Metadata:
       m_Items: []
   - m_Id: 7229777718009856
-    m_Localized: "骨之领主"
+    m_Localized: "满月之下"
     m_Metadata:
       m_Items: []
   - m_Id: 7229742183866368
@@ -359,7 +359,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7229657865773056
-    m_Localized: "满月之下"
+    m_Localized: "王国的神圣骑士"
     m_Metadata:
       m_Items: []
   - m_Id: 7241299408183296
@@ -379,15 +379,15 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280172997795840
-    m_Localized: "破盾攻击"
-    m_Metadata:
-      m_Items: []
-  - m_Id: 7280171181662208
     m_Localized: "狂战士之怒"
     m_Metadata:
       m_Items: []
+  - m_Id: 7280171181662208
+    m_Localized: "破盾攻击"
+    m_Metadata:
+      m_Items: []
   - m_Id: 7280177808662528
-    m_Localized: "剑斩"
+    m_Localized: "力量之手"
     m_Metadata:
       m_Items: []
   - m_Id: 7280176390987776
@@ -395,7 +395,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280174600019968
-    m_Localized: "力量之手"
+    m_Localized: "剑斩"
     m_Metadata:
       m_Items: []
   - m_Id: 7280179318611968
@@ -403,11 +403,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7280182250430464
-    m_Localized: "火球术"
+    m_Localized: "湮灭之球"
     m_Metadata:
       m_Items: []
   - m_Id: 7280180828561408
-    m_Localized: "湮灭之球"
+    m_Localized: "火球术"
     m_Metadata:
       m_Items: []
   - m_Id: 7314553179201536

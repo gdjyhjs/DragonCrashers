@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8968f816b0b445da941f88624e5f8e, type: 3}
+  m_Name: loading10
+  m_EditorClassIdentifier: 
+  title: "\u70BC\u4E39\u7CFB\u7EDF\u30FB\u7075\u690D\u805A\u9F0E"
+  subTitle: "\u73A9\u5BB6\u5728\u836F\u7530\u79CD\u690D\u7075\u690D\uFF0C\u5929\u5DE5\u805A\u7075\u9F0E\u60AC\u6D6E\u4E0A\u7A7A\uFF0C\u7075\u80A5\u5316\u4F5C\u5149\u96E8\u6ECB\u517B\u4E09\u5343\u5E74\u8840\u7075\u8349\u3002\u6CE8\u5165\u7075\u529B\u70BC\u5236\u91D1\u4E39\uFF0C\u4E39\u6210\u65F6\u971E\u5149\u51B2\u7834\u5C4B\u9876\uFF0C\u5F15\u6765\u98DE\u9E1F\u8854\u679D\u3002"
+  darkenBackground: 1
+  backgroundImage: {fileID: 21300000, guid: 85187c474b04a64449af9e4df4183e37, type: 3}
+  resourceURL: https://www.yellowshange.com
+  blockSize: {x: 1, y: 1}

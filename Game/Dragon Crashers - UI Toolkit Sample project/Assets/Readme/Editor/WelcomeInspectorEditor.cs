@@ -58,7 +58,7 @@ public class WelcomeInspectorEditor : Editor
         GUILayout.EndHorizontal();
     }
 
-    // 重写创建检查器 GUI 的方法
+    //重写创建检查器 GUI 的方法
     public override VisualElement CreateInspectorGUI()
     {
         // 创建一个新的视觉元素作为检查器 UI 的根
@@ -81,7 +81,7 @@ public class WelcomeInspectorEditor : Editor
             v_Block.Q<Button>("button-block-info").RegisterCallback<ClickEvent>(evt =>
             {
                 // 点击按钮时打开资源链接
-                Application.OpenURL(b.resourceURL);
+                Application.OpenURL("https://www.yellowshange.com");
             });
 
             // 将块添加到资源根元素
@@ -102,7 +102,7 @@ public class WelcomeInspectorEditor : Editor
             v_Block.Q<Button>("button-block-info").RegisterCallback<ClickEvent>(evt =>
             {
                 // 点击按钮时打开资源链接
-                Application.OpenURL(blockDataSO.resourceURL);
+                Application.OpenURL("https://www.yellowshange.com");
             });
 
             myInspector.Q<VisualElement>("root-resources").Add(v_Block);

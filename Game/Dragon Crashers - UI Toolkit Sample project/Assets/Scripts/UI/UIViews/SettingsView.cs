@@ -41,10 +41,10 @@ namespace UIToolkitDemo
         // 它们的内部值。我们使用数组（而不是字典）来保留预期的顺序。
 
         // 语言选择的下拉选项（名称与 Locale 的第一个名称匹配）
-        public static readonly string[] LanguageKeys = { "英语", "西班牙语", "法语", "丹麦语", "中文" };
+        public static readonly string[] LanguageKeys = { "English", "Spanish", "French", "Danish", "Chinese" };
 
         // 主题选择的下拉选项（名称与主题样式表匹配）
-        public static readonly string[] ThemeOptionKeys = { "默认", "万圣节", "圣诞节" };
+        public static readonly string[] ThemeOptionKeys = { "Default", "Halloween", "Christmas" };
 
         // 构造函数和生命周期方法
 
@@ -232,7 +232,9 @@ namespace UIToolkitDemo
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
                     "Settings_LanguageDropdown_French"),
                 LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
-                    "Settings_LanguageDropdown_Danish")
+                    "Settings_LanguageDropdown_Danish"),
+                LocalizationSettings.StringDatabase.GetLocalizedString("SettingsTable",
+                    "Settings_LanguageDropdown_Chinese")
             };
 
             m_LanguageDropdown.UpdateLocalizedChoices(languageChoices, m_LocalUISettings.LanguageSelection,

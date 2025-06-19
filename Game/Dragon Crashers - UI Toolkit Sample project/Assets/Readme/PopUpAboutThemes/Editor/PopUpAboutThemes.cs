@@ -68,13 +68,13 @@ public class PopUpAboutThemes : EditorWindow
     }
 
     // 菜单项：主题和屏幕比例
-    [MenuItem("Read Me/Themes and screen ratios")]
+    [MenuItem("Read Me/寻仙问道")]
     static void ShowPopUp()
     {
         // 获取弹出窗口实例
         PopUpAboutThemes wnd = GetWindow<PopUpAboutThemes>();
         // 设置窗口标题
-        wnd.titleContent = new GUIContent("UI Toolkit 主题");
+        wnd.titleContent = new GUIContent("寻仙问道");
         // 加载 XML 资产
         VisualTreeAsset uiAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(k_AssetXML);
 

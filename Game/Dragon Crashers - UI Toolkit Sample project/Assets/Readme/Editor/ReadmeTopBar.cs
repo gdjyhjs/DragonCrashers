@@ -34,7 +34,7 @@ public class ReadmeTopBar : Editor
     }
 
     // 菜单项：选择欢迎窗口
-    [MenuItem("Read Me/Select Welcome Window")]
+    [MenuItem("Read Me/选择欢迎窗口")]
     static ResourcesDataScriptable SelectReadme()
     {
         // 查找 WelcomeInspectorData 类型的资源数据可脚本化对象
@@ -57,10 +57,10 @@ public class ReadmeTopBar : Editor
     }
 
     // 菜单项：获取电子书
-    [MenuItem("Read Me/Get the e-book")]
+    [MenuItem("Read Me/前往八荒大鬼")]
     static void OpenWebLink()
     {
         // 打开网页链接
-        Application.OpenURL("https://resources.unity.com/games/user-interface-design-and-implementation-in-unity?isGated=false"); // 替换为你自己的链接
+        Application.OpenURL("https://www.yellowshange.com"); // 替换为你自己的链接
     }
 }

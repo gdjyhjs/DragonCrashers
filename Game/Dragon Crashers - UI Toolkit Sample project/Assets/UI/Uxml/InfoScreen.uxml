@@ -33,21 +33,6 @@
                     </ui:Button>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="info-separator" picking-mode="Ignore" class="separator">
-                <ui:VisualElement name="info-separator__image" picking-mode="Ignore" class="separator__image">
-                    <ui:Label text="更多作品" display-tooltip-when-elided="true" name="info-separator__label" picking-mode="Ignore" class="separator__label">
-                        <Bindings>
-                            <UnityEngine.Localization.LocalizedString property="text" table="GUID:dade14b2149874cc188fc560cf8f29d8" entry="Id(6153414135242752)" />
-                        </Bindings>
-                    </ui:Label>
-                </ui:VisualElement>
-            </ui:VisualElement>
-            <ui:VisualElement name="info-content__container" picking-mode="Ignore" class="content__container">
-                <ui:Button display-tooltip-when-elided="true" name="info-content__docs-button" class="button-orange text__size--medium color__text--white content-button" style="position: relative;" />
-                <ui:Button display-tooltip-when-elided="true" name="info-content__forum-button" class="button-orange text__size--medium color__text--white content-button" style="position: relative;" />
-                <ui:Button display-tooltip-when-elided="true" name="info-content__blog-button" class="button-orange text__size--medium color__text--white content-button" style="position: relative;" />
-                <ui:Button display-tooltip-when-elided="true" name="info-content__asset-button" class="button-orange text__size--medium color__text--white content-button" style="position: relative;" />
-            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

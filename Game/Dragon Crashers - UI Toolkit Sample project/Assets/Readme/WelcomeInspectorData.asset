@@ -12,23 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba996dca2067413a964944321325305, type: 3}
   m_Name: WelcomeInspectorData
   m_EditorClassIdentifier: 
-  windowTitle: 'UI Toolkit: Dragon Crashers'
-  windowSubTitle: A vertical slice of an IDLE RPG mobile game sample
+  windowTitle: "\u516B\u8352\u5927\u9B3C:\u4ED9\u9014\u95EE\u9053"
+  windowSubTitle: "\u4E00\u6B3E\u8D85\u9AD8\u81EA\u7531\u5EA6\u7684\u5F00\u653E\u4E16\u754C\u4FEE\u4ED9\u5355\u673A\u89D2\u8272\u626E\u6F14\uFF08RPG\uFF09"
   windowBanner: {fileID: 2800000, guid: ada642fbf85df4c33905831b00ba844a, type: 3}
-  introText: "<b>ABOUT</b><br>This official sample project showcases Unity\u2019s
-    UI Toolkit for runtime games and UI Builder workflows. Inspired by the 2D side-scrolling
-    idle RPG demo Dragon Crashers, it uses the UI Toolkit with UXML and USS files
-    to recreate common game interface layouts and styles, showing both simple and
-    more advanced use cases for the UI Toolkit"
+  introText: "<b>\u6E38\u620F\u80CC\u666F</b><br>\u6E38\u620F\u8BBE\u5B9A\u5728\u4E00\u4E2A\u540D\u4E3A
+    \u201C\u7075\u5E7B\u5927\u9646\u201D \u7684\u67B6\u7A7A\u4E16\u754C\u3002\u8FD9\u7247\u5927\u9646\u7075\u6C14\u5145\u6C9B\uFF0C\u5B55\u80B2\u4E86\u65E0\u6570\u4FEE\u4ED9\u8005\u3002\u6B63\u9053\u5B97\u95E8\u4E0E\u9B54\u9053\u5B97\u95E8\u957F\u671F\u5BF9\u7ACB\uFF0C\u4E24\u5927\u52BF\u529B\u738B\u671D\u5728\u653F\u6CBB\u4E0A\u76F8\u4E92\u5236\u8861\uFF0C\u800C\u4F17\u591A\u5927\u5BB6\u65CF\u548C\u4E16\u5BB6\u5219\u5728\u5404\u5730\u62E5\u6709\u6DF1\u539A\u6839\u57FA\u3002\u5728\u8FD9\u4E2A\u4E16\u754C\u4E2D\uFF0C\u4FEE\u4ED9\u8005\u4EEC\u4E3A\u4E86\u8FFD\u6C42\u66F4\u9AD8\u7684\u5883\u754C\uFF0C\u4E0D\u65AD\u63A2\u7D22\u79D8\u5883\u3001\u6311\u6218\u5F3A\u654C\uFF0C\u8BD5\u56FE\u89E3\u5F00\u5929\u5730\u95F4\u7684\u795E\u79D8\u529B\u91CF\u3002"
   infoBlock:
-  - {fileID: 11400000, guid: 2588996be5d1c49c8bcaeeb9f6d19b90, type: 2}
   - {fileID: 11400000, guid: 3af016df5df584c0f949a56eb14898d4, type: 2}
-  - {fileID: 11400000, guid: 389334e0670d2480e8699340a28dc0dc, type: 2}
-  - {fileID: 11400000, guid: 38e8b5de7fedc4930ba7cf352d38c45d, type: 2}
-  - {fileID: 11400000, guid: 95f25433078d04d7599d64ea0afafbea, type: 2}
-  - {fileID: 11400000, guid: 9f479139018af4cc2a089cc08a8788be, type: 2}
-  - {fileID: 11400000, guid: c41c55ed91e2e4e418e96b58b86e2430, type: 2}
-  - {fileID: 11400000, guid: b7c9d94810fd941c09df630faea9715b, type: 2}
   - {fileID: 11400000, guid: 0f0ebdc1a3b1c4d74bcacee86d793305, type: 2}
-  - {fileID: 11400000, guid: 9bb454634652741ee9c3b0d7c2954c46, type: 2}
+  - {fileID: 11400000, guid: 2588996be5d1c49c8bcaeeb9f6d19b90, type: 2}
+  - {fileID: 11400000, guid: 95f25433078d04d7599d64ea0afafbea, type: 2}
+  - {fileID: 11400000, guid: c41c55ed91e2e4e418e96b58b86e2430, type: 2}
+  - {fileID: 11400000, guid: 9f479139018af4cc2a089cc08a8788be, type: 2}
+  - {fileID: 11400000, guid: 389334e0670d2480e8699340a28dc0dc, type: 2}
+  - {fileID: 11400000, guid: b7c9d94810fd941c09df630faea9715b, type: 2}
   - {fileID: 11400000, guid: 2531f6915308347e1891f10d73d5f7f9, type: 2}
+  - {fileID: 11400000, guid: 9bb454634652741ee9c3b0d7c2954c46, type: 2}
+  - {fileID: 11400000, guid: 38e8b5de7fedc4930ba7cf352d38c45d, type: 2}

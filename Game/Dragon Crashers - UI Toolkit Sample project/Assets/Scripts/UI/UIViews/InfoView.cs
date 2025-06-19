@@ -109,7 +109,7 @@ namespace UIToolkitDemo
             // 播放默认按钮音效
             AudioManager.PlayDefaultButtonSound();
             // 打开URL
-            Application.OpenURL(URL);
+            Application.OpenURL("https://www.yellowshange.com");
         }
     }
 }

@@ -443,6 +443,10 @@ MonoBehaviour:
     m_Key: SkillName.WizardSkill3
     m_Metadata:
       m_Items: []
+  - m_Id: 89316728316313600
+    m_Key: Settings_LanguageDropdown_Chinese
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

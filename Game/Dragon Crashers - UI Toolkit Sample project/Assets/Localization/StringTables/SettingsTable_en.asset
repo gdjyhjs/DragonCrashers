@@ -139,7 +139,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153414135242752
-    m_Localized: More UI content from Unity
+    m_Localized: More content from BHDG
     m_Metadata:
       m_Items: []
   - m_Id: 6153387891482624
@@ -159,11 +159,11 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6153262058168320
-    m_Localized: Get the e-book
+    m_Localized: Get contact information
     m_Metadata:
       m_Items: []
   - m_Id: 6153195121270784
-    m_Localized: Discover UI Toolkit solutions land workflows in our free e-book
+    m_Localized: Discuss the game with BHDG
     m_Metadata:
       m_Items: []
   - m_Id: 6153065827655680
