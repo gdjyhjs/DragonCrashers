@@ -8,34 +8,34 @@ using UnityEngine.Tilemaps;
 namespace HappyHarvest
 {
     /// <summary>
-    /// The GameManager is the entry point to all the game system. It's execution order is set very low to make sure
-    /// its Awake function is called as early as possible so the instance if valid on other Scripts. 
+    /// GameManager是所有游戏系统的入口点。它的执行顺序设置得非常低，以确保
+    /// 其Awake函数尽可能早地被调用，从而保证在其他脚本中实例是有效的。
     /// </summary>
     [DefaultExecutionOrder(-9999)]
     public class GameManager : MonoBehaviour
     {
         private static GameManager s_Instance;
-        
-        
+
+
 #if UNITY_EDITOR
-        //As our manager run first, it will also be destroyed first when the app will be exiting, which lead to s_Instance
-        //to become null and so will trigger another instantiate in edit mode (as we dynamically instantiate the Manager)
-        //so this is set to true when destroyed, so we do not reinstantiate a new one
+        //由于我们的管理器首先运行，当应用程序退出时它也会首先被销毁，这会导致s_Instance
+        //变为null，因此在编辑模式下会触发另一个实例化（因为我们动态实例化管理器）
+        //所以在销毁时将其设置为true，这样我们就不会重新实例化一个新的管理器
         private static bool s_IsQuitting = false;
 #endif
-        public static GameManager Instance 
+        public static GameManager Instance
         {
             get
             {
 #if UNITY_EDITOR
                 if (!Application.isPlaying || s_IsQuitting)
                     return null;
-                
+
                 if (s_Instance == null)
                 {
-                    //in editor, we can start any scene to test, so we are not sure the game manager will have been
-                    //created by the first scene starting the game. So we load it manually. This check is useless in
-                    //player build as the 1st scene will have created the GameManager so it will always exists.
+                    //在编辑器中，我们可以启动任何场景进行测试，因此我们不确定游戏管理器是否会被
+                    //启动游戏的第一个场景创建。所以我们手动加载它。这个检查在
+                    //玩家构建中是无用的，因为第一个场景会创建GameManager，所以它将始终存在。
                     Instantiate(Resources.Load<GameManager>("GameManager"));
                 }
 #endif
@@ -49,60 +49,60 @@ namespace HappyHarvest
         public WeatherSystem WeatherSystem { get; set; }
         public CinemachineCamera MainCamera { get; set; }
         public Tilemap WalkSurfaceTilemap { get; set; }
-        
+
         public SceneData LoadedSceneData { get; set; }
-        
-        // Will return the ratio of time for the current day between 0 (00:00) and 1 (23:59).
+
+        // 将返回当前天的时间比例，范围从0（00:00）到1（23:59）。
         public float CurrentDayRatio => m_CurrentTimeOfTheDay / DayDurationInSeconds;
 
-        [Header("Market")] 
+        [Header("市场")]
         public Item[] MarketEntries;
-        
-        [Header("Time settings")]
-        [Min(1.0f)] 
+
+        [Header("时间设置")]
+        [Min(1.0f)]
         public float DayDurationInSeconds;
         public float StartingTime = 0.0f;
 
-        [Header("Data")] 
+        [Header("数据")]
         public ItemDatabase ItemDatabase;
         public CropDatabase CropDatabase;
 
         public Storage Storage;
 
         private bool m_IsTicking;
-        
+
         private List<DayEventHandler> m_EventHandlers = new();
         private List<SpawnPoint> m_ActiveTransitions = new List<SpawnPoint>();
-        
+
         private float m_CurrentTimeOfTheDay;
 
         private void Awake()
         {
             s_Instance = this;
             DontDestroyOnLoad(gameObject);
-            
+
             m_IsTicking = true;
-            
+
             ItemDatabase.Init();
             CropDatabase.Init();
-            
+
             Storage = new Storage();
-            
+
             m_CurrentTimeOfTheDay = StartingTime;
-            
-            //we need to ensure that we don't have a day length at 0, otherwise we will get stuck into infinite loop in update
-            //(and a day with 0 length makes no sense)
+
+            //我们需要确保日长不为0，否则我们将在更新中陷入无限循环
+            //（日长为0是没有意义的）
             if (DayDurationInSeconds <= 0.0f)
             {
                 DayDurationInSeconds = 1.0f;
-                Debug.LogError("The day length on the GameManager is set to 0, the length need to be set to a positive value");
+                Debug.LogError("GameManager上的日长设置为0，日长需要设置为正值");
             }
         }
 
         private void Start()
         {
             m_CurrentTimeOfTheDay = StartingTime;
-            
+
             UIHandler.SceneLoaded();
         }
 
@@ -129,7 +129,7 @@ namespace HappyHarvest
                     {
                         bool prev = evt.IsInRange(previousRatio);
                         bool current = evt.IsInRange(CurrentDayRatio);
-                    
+
                         if (prev && !current)
                         {
                             evt.OffEvent.Invoke();
@@ -140,8 +140,8 @@ namespace HappyHarvest
                         }
                     }
                 }
-                
-                if(DayCycleHandler != null)
+
+                if (DayCycleHandler != null)
                     DayCycleHandler.Tick();
             }
         }
@@ -161,11 +161,11 @@ namespace HappyHarvest
         public void RegisterSpawn(SpawnPoint spawn)
         {
             if (Player == null && spawn.SpawnIndex == 0)
-            { //if we have no player, we need to create one
+            { //如果我们没有玩家，我们需要创建一个
                 Instantiate(Resources.Load<PlayerController>("Character"));
                 spawn.SpawnHere();
             }
-            
+
             m_ActiveTransitions.Add(spawn);
         }
 
@@ -174,7 +174,7 @@ namespace HappyHarvest
             m_ActiveTransitions.Remove(spawn);
         }
 
-        public void MoveTo(int targetScene, int targetSpawn)
+        public void MoveTo(string targetScene, int targetSpawn)
         {
             Pause();
             SaveSystem.SaveSceneData();
@@ -184,7 +184,7 @@ namespace HappyHarvest
                 asyncop.completed += operation =>
                 {
                     m_IsTicking = true;
-                    
+
                     foreach (var active in m_ActiveTransitions)
                     {
                         if (active.SpawnIndex == targetSpawn)
@@ -193,7 +193,7 @@ namespace HappyHarvest
                             SaveSystem.LoadSceneData();
                         }
                     }
-                    
+
                     UIHandler.SceneLoaded();
                     UIHandler.FadeFromBlack(() =>
                     {
@@ -202,11 +202,11 @@ namespace HappyHarvest
                 };
             });
 
-            
+
         }
-        
+
         /// <summary>
-        /// Will return the current time as a string in format of "xx:xx" 
+        /// 将以"xx:xx"格式返回当前时间的字符串
         /// </summary>
         /// <returns></returns>
         public string CurrentTimeAsString()
@@ -215,7 +215,7 @@ namespace HappyHarvest
         }
 
         /// <summary>
-        /// Return in the format "xx:xx" the given ration (between 0 and 1) of time
+        /// 以"xx:xx"格式返回给定时间比例（0到1之间）的时间
         /// </summary>
         /// <param name="ratio"></param>
         /// <returns></returns>
@@ -227,7 +227,7 @@ namespace HappyHarvest
             return $"{hour}:{minute:00}";
         }
 
-        
+
         public static int GetHourFromRatio(float ratio)
         {
             var time = ratio * 24.0f;
@@ -243,7 +243,7 @@ namespace HappyHarvest
 
             return minute;
         }
-        
+
         public static void RegisterEventHandler(DayEventHandler handler)
         {
             foreach (var evt in handler.Events)
@@ -257,7 +257,7 @@ namespace HappyHarvest
                     evt.OffEvent.Invoke();
                 }
             }
-            
+
             Instance.m_EventHandlers.Add(handler);
         }
 

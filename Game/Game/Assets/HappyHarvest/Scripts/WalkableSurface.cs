@@ -7,14 +7,15 @@ using UnityEngine.Tilemaps;
 namespace HappyHarvest
 {
     /// <summary>
-    /// Add this component to the tilemap that is defining the surface the player is walking on. This is used by the
-    /// sound system to determine which sounds to play when walking.
+    /// 将此组件添加到定义玩家行走表面的瓷砖地图上。声音系统使用此组件来确定
+    /// 玩家行走时应播放哪些声音。
     /// </summary>
     [RequireComponent(typeof(Tilemap))]
     public class WalkableSurface : MonoBehaviour
     {
         private void Awake()
         {
+            // 将当前瓷砖地图组件赋值给游戏管理器的行走表面引用
             GameManager.Instance.WalkSurfaceTilemap = GetComponent<Tilemap>();
         }
     }

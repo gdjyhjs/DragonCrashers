@@ -13,40 +13,54 @@ namespace HappyHarvest
 {
 
     /// <summary>
-    /// Handle the cycle of Day and Night. Everything that need to change across time will register itself to this handler
-    /// which will update it when it update (e.g. ShadowInstance, Interpolator etc.).
-    /// The ticking of that system can be stopped, this is useful e.g. if the game is put in pause (or need to do cutscene
-    /// etc..)
+    /// 处理游戏中的昼夜循环系统。所有需要随时间变化的对象都会注册到这个处理器，
+    /// 它会在更新时统一处理（如阴影实例、光照插值器等）。
+    /// 该系统的更新可以被暂停，这在游戏暂停或过场动画时很有用。
     /// </summary>
     [DefaultExecutionOrder(10)]
     public class DayCycleHandler : MonoBehaviour
     {
+        // 灯光根节点
         public Transform LightsRoot;
-        
-        [Header("Day Light")]
+
+        [Header("日光设置")]
+        // 主日光
         public Light2D DayLight;
+        // 日光颜色渐变
         public Gradient DayLightGradient;
 
-        [Header("Night Light")] 
+        [Header("夜光设置")]
+        // 月光
         public Light2D NightLight;
+        // 月光颜色渐变
         public Gradient NightLightGradient;
 
-        [Header("Ambient Light")] 
+        [Header("环境光设置")]
+        // 环境光
         public Light2D AmbientLight;
+        // 环境光颜色渐变
         public Gradient AmbientLightGradient;
 
-        [Header("RimLights")] 
+        [Header("边缘光设置")]
+        // 太阳边缘光
         public Light2D SunRimLight;
+        // 太阳边缘光颜色渐变
         public Gradient SunRimLightGradient;
+        // 月亮边缘光
         public Light2D MoonRimLight;
+        // 月亮边缘光颜色渐变
         public Gradient MoonRimLightGradient;
 
-        [Tooltip("The angle 0 = upward, going clockwise to 1 along the day")]
+        [Tooltip("角度0=向上，顺时针旋转，随时间变化")]
+        // 阴影角度随时间变化曲线
         public AnimationCurve ShadowAngle;
-        [Tooltip("The scale of the normal shadow length (0 to 1) along the day")]
+        [Tooltip("正常阴影长度的缩放比例(0到1)，随时间变化")]
+        // 阴影长度随时间变化曲线
         public AnimationCurve ShadowLength;
-        
+
+        // 注册的阴影实例列表
         private List<ShadowInstance> m_Shadows = new();
+        // 注册的灯光插值器列表
         private List<LightInterpolator> m_LightBlenders = new();
 
         private void Awake()
@@ -55,81 +69,99 @@ namespace HappyHarvest
         }
 
         /// <summary>
-        /// We use an explicit ticking function instead of update so the GameManager can potentially freeze or change how
-        /// time pass
+        /// 使用显式的Tick函数而非Update，以便GameManager可以控制时间流逝或暂停
         /// </summary>
         public void Tick()
         {
             UpdateLight(GameManager.Instance.CurrentDayRatio);
         }
 
+        /// <summary>
+        /// 根据时间比例更新所有灯光和阴影
+        /// </summary>
         public void UpdateLight(float ratio)
         {
+            // 更新各灯光颜色
             DayLight.color = DayLightGradient.Evaluate(ratio);
             NightLight.color = NightLightGradient.Evaluate(ratio);
 
 #if UNITY_EDITOR
-            //the test between the define will only happen in editor and not in build, as it is assumed those will be set
-            //in build. But in editor we may want to test without those set. (those were added later in development so
-            //some test scene didn't have those set and we wanted to be able to still test those)
-            if(AmbientLight != null)
+            // 在编辑器中允许测试时没有设置某些灯光
+            if (AmbientLight != null)
 #endif
                 AmbientLight.color = AmbientLightGradient.Evaluate(ratio);
 
 #if UNITY_EDITOR
-            if(SunRimLight != null)
+            if (SunRimLight != null)
 #endif
                 SunRimLight.color = SunRimLightGradient.Evaluate(ratio);
-            
+
 #if UNITY_EDITOR
-            if(MoonRimLight != null)
+            if (MoonRimLight != null)
 #endif
                 MoonRimLight.color = MoonRimLightGradient.Evaluate(ratio);
-            
-            LightsRoot.rotation = Quaternion.Euler(0,0, 360.0f * ratio);
 
+            // 旋转灯光根节点，模拟太阳和月亮的移动
+            LightsRoot.rotation = Quaternion.Euler(0, 0, 360.0f * ratio);
+
+            // 更新阴影
             UpdateShadow(ratio);
         }
 
+        /// <summary>
+        /// 根据时间比例更新阴影
+        /// </summary>
         void UpdateShadow(float ratio)
         {
+            // 获取当前阴影角度和长度
             var currentShadowAngle = ShadowAngle.Evaluate(ratio);
             var currentShadowLength = ShadowLength.Evaluate(ratio);
 
+            // 计算相反方向的角度
             var opposedAngle = currentShadowAngle + 0.5f;
             while (currentShadowAngle > 1.0f)
                 currentShadowAngle -= 1.0f;
-            
+
+            // 更新所有注册的阴影实例
             foreach (var shadow in m_Shadows)
             {
                 var t = shadow.transform;
-                //use 1.0-angle so that the angle goes clo
-                t.eulerAngles = new Vector3(0,0, currentShadowAngle * 360.0f);
+                // 设置阴影角度和长度
+                t.eulerAngles = new Vector3(0, 0, currentShadowAngle * 360.0f);
                 t.localScale = new Vector3(1, 1f * shadow.BaseLength * currentShadowLength, 1);
             }
-            
+
+            // 更新所有注册的灯光插值器
             foreach (var handler in m_LightBlenders)
             {
                 handler.SetRatio(ratio);
             }
         }
-        
+
+        /// <summary>
+        /// 保存昼夜循环数据
+        /// </summary>
         public void Save(ref DayCycleHandlerSaveData data)
         {
             //data.TimeOfTheDay = m_CurrentTimeOfTheDay;
         }
-        
+
+        /// <summary>
+        /// 加载昼夜循环数据
+        /// </summary>
         public void Load(DayCycleHandlerSaveData data)
         {
             //m_CurrentTimeOfTheDay = data.TimeOfTheDay;
             //StartingTime = m_CurrentTimeOfTheDay;
         }
 
+        /// <summary>
+        /// 注册阴影实例
+        /// </summary>
         public static void RegisterShadow(ShadowInstance shadow)
         {
 #if UNITY_EDITOR
-            //in the editor when not running, we find the instance manually. Less efficient but not a problem at edit time
-            //allow to be able to previz shadow in editor 
+            // 在编辑器非运行状态下，手动查找实例以支持预览
             if (!Application.isPlaying)
             {
                 var instance = GameObject.FindFirstObjectByType<DayCycleHandler>();
@@ -147,11 +179,13 @@ namespace HappyHarvest
 #endif
         }
 
+        /// <summary>
+        /// 注销阴影实例
+        /// </summary>
         public static void UnregisterShadow(ShadowInstance shadow)
         {
 #if UNITY_EDITOR
-            //in the editor when not running, we find the instance manually. Less efficient but not a problem at edit time
-            //allow to be able to previz shadow in editor 
+            // 在编辑器非运行状态下，手动查找实例以支持预览
             if (!Application.isPlaying)
             {
                 var instance = GameObject.FindFirstObjectByType<DayCycleHandler>();
@@ -163,18 +197,20 @@ namespace HappyHarvest
             else
             {
 #endif
-                if(GameManager.Instance?.DayCycleHandler != null)
+                if (GameManager.Instance?.DayCycleHandler != null)
                     GameManager.Instance.DayCycleHandler.m_Shadows.Remove(shadow);
 #if UNITY_EDITOR
             }
 #endif
         }
 
+        /// <summary>
+        /// 注册灯光插值器
+        /// </summary>
         public static void RegisterLightBlender(LightInterpolator interpolator)
         {
 #if UNITY_EDITOR
-            //in the editor when not running, we find the instance manually. Less efficient but not a problem at edit time
-            //allow to be able to previz shadow in editor 
+            // 在编辑器非运行状态下，手动查找实例以支持预览
             if (!Application.isPlaying)
             {
                 var instance = FindFirstObjectByType<DayCycleHandler>();
@@ -186,17 +222,19 @@ namespace HappyHarvest
             else
             {
 #endif
-            GameManager.Instance.DayCycleHandler.m_LightBlenders.Add(interpolator);
+                GameManager.Instance.DayCycleHandler.m_LightBlenders.Add(interpolator);
 #if UNITY_EDITOR
             }
 #endif
         }
 
+        /// <summary>
+        /// 注销灯光插值器
+        /// </summary>
         public static void UnregisterLightBlender(LightInterpolator interpolator)
         {
 #if UNITY_EDITOR
-            //in the editor when not running, we find the instance manually. Less efficient but not a problem at edit time
-            //allow to be able to previz shadow in editor 
+            // 在编辑器非运行状态下，手动查找实例以支持预览
             if (!Application.isPlaying)
             {
                 var instance = FindFirstObjectByType<DayCycleHandler>();
@@ -208,57 +246,62 @@ namespace HappyHarvest
             else
             {
 #endif
-            if(GameManager.Instance?.DayCycleHandler != null)
-                GameManager.Instance.DayCycleHandler.m_LightBlenders.Remove(interpolator);
+                if (GameManager.Instance?.DayCycleHandler != null)
+                    GameManager.Instance.DayCycleHandler.m_LightBlenders.Remove(interpolator);
 #if UNITY_EDITOR
             }
 #endif
         }
     }
 
+    /// <summary>
+    /// 昼夜循环处理器保存数据结构
+    /// </summary>
     [System.Serializable]
     public struct DayCycleHandlerSaveData
     {
+        // 当前时间点
         public float TimeOfTheDay;
     }
-    
-    
+
+
 #if UNITY_EDITOR
-    // Wrapping a custom editor between UNITY_EDITOR define check allow to keep it in the same 
-    // file as this part will be stripped when building for standalone (where Editor class doesn't exist).
-    // Don't forget to also wrap the UnityEditor using at the top of the file between those define check too.
-    
-    // Show a slider that allow to test a specific time to help define colors.
+    /// <summary>
+    /// 昼夜循环编辑器扩展
+    /// </summary>
     [CustomEditor(typeof(DayCycleHandler))]
     class DayCycleEditor : Editor
     {
         private DayCycleHandler m_Target;
 
+        // 创建自定义检查器GUI
         public override VisualElement CreateInspectorGUI()
         {
             m_Target = target as DayCycleHandler;
 
             var root = new VisualElement();
-            
+
+            // 添加默认检查器属性
             InspectorElement.FillDefaultInspector(root, serializedObject, this);
-            
+
+            // 添加时间测试滑块
             var slider = new Slider(0.0f, 1.0f);
-            slider.label = "Test time 0:00";
+            slider.label = "测试时间 0:00";
             slider.RegisterValueChangedCallback(evt =>
             {
                 m_Target.UpdateLight(evt.newValue);
-                
-                slider.label = $"Test Time {GameManager.GetTimeAsString(evt.newValue)} ({evt.newValue:F2})";
+
+                slider.label = $"测试时间 {GameManager.GetTimeAsString(evt.newValue)} ({evt.newValue:F2})";
                 SceneView.RepaintAll();
             });
-            
-            //registering click event, it's very catch all but not way to do a change check for control change
+
+            // 注册点击事件，确保任何控件更改都更新光照
             root.RegisterCallback<ClickEvent>(evt =>
             {
                 m_Target.UpdateLight(slider.value);
                 SceneView.RepaintAll();
             });
-            
+
             root.Add(slider);
 
             return root;

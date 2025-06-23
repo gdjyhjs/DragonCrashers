@@ -6,21 +6,24 @@ using UnityEngine;
 namespace HappyHarvest
 {
     /// <summary>
-    /// Required in every scene. This define the unique name of the scene, used in the save system to identify the scene
-    /// This mean the scene can be moved, renamed or its build id changed and saves won't break.
+    /// 每个场景必需的组件。用于定义场景的唯一名称，保存系统使用该名称标识场景。
+    /// 这意味着场景可以移动、重命名或更改其构建 ID，而不会破坏保存数据。
     /// </summary>
     public class SceneData : MonoBehaviour
     {
+        // 场景的唯一名称（用于保存系统标识场景）
         public string UniqueSceneName;
-        
+
         private void OnEnable()
         {
+            // 当组件启用时，将当前场景数据赋值给游戏管理器
             GameManager.Instance.LoadedSceneData = this;
         }
 
         private void OnDisable()
         {
-            if(GameManager.Instance?.LoadedSceneData == this)
+            // 当组件禁用时，从游戏管理器中移除当前场景数据引用
+            if (GameManager.Instance?.LoadedSceneData == this)
                 GameManager.Instance.LoadedSceneData = null;
         }
     }

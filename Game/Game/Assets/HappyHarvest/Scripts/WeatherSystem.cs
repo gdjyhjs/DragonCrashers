@@ -3,15 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
 namespace HappyHarvest
 {
     /// <summary>
-    /// When a weather is set on this system, it will find all WeatherSystemElement in the scene and enable the one that
-    /// match the set weather and disable the ones that doesn't match.
+    /// 天气系统：当设置天气类型时，会查找场景中所有 WeatherSystemElement，
+    /// 启用匹配当前天气的元素，禁用不匹配的元素。
     /// </summary>
     public class WeatherSystem : MonoBehaviour
     {
+        // 天气类型（使用位标志枚举）
         [Flags]
         public enum WeatherType
         {
@@ -19,28 +19,29 @@ namespace HappyHarvest
             Rain = 0x2,
             Thunder = 0x4
         }
-
+        // 初始天气类型
         public WeatherType StartingWeather;
-
+        // 当前天气类型
         private WeatherType m_CurrentWeatherType;
+        // 注册的天气元素列表
         private List<WeatherSystemElement> m_Elements = new List<WeatherSystemElement>();
-
         private void Awake()
         {
             GameManager.Instance.WeatherSystem = this;
         }
-
         void Start()
         {
+            // 查找所有天气元素并设置初始天气
             FindAllElements();
             ChangeWeather(StartingWeather);
         }
-
+        /// <summary>
+        /// 注销天气元素
+        /// </summary>
         public static void UnregisterElement(WeatherSystemElement element)
         {
 #if UNITY_EDITOR
-            //in the editor when not running, we find the instance manually. Less efficient but not a problem at edit time
-            //allow to be able to previz shadow in editor 
+            // 在编辑器非运行状态下，手动查找实例以支持预览
             if (!Application.isPlaying)
             {
                 var instance = GameObject.FindFirstObjectByType<WeatherSystem>();
@@ -57,32 +58,39 @@ namespace HappyHarvest
             }
 #endif
         }
-
+        /// <summary>
+        /// 更改天气类型
+        /// </summary>
         public void ChangeWeather(WeatherType newType)
         {
             m_CurrentWeatherType = newType;
+            // 切换所有元素以匹配当前天气
             SwitchAllElementsToCurrentWeather();
+            // 更新 UI 天气图标
             UIHandler.UpdateWeatherIcons(newType);
         }
-
+        /// <summary>
+        /// 查找场景中所有天气元素
+        /// </summary>
         void FindAllElements()
         {
-            //we use FindObject of type as Object can be disabled in the editor (so they don't play all over each other at edit time)
-            //and that mean their Awake/Start function won't be called, so we can't self register to this WeatherSystem.
-            //This can be costly, but will only ever be called once at scene load, so won't impact gameplay.
+            // 使用 FindObjectsByType 查找所有天气元素（包括禁用的对象）
+            // 编辑器中对象可能被禁用，无法通过 Awake/Start 自注册，因此主动查找
             m_Elements = new(GameObject.FindObjectsByType<WeatherSystemElement>(FindObjectsInactive.Include, FindObjectsSortMode.None));
         }
-
+        /// <summary>
+        /// 切换所有元素以匹配当前天气
+        /// </summary>
         void SwitchAllElementsToCurrentWeather()
         {
             foreach (var element in m_Elements)
             {
+                // 启用与当前天气匹配的元素，禁用不匹配的元素
                 element.gameObject.SetActive(element.WeatherType.HasFlag(m_CurrentWeatherType));
             }
         }
-
 #if UNITY_EDITOR
-        //This is only needed in editor at edit time to test weather system.
+        // 仅在编辑器中用于测试天气系统
         public void EditorWeatherUpdate()
         {
             m_CurrentWeatherType = StartingWeather;
@@ -91,8 +99,10 @@ namespace HappyHarvest
         }
 #endif
     }
-
 #if UNITY_EDITOR
+    /// <summary>
+    /// 天气系统编辑器扩展
+    /// </summary>
     [CustomEditor(typeof(WeatherSystem))]
     public class WeatherSystemEditor : Editor
     {
@@ -102,11 +112,10 @@ namespace HappyHarvest
             base.OnInspectorGUI();
             if (EditorGUI.EndChangeCheck())
             {
-                Debug.Log("Updating eather");
+                Debug.Log("更新天气");
                 (target as WeatherSystem).EditorWeatherUpdate();
             }
         }
     }
 #endif
-
 }
