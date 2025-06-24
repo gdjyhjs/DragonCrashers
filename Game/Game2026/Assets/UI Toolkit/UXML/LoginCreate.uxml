@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/LoginButton.uss?fileID=7433441132597879392&amp;guid=823e3f4d9aed6d247ab9b942eb76165e&amp;type=3#LoginButton" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center;">
+        <ui:Label text="创建角色" style="font-size: 160px; height: 400px;" />
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 400px; height: 200px;" />
+        <ui:VisualElement style="flex-grow: 0; width: 800px; height: 200px;">
+            <ui:TextField label="输入名字：" placeholder-text="输入角色名" name="IptName" class="button" style="width: 800px;" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; width: 400px; height: 200px;">
+            <ui:Button text="开始游戏" name="BtnOk" class="button" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; width: 400px; height: 200px;">
+            <ui:Button text="返回主菜单" name="BtnEsc" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

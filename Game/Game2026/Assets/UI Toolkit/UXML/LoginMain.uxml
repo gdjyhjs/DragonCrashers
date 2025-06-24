@@ -1,0 +1,18 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/LoginButton.uss?fileID=7433441132597879392&amp;guid=823e3f4d9aed6d247ab9b942eb76165e&amp;type=3#LoginButton" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center;">
+        <ui:Label text="我在灵幻大陆修仙" style="font-size: 160px; height: 400px;" />
+        <ui:VisualElement name="VisualElement" style="flex-grow: 0; width: 400px; height: 200px;">
+            <ui:Button text="新的游戏" name="BtnNew" class="button" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; width: 400px; height: 200px;">
+            <ui:Button text="继续游戏" name="BtnStart" class="button" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; width: 400px; height: 200px;">
+            <ui:Button text="游戏设置" name="BtnSetting" class="button" />
+        </ui:VisualElement>
+        <ui:VisualElement style="flex-grow: 0; width: 400px; height: 200px;">
+            <ui:Button text="隐姓埋名&#10;" name="BtnEsc" class="button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

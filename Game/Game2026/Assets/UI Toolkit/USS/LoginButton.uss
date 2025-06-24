@@ -1,0 +1,29 @@
+:root {
+}
+
+.button {
+    font-size: 60px;
+    -unity-font-style: bold;
+    -unity-font-definition: url("project://database/Library/unity%20default%20resources?fileID=10102&guid=0000000000000000e000000000000000&type=0#LegacyRuntime");
+    height: 100px;
+    width: 400px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.button:hover {
+    border-top-width: 10px;
+    border-right-width: 10px;
+    border-bottom-width: 10px;
+    border-left-width: 10px;
+    border-left-color: rgb(49, 164, 117);
+    border-right-color: rgb(49, 164, 117);
+    border-top-color: rgb(49, 164, 117);
+    border-bottom-color: rgb(49, 164, 117);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
