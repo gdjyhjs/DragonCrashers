@@ -1,0 +1,26 @@
+fileFormatVersion: 2
+guid: 57343dd68a4fc0a4bafe2584b7b6d676
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - grassTile: {fileID: 11400000, guid: cedfcef56717efe4d8d193f285adc7f4, type: 2}
+  - cityWallTile: {fileID: 11400000, guid: 667c4a8db94ed3742afb19a8c1a64705, type: 2}
+  - fenceTile: {fileID: 11400000, guid: 89be9e20a79cc194caafe84a282049df, type: 2}
+  - houseTile: {fileID: 11400000, guid: dd30263034ac28042acc8ff8378827e3, type: 2}
+  - mountainTile: {fileID: 11400000, guid: c6bcebfa0f8a89341893d7538d4d542b, type: 2}
+  - riverTile: {fileID: 11400000, guid: 9a3209fb8c5d4564c9061b77ecb5b5be, type: 2}
+  - roadTile: {fileID: 11400000, guid: 5ce174411ddb8f6408ea0c4edb58c178, type: 2}
+  - abyssTile: {fileID: 11400000, guid: 11cc20617e91a9f4eb2dc2a296cf1070, type: 2}
+  - obstacleTile: {fileID: 11400000, guid: b8c1f2a00c592b24e8c71edcce649035, type: 2}
+  - bridgeTile: {fileID: 11400000, guid: 9698339df3f72ca4b84b83937eaf619b, type: 2}
+  - pondTile: {fileID: 11400000, guid: 9a3209fb8c5d4564c9061b77ecb5b5be, type: 2}
+  - groundTilemap: {instanceID: 0}
+  - buildingTilemap: {instanceID: 0}
+  - wallTilemap: {instanceID: 0}
+  - decorationTilemap: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -2,18 +2,6 @@ VisualElement {
 }
 
 .button {
-    border-top-width: 15px;
-    border-right-width: 15px;
-    border-bottom-width: 15px;
-    border-left-width: 15px;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
-    border-bottom-right-radius: 30px;
-    border-bottom-left-radius: 30px;
-    border-left-color: rgb(196, 196, 196);
-    border-right-color: rgb(196, 196, 196);
-    border-top-color: rgb(196, 196, 196);
-    border-bottom-color: rgb(196, 196, 196);
     -unity-font-definition: url("project://database/Assets/fonts/arlishugbmd_test/arlishugbmd_test.ttf?fileID=12800000&guid=7e91002cbff8a684a8ac111d331764be&type=3#arlishugbmd_test");
     font-size: 60px;
     -unity-font-style: bold;
@@ -23,6 +11,7 @@ VisualElement {
     transition-timing-function: ease, ease;
     transition-delay: 0s, 0s;
     width: 400px;
+    -unity-background-image-tint-color: rgba(255, 255, 255, 0);
 }
 
 .button:hover {

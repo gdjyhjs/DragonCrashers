@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/LoginButton.uss?fileID=7433441132597879392&amp;guid=018c2186f2487db468e70551971acb4b&amp;type=3#LoginButton" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/HappyHarvest/Art/UI/login.png?fileID=2800000&amp;guid=d22b4048482d6fb4fbea8d27d512ae95&amp;type=3#login&quot;);">
+        <ui:Label text="灵幻大陆" style="-unity-font-definition: url(&quot;project://database/Assets/HappyHarvest/Fonts/CurseCasual/Curse%20Casual.ttf?fileID=12800000&amp;guid=31797353ab4fc7043a0f62eacf5ea3a9&amp;type=3#Curse Casual&quot;); font-size: 90px; color: rgb(41, 117, 78); left: 113px; top: 619px; -unity-font-style: bold-and-italic;" />
+        <ui:Label text="八&#10;荒&#10;大&#10;鬼&#10;著" style="-unity-font-definition: url(&quot;project://database/Assets/HappyHarvest/Fonts/CurseCasual/Curse%20Casual.ttf?fileID=12800000&amp;guid=31797353ab4fc7043a0f62eacf5ea3a9&amp;type=3#Curse Casual&quot;); font-size: 90px; color: rgb(41, 117, 78); left: 574px; top: -149px; -unity-font-style: italic;" />
+    </ui:VisualElement>
+</ui:UXML>
