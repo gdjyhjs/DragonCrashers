@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 6906274507070896425, guid: c536e4c70697f2c47af4601ed7cbf649, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1060044202, guid: df8896220c78886439cc08247108997d, type: 3}
+      objectReference: {fileID: 1060044202, guid: 91d5c0288db49fe4582c97d59521e227, type: 3}
     - target: {fileID: 7081563309204557241, guid: c536e4c70697f2c47af4601ed7cbf649, type: 3}
       propertyPath: m_Name
       value: Fence 5
