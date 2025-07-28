@@ -10,21 +10,19 @@ public static class SettlementGenerator
     /// <summary>
     /// 生成各类定居点
     /// </summary>
-    public static void Generate(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> landList, List<Vector2Int> cityList, List<Vector2Int> cityPoints, List<List<Vector2Int>> isLandList)
+    public static void Generate(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> landList, List<Vector2Int> cityList, List<Vector2Int> cityPoints, List<List<Vector2Int>> isLandList, List<Vector2Int> canUsePoint)
     {
-        List<Vector2Int> canUsePoint = new List<Vector2Int>(landList);
         int locationIndex = 0;
 
         // 生成宗门
         for (int i = 0; i < config.sectCount; i++)
         {
             int size = Mathf.RoundToInt(config.sectSize * Random.Range(0.8f, 1.2f));
-            Vector2Int position = FindSuitablePosition(mapData, config, size, MapData.Sect, locationIndex, canUsePoint, cityPoints, isLandList, config.townSectMinDistance);
-            if (position.x != -1)
+            Vector2Int center = FindSuitablePosition(mapData, size, MapData.Sect, locationIndex, canUsePoint, cityPoints, isLandList, config.townSectMinDistance);
+            if (center.x != -1)
             {
-                PlaceSettlement(mapData, config, position, adjustedSize, config.sectSize, MapData.Sect);
+                PlaceSettlement(mapData, center, size, MapData.Sect, canUsePoint, cityList, cityPoints, config.townSectMinDistance);
                 locationIndex++;
-                importantLocations.Add(position);
             }
         }
         int sectCount = locationIndex;
@@ -32,13 +30,12 @@ public static class SettlementGenerator
         // 生成城市
         for (int i = 0; i < config.cityCount; i++)
         {
-            int adjustedSize = Mathf.RoundToInt(Mathf.Sqrt(config.citySize) * Random.Range(0.8f, 1.2f));
-            Vector2Int position = FindSuitablePosition(mapData, config, adjustedSize, MapData.City, importantLocations, locationIndex);
-            if (position.x != -1)
+            int size = Mathf.RoundToInt(config.citySize * Random.Range(0.8f, 1.2f));
+            Vector2Int center = FindSuitablePosition(mapData, size, MapData.City, locationIndex, canUsePoint, cityPoints, isLandList, config.townSectMinDistance);
+            if (center.x != -1)
             {
-                PlaceSettlement(mapData, config, position, adjustedSize, config.citySize, MapData.City);
+                PlaceSettlement(mapData, center, size, MapData.City, canUsePoint, cityList, cityPoints, config.townSectMinDistance);
                 locationIndex++;
-                importantLocations.Add(position);
             }
         }
         int cityCount = locationIndex - sectCount;
@@ -46,59 +43,37 @@ public static class SettlementGenerator
         // 生成部落
         for (int i = 0; i < config.tribeCount; i++)
         {
-            int adjustedSize = Mathf.RoundToInt(Mathf.Sqrt(config.tribeSize) * Random.Range(0.8f, 1.2f));
-            Vector2Int position = FindSuitablePosition(mapData, config, adjustedSize, MapData.Tribe, importantLocations, locationIndex);
-            if (position.x != -1)
+            int size = Mathf.RoundToInt(config.tribeSize * Random.Range(0.8f, 1.2f));
+            Vector2Int center = FindSuitablePosition(mapData, size, MapData.Tribe, locationIndex, canUsePoint, cityPoints, isLandList, config.villageTribeMinDistance);
+            if (center.x != -1)
             {
-                PlaceSettlement(mapData, config, position, adjustedSize, config.tribeSize, MapData.Tribe);
+                PlaceSettlement(mapData, center, size, MapData.Tribe, canUsePoint, cityList, cityPoints, config.villageTribeMinDistance);
                 locationIndex++;
-                importantLocations.Add(position);
             }
         }
-        int tribeCount = locationIndex - sectCount - sectCount;
+        int tribeCount = locationIndex - sectCount - cityCount;
 
         // 生成村庄
         for (int i = 0; i < config.villageCount; i++)
         {
-            int adjustedSize = Mathf.RoundToInt(Mathf.Sqrt(config.villageSize) * Random.Range(0.8f, 1.2f));
-            Vector2Int position = FindSuitablePosition(mapData, config, adjustedSize, MapData.Village, importantLocations, locationIndex);
-            if (position.x != -1)
+            int size = Mathf.RoundToInt(config.villageSize * Random.Range(0.8f, 1.2f));
+            Vector2Int center = FindSuitablePosition(mapData, size, MapData.Village, locationIndex, canUsePoint, cityPoints, isLandList, config.villageTribeMinDistance);
+            if (center.x != -1)
             {
-                PlaceSettlement(mapData, config, position, adjustedSize, config.villageSize, MapData.Village);
+                PlaceSettlement(mapData, center, size, MapData.Village, canUsePoint, cityList, cityPoints, config.villageTribeMinDistance);
                 locationIndex++;
-                importantLocations.Add(position);
             }
         }
-        int villageCount = locationIndex - sectCount - sectCount - tribeCount;
+        int villageCount = locationIndex - sectCount - cityCount - tribeCount;
 
 
-        var ptherImportantLocations = new List<Vector2Int>(importantLocations);
-        MapData[] randTypes = new MapData[] { MapData.Lake, MapData.Mountain, MapData.Forest};
-        // 生成生态
-        for (int i = 0; i < 300; i++)
-        {
-            int size = Random.Range(5, 30);
-            int adjustedSize = Mathf.RoundToInt(Mathf.Sqrt(size));
-            MapData randType = randTypes[Random.Range(0, randTypes.Length)];
-
-            Vector2Int position = FindSuitablePosition(mapData, config, adjustedSize, randType, ptherImportantLocations, locationIndex);
-            if (position.x != -1)
-            {
-                PlaceSettlement(mapData, config, position, adjustedSize, size, randType);
-                locationIndex++;
-                ptherImportantLocations.Add(position);
-            }
-        }
-        int otherCount = locationIndex - sectCount - sectCount - tribeCount - villageCount;
-
-
-        Debug.Log($"创建数量：宗门{sectCount}  城市{cityCount}  部落{tribeCount}  村庄：{villageCount}  生态数量{otherCount}");
+        Debug.Log($"创建数量：宗门{sectCount}  城市{cityCount}  部落{tribeCount}  村庄：{villageCount}");
     }
 
     /// <summary>
     /// 寻找适合放置定居点的位置，在陆地上，距离其他不能太近
     /// </summary>
-    private static Vector2Int FindSuitablePosition(int[,] mapData, MapGeneratorConfig config, int size, MapData type, int locationCount, List<Vector2Int> canUsePoint, List<Vector2Int> cityPoints, List<List<Vector2Int>> isLandList, int nearDis)
+    private static Vector2Int FindSuitablePosition(int[,] mapData, int size, MapData type, int locationCount, List<Vector2Int> canUsePoint, List<Vector2Int> cityPoints, List<List<Vector2Int>> isLandList, int nearDis)
     {
         // 打乱位置列表增加随机性
         List<Vector2Int> shuffledPositions = new List<Vector2Int>(canUsePoint);
@@ -126,8 +101,14 @@ public static class SettlementGenerator
                 return pos;
             }
 
+            if (type == MapData.City || type == MapData.Sect)
+            {
+                // 宗门和城市不在岛屿上
+                continue;
+            }
+
             // 岛屿需要检查区域是否足够大
-            if (!IsAreaSuitable(pos, isLandList, size))
+            if (!IsAreaSuitable(pos, isLandList, size, canUsePoint))
             {
                 continue;
             }
@@ -140,13 +121,19 @@ public static class SettlementGenerator
     /// <summary>
     /// 检查区域是否适合放置定居点
     /// </summary>
-    private static bool IsAreaSuitable(Vector2Int pos, List<List<Vector2Int>> isLandList, int size)
+    private static bool IsAreaSuitable(Vector2Int pos, List<List<Vector2Int>> isLandList, int size, List<Vector2Int> canUsePoint)
     {
         foreach (var isLandPoint in isLandList)
         {
-            if (isLandPoint.Contains(isLandPoint))
+            if (isLandPoint.Contains(pos))
             {
-                return isLandPoint.Count >= size;
+                int canUseCount = 0;
+                foreach (var p in isLandPoint)
+                {
+                    if (canUsePoint.Contains(p))
+                        canUseCount++;
+                }
+                return canUseCount >= size;
             }
         }
         return false;
@@ -163,26 +150,18 @@ public static class SettlementGenerator
     /// <summary>
     /// 放置定居点
     /// </summary>
-    private static void PlaceSettlement(int[,] mapData, MapGeneratorConfig config, Vector2Int position, int adjustedSize, int size, MapData type)
+    private static void PlaceSettlement(int[,] mapData, Vector2Int center, int size, MapData type, List<Vector2Int> canUsePoint, List<Vector2Int> cityList, List<Vector2Int> cityPoints, int nearDis)
     {
-        // 使用预设格子数的开方来估算定居点长度
-        int curSize = 0;
-        for (int x = position.x - adjustedSize; x <= position.x + adjustedSize; x++)
+        var list = AreaExpander.ExpandPointToArea(center, default, (pos) =>
         {
-            for (int y = position.y - adjustedSize; y <= position.y + adjustedSize; y++)
-            {
-                if (x < 0 || x >= config.mapSize.x || y < 0 || y >= config.mapSize.y)
-                    continue;
-
-                float distance = Vector2.Distance(new Vector2(x, y), position);
-                if (distance <= adjustedSize)
-                {
-                    mapData[x, y] |= (int)type | (int)MapData.Plain;
-                    curSize++;
-                    if (curSize >= size)
-                        return;
-                }
-            }
+            return canUsePoint.Contains(pos) && !IsDistanceSuitable(pos, cityPoints, nearDis);
+        }, size);
+        cityList.Add(center);
+        foreach (var p in list)
+        {
+            mapData[p.x, p.y] = mapData[p.x, p.y] |(int)type;
+            cityPoints.Add(p);
+            canUsePoint.Remove(p);
         }
     }
 }

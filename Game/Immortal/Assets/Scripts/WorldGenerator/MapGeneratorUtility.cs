@@ -31,13 +31,20 @@ public static class MapGeneratorUtility
         List<Vector2Int> cityPoints = new List<Vector2Int>(); // 居住点区域格子
 
         // 生成大陆地形
-        OceanContinentGenerator.Generate(mapData, config, oceanList, landList, isLandList, isLandList);
+        OceanContinentGenerator.Generate(mapData, config, oceanList, landList, isLandList);
+
+        List<Vector2Int> canUsePoint = new List<Vector2Int>(landList); // 可使用的陆地格子
 
         // 生成定居点
-        SettlementGenerator.Generate(mapData, config, landList, cityList, cityPoints);
+        SettlementGenerator.Generate(mapData, config, landList, cityList, cityPoints, isLandList, canUsePoint);
 
+
+        List<Vector2Int> mountainUsedList; // 山脉占点列表
+        List<Vector2Int> forestUsedList; // 森林占点列表
+        List<Vector2Int> lakeUsedList; // 湖泊占点列表
+        List<Vector2Int> plainUsedList; // 平原占点列表
         // 生成和生态群
-        NaturalFeatureGenerator.Generate(mapData, config.mapSize);
+        NaturalFeatureGenerator.Generate(mapData, landList, isLandList, out mountainUsedList, out forestUsedList, out lakeUsedList, out plainUsedList);
 
         // 生成河流
         //RiverGenerator.Generate(mapData, config.mapSize);

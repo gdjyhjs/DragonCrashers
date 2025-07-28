@@ -78,6 +78,8 @@ public static class OceanContinentGenerator
         GenerateIslands(mapData, config, oceanList, landList, config.smallIslandCount, config.smallIslandSize, "Small", isLandList);
         GenerateIslands(mapData, config, oceanList, landList, config.mediumIslandCount, config.mediumIslandSize, "Medium", isLandList);
         GenerateIslands(mapData, config, oceanList, landList, config.largeIslandCount, config.largeIslandSize, "Large", isLandList);
+
+        Debug.Log($"总格子数{mapSize.x * mapSize.y}  海洋格子数{oceanList.Count}  陆地格子数{landList.Count}  岛屿数量{isLandList.Count}");
     }
 
     /// <summary>
@@ -627,10 +629,6 @@ public static class OceanContinentGenerator
     /// </summary>
     private static Vector2Int[] GenerateIsland(Vector2Int center, int baseIslandSize, List<Vector2Int> oceanPositions, List<Vector2Int> landList)
     {
-        string str = $"海数量{oceanPositions.Count}  地数量{landList.Count}  \n";
-        str += string.Join('|', oceanPositions) + "\n" + string.Join('|', landList);
-        Debug.Log(str);
-
         return AreaExpander.ExpandPointToArea(center, default, (pos) =>
         {
             return oceanPositions.Contains(pos) && !landList.Contains(pos) && !IsNearLandOrIsland(pos, landList);

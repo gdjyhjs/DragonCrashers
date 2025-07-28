@@ -25,11 +25,11 @@ public class MapEditorWindow : EditorWindow
     private static Color dockColor = new Color(0.8f, 0.2f, 0.2f); // 红色
     private static Color routeColor = new Color(0.9f, 0.5f, 0.7f); // 粉红色
     private static Color riverColor = new Color(1, 1, 0f); // 黄色
-    private static Color roadColor = new Color(0.7f, 0.5f, 0.3f, 0.8f); // 浅褐色（半透明）
-    private static Color forestColor = new Color(0.0f, 0.3f, 0.0f, 0.7f); // 墨绿色（半透明）
-    private static Color mountainColor = new Color(0.5f, 0.5f, 0.5f, 0.7f); // 灰色（半透明）
-    private static Color plainColor = new Color(0.6f, 0.9f, 0.4f, 0.7f); // 淡绿色（半透明）
-    private static Color lakeColor = new Color(0.2f, 0.8f, 0.8f, 0.7f); // 青色（半透明）
+    private static Color roadColor = new Color(0.7f, 0.5f, 0.3f); // 浅褐色
+    private static Color forestColor = new Color(0.0f, 0.3f, 0.0f); // 墨绿色
+    private static Color mountainColor = new Color(0.22f, 0.15f, 0.10f); // 深褐色
+    private static Color plainColor = new Color(0.6f, 0.9f, 0.4f); // 淡绿色
+    private static Color lakeColor = new Color(0.2f, 0.8f, 0.8f); // 青色
     private static Color oceanColor = new Color(0.0f, 0.3f, 0.5f); // 暗青色
     private int customTextureWidth = -1; // 新增变量，用于记录自定义的图片宽度
 
@@ -470,11 +470,13 @@ public class MapEditorWindow : EditorWindow
         // 大陆颜色（不应该出现）
         else if ((cellData & (int)MapData.Continent) != 0)
         {
+            //Debug.Log(x + "," + y + " 不该出现的大陆颜色：" + cellData);
             color = Color.white;
         }
         // 岛屿颜色（不应该出现）
         else if ((cellData & (int)MapData.Island) != 0)
         {
+            //Debug.Log(x + "," + y + " 不该出现的岛屿颜色：" + cellData);
             color = Color.gray;
         }
         // 默认颜色（不应该出现）

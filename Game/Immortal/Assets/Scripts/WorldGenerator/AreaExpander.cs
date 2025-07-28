@@ -74,7 +74,6 @@ public static class AreaExpander
                 edgePoints.RemoveAt(edgeIndex);
             }
         }
-        Debug.Log("生成区域大小：" + expandedPoints.Count);
         return expandedPoints.ToArray();
     }
 
