@@ -29,10 +29,9 @@ public static class OceanContinentGenerator
     /// <summary>
     /// 生成海洋、大陆和岛屿
     /// </summary>
-    public static void Generate(int[,] mapData, MapGeneratorConfig config)
+    public static void Generate(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> oceanList, List<Vector2Int> landList, List<List<Vector2Int>> isLandList)
     {
         Vector2Int mapSize = config.mapSize;
-
         System.DateTime startTime = System.DateTime.Now;
 
         // 增加一些随机性
@@ -60,22 +59,25 @@ public static class OceanContinentGenerator
         Debug.Log($"陆地生成完成！总耗时: {totalTime.TotalMilliseconds:F2}ms ({totalTime.TotalSeconds:F2}秒)");
 
         // 收集海洋区域坐标
-        List<Vector2Int> oceanPositions = new List<Vector2Int>();
         for (int x = 0; x < mapSize.x; x++)
         {
             for (int y = 0; y < mapSize.y; y++)
             {
                 if (mapData[x, y] == (int)MapData.Ocean)
                 {
-                    oceanPositions.Add(new Vector2Int(x, y));
+                    oceanList.Add(new Vector2Int(x, y));
+                }
+                else
+                {
+                    landList.Add(new Vector2Int(x, y));
                 }
             }
         }
 
         // 生成不同规模的岛屿
-        GenerateIslands(mapData, config, oceanPositions, config.smallIslandCount, config.smallIslandSize, "Small");
-        GenerateIslands(mapData, config, oceanPositions, config.mediumIslandCount, config.mediumIslandSize, "Medium");
-        GenerateIslands(mapData, config, oceanPositions, config.largeIslandCount, config.largeIslandSize, "Large");
+        GenerateIslands(mapData, config, oceanList, landList, config.smallIslandCount, config.smallIslandSize, "Small", isLandList);
+        GenerateIslands(mapData, config, oceanList, landList, config.mediumIslandCount, config.mediumIslandSize, "Medium", isLandList);
+        GenerateIslands(mapData, config, oceanList, landList, config.largeIslandCount, config.largeIslandSize, "Large", isLandList);
     }
 
     /// <summary>
@@ -237,12 +239,7 @@ public static class OceanContinentGenerator
             Vector2Int current = queue.Dequeue();
 
             // 计算当前位置的边界影响因子（0-1）
-            float borderFactor = CalculateBorderFactor(
-                current,
-                mapSize,
-                borderInfluenceX,
-                borderInfluenceY
-            );
+            float borderFactor = CalculateBorderFactor(current, mapSize, borderInfluenceX, borderInfluenceY);
 
             // 打乱方向
             ShuffleDirections(directions);
@@ -420,7 +417,7 @@ public static class OceanContinentGenerator
         float baseBridgeExpansion = 0.7f;
 
         // 扩展桥的宽度，使连接更自然
-        int bridgeWidth = Random.Range(3, 6); // 陆桥宽度
+        int bridgeWidth = Random.Range(8, 25); // 陆桥宽度
         while (queue.Count > 0 && bridge.Count < bridgeWidth * bridgePoints.Count)
         {
             Vector2Int current = queue.Dequeue();
@@ -573,28 +570,31 @@ public static class OceanContinentGenerator
     /// <summary>
     /// 生成指定类型岛屿
     /// </summary>
-    private static void GenerateIslands(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> oceanPositions, int islandCount, int baseIslandSize, string islandType)
+    private static void GenerateIslands(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> oceanPositions, List<Vector2Int> landList, int islandCount, int baseIslandSize, string islandType, List<List<Vector2Int>> isLandList)
     {
         int createCount = Mathf.RoundToInt(islandCount * Random.Range(0.8f, 1.2f));
-        List<Vector2Int> usedPositions = new List<Vector2Int>();
-
         for (int i = 0; i < createCount; i++)
         {
-            // 使用预设格子数的开方来估算岛屿长度
-            int isLandLength = Mathf.RoundToInt(Mathf.Sqrt(baseIslandSize) * Random.Range(0.8f, 1.2f));
-
-            Vector2Int pos = SelectIslandPosition(mapData, oceanPositions, usedPositions, config.mapSize, isLandLength);
+            Vector2Int pos = SelectIslandPosition(oceanPositions, landList);
             if (pos == Vector2Int.zero) break;
 
-            usedPositions.Add(pos);
-            GenerateIsland(mapData, config.mapSize, pos.x, pos.y, isLandLength);
+            var size = Mathf.RoundToInt(baseIslandSize * Random.Range(0.8f, 1.2f));
+
+            Vector2Int[] list = GenerateIsland(pos, size, oceanPositions, landList);
+            isLandList.Add(new List<Vector2Int>(list));
+            foreach (var p in list)
+            {
+                mapData[p.x, p.y] = (int)MapData.Island;
+                landList.Add(p);
+                oceanPositions.Remove(p);
+            }
         }
     }
 
     /// <summary>
     /// 选择岛屿生成位置
     /// </summary>
-    private static Vector2Int SelectIslandPosition(int[,] mapData, List<Vector2Int> oceanPositions, List<Vector2Int> usedPositions, Vector2Int mapSize, int isLandLength)
+    private static Vector2Int SelectIslandPosition(List<Vector2Int> oceanPositions, List<Vector2Int> landList)
     {
         // 打乱海洋位置列表增加随机性
         List<Vector2Int> shuffledPositions = new List<Vector2Int>(oceanPositions);
@@ -608,7 +608,7 @@ public static class OceanContinentGenerator
 
         foreach (Vector2Int pos in shuffledPositions)
         {
-            if (!usedPositions.Contains(pos) && !IsNearLandOrIsland(mapData, pos, mapSize, usedPositions, isLandLength))
+            if (oceanPositions.Contains(pos) && !landList.Contains(pos) && !IsNearLandOrIsland(pos, landList))
                 return pos;
         }
         return Vector2Int.zero;
@@ -617,87 +617,23 @@ public static class OceanContinentGenerator
     /// <summary>
     /// 判断位置是否靠近陆地或其他岛屿
     /// </summary>
-    private static bool IsNearLandOrIsland(int[,] mapData, Vector2Int pos, Vector2Int mapSize, List<Vector2Int> usedPositions, int checkRange)
+    private static bool IsNearLandOrIsland(Vector2Int pos, List<Vector2Int> landList)
     {
-        for (int x = pos.x - checkRange; x <= pos.x + checkRange; x++)
-        {
-            for (int y = pos.y - checkRange; y <= pos.y + checkRange; y++)
-            {
-                if (x < 0 || x >= mapSize.x || y < 0 || y >= mapSize.y) continue;
-                if (mapData[x, y] == (int)MapData.Continent ||
-                    mapData[x, y] == (int)MapData.Island ||
-                    usedPositions.Contains(new Vector2Int(x, y)))
-                    return true;
-            }
-        }
-        return false;
+        return AreaExpander.IsNearLandOrIsland(pos, landList, 5);
     }
 
     /// <summary>
     /// 生成单个岛屿
     /// </summary>
-    private static void GenerateIsland(int[,] mapData, Vector2Int mapSize, int centerX, int centerY, int length)
+    private static Vector2Int[] GenerateIsland(Vector2Int center, int baseIslandSize, List<Vector2Int> oceanPositions, List<Vector2Int> landList)
     {
-        //Debug.Log("生成岛屿，长度：" + length);
-        // 使用更自然的岛屿形状生成算法
-        float falloff = Random.Range(0.7f, 1.0f); // 衰减系数，控制岛屿边缘陡峭程度
+        string str = $"海数量{oceanPositions.Count}  地数量{landList.Count}  \n";
+        str += string.Join('|', oceanPositions) + "\n" + string.Join('|', landList);
+        Debug.Log(str);
 
-        // 生成基础圆形并添加随机扰动
-        for (int x = -length; x <= length; x++)
+        return AreaExpander.ExpandPointToArea(center, default, (pos) =>
         {
-            for (int y = -length; y <= length; y++)
-            {
-                float distance = Mathf.Sqrt(x * x + y * y);
-                float normalizedDistance = distance / length;
-
-                // 添加随机扰动使岛屿形状不规则
-                float randomFactor = 1 + Random.Range(-0.3f, 0.3f);
-                float adjustedDistance = normalizedDistance * randomFactor;
-
-                if (adjustedDistance < falloff)
-                {
-                    int worldX = centerX + x;
-                    int worldY = centerY + y;
-
-                    if (worldX >= 0 && worldX < mapSize.x && worldY >= 0 && worldY < mapSize.y)
-                    {
-                        mapData[worldX, worldY] = (int)MapData.Island;
-                    }
-                }
-            }
-        }
-
-        // 添加小岛分支，使岛屿更自然
-        int branches = Random.Range(1, 4);
-        for (int i = 0; i < branches; i++)
-        {
-            float angle = Random.Range(0, Mathf.PI * 2);
-            int branchLength = Random.Range(length / 3, length * 2 / 3);
-            int branchWidth = Random.Range(1, 3);
-
-            for (int l = 0; l < branchLength; l++)
-            {
-                int xOffset = Mathf.RoundToInt(Mathf.Cos(angle) * l);
-                int yOffset = Mathf.RoundToInt(Mathf.Sin(angle) * l);
-
-                for (int w = -branchWidth; w <= branchWidth; w++)
-                {
-                    for (int h = -branchWidth; h <= branchWidth; h++)
-                    {
-                        int worldX = centerX + xOffset + w;
-                        int worldY = centerY + yOffset + h;
-
-                        if (worldX >= 0 && worldX < mapSize.x && worldY >= 0 && worldY < mapSize.y)
-                        {
-                            // 分支末端逐渐变细
-                            if (Random.value > (float)l / branchLength)
-                            {
-                                mapData[worldX, worldY] = (int)MapData.Island;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+            return oceanPositions.Contains(pos) && !landList.Contains(pos) && !IsNearLandOrIsland(pos, landList);
+        }, baseIslandSize);
     }
 }

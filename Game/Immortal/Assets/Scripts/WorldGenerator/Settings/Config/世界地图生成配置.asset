@@ -22,10 +22,10 @@ MonoBehaviour:
   villageSize: 9
   tribeSize: 15
   townSectMinDistance: 20
-  villageTribeMinDistance: 7
-  smallIslandCount: 12
-  mediumIslandCount: 6
-  largeIslandCount: 3
+  villageTribeMinDistance: 5
+  smallIslandCount: 17
+  mediumIslandCount: 9
+  largeIslandCount: 5
   smallIslandSize: 16
   mediumIslandSize: 50
   largeIslandSize: 120

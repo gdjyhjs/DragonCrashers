@@ -10,15 +10,16 @@ public static class SettlementGenerator
     /// <summary>
     /// 生成各类定居点
     /// </summary>
-    public static void Generate(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> importantLocations)
+    public static void Generate(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> landList, List<Vector2Int> cityList, List<Vector2Int> cityPoints, List<List<Vector2Int>> isLandList)
     {
+        List<Vector2Int> canUsePoint = new List<Vector2Int>(landList);
         int locationIndex = 0;
 
         // 生成宗门
         for (int i = 0; i < config.sectCount; i++)
         {
-            int adjustedSize = Mathf.RoundToInt(Mathf.Sqrt(config.sectSize) * Random.Range(0.8f, 1.2f));
-            Vector2Int position = FindSuitablePosition(mapData, config, adjustedSize, MapData.Sect, importantLocations, locationIndex);
+            int size = Mathf.RoundToInt(config.sectSize * Random.Range(0.8f, 1.2f));
+            Vector2Int position = FindSuitablePosition(mapData, config, size, MapData.Sect, locationIndex, canUsePoint, cityPoints, isLandList, config.townSectMinDistance);
             if (position.x != -1)
             {
                 PlaceSettlement(mapData, config, position, adjustedSize, config.sectSize, MapData.Sect);
@@ -95,39 +96,42 @@ public static class SettlementGenerator
     }
 
     /// <summary>
-    /// 寻找适合放置定居点的位置
+    /// 寻找适合放置定居点的位置，在陆地上，距离其他不能太近
     /// </summary>
-    private static Vector2Int FindSuitablePosition(int[,] mapData, MapGeneratorConfig config, int adjustedSize, MapData type, List<Vector2Int> importantLocations, int locationCount)
+    private static Vector2Int FindSuitablePosition(int[,] mapData, MapGeneratorConfig config, int size, MapData type, int locationCount, List<Vector2Int> canUsePoint, List<Vector2Int> cityPoints, List<List<Vector2Int>> isLandList, int nearDis)
     {
-        int maxAttempts = 100;
-        int attempts = 0;
-
-        while (attempts < maxAttempts)
+        // 打乱位置列表增加随机性
+        List<Vector2Int> shuffledPositions = new List<Vector2Int>(canUsePoint);
+        for (int i = 0; i < shuffledPositions.Count; i++)
         {
-            attempts++;
-            int x = Random.Range(adjustedSize, config.mapSize.x - adjustedSize);
-            int y = Random.Range(adjustedSize, config.mapSize.y - adjustedSize);
-            Vector2Int pos = new Vector2Int(x, y);
+            int randomIndex = Random.Range(i, shuffledPositions.Count);
+            Vector2Int temp = shuffledPositions[i];
+            shuffledPositions[i] = shuffledPositions[randomIndex];
+            shuffledPositions[randomIndex] = temp;
+        }
 
-            // 检查索引合法性
-            if (x < 0 || x >= mapData.GetLength(0) || y < 0 || y >= mapData.GetLength(1))
-                continue;
-
-            // 检查是否在陆地
-            bool isLand = (mapData[x, y] & (int)(MapData.Continent | MapData.Island)) != 0;
-            if (!isLand) continue;
-
-            // 检查区域是否足够大
-            if (!IsAreaSuitable(mapData, config.mapSize, pos, adjustedSize))
+        foreach (var pos in shuffledPositions)
+        {
+            // 检查距离
+            if (IsDistanceSuitable(pos, cityPoints, nearDis))
             {
                 continue;
             }
 
-            // 检查距离
-            if (IsDistanceSuitable(pos, importantLocations, locationCount, type, config))
+            // 检查是否在岛上
+            bool isLand = (mapData[pos.x, pos.y] & (int)(MapData.Island)) != 0;
+            if (!isLand)
             {
+                // 陆地直接可用
                 return pos;
             }
+
+            // 岛屿需要检查区域是否足够大
+            if (!IsAreaSuitable(pos, isLandList, size))
+            {
+                continue;
+            }
+            return pos;
         }
 
         return new Vector2Int(-1, -1);
@@ -136,40 +140,24 @@ public static class SettlementGenerator
     /// <summary>
     /// 检查区域是否适合放置定居点
     /// </summary>
-    private static bool IsAreaSuitable(int[,] mapData, Vector2Int mapSize, Vector2Int pos, int size)
+    private static bool IsAreaSuitable(Vector2Int pos, List<List<Vector2Int>> isLandList, int size)
     {
-        for (int i = pos.x - size; i <= pos.x + size; i++)
+        foreach (var isLandPoint in isLandList)
         {
-            for (int j = pos.y - size; j <= pos.y + size; j++)
+            if (isLandPoint.Contains(isLandPoint))
             {
-                if (i < 0 || i >= mapSize.x || j < 0 || j >= mapSize.y)
-                    return false;
-
-                if ((mapData[i, j] & (int)(MapData.Continent | MapData.Island)) == 0)
-                    return false;
+                return isLandPoint.Count >= size;
             }
         }
-        return true;
+        return false;
     }
 
     /// <summary>
-    /// 检查距离是否符合要求
+    /// 判断位置是否靠近其他居住点
     /// </summary>
-    private static bool IsDistanceSuitable(Vector2Int pos, List<Vector2Int> locations, int locationCount, MapData type, MapGeneratorConfig config)
+    private static bool IsDistanceSuitable(Vector2Int pos, List<Vector2Int> cityPoints, int nearDis)
     {
-        float requiredDistance = (type == MapData.Sect || type == MapData.City)
-            ? config.townSectMinDistance
-            : config.villageTribeMinDistance;
-
-        for (int i = 0; i < locationCount; i++)
-        {
-            Vector2Int loc = locations[i];
-            if (loc.x == 0 && loc.y == 0) continue;
-
-            if (Vector2.Distance(pos, loc) < requiredDistance)
-                return false;
-        }
-        return true;
+        return AreaExpander.IsNearLandOrIsland(pos, cityPoints, nearDis);
     }
 
     /// <summary>

@@ -24,19 +24,23 @@ public static class MapGeneratorUtility
 
         // 初始化地图数据
         int[,] mapData = new int[config.mapSize.x, config.mapSize.y];
-        List<Vector2Int> importantLocations = new List<Vector2Int>();
+        List<Vector2Int> landList = new List<Vector2Int>(); // 记录可用陆地的点
+        List<Vector2Int> oceanList = new List<Vector2Int>(); // 记录海洋点
+        List<List<Vector2Int>> isLandList = new List<List<Vector2Int>>(); // 每个岛所占格子
+        List<Vector2Int> cityList = new List<Vector2Int>(); // 居住点起点
+        List<Vector2Int> cityPoints = new List<Vector2Int>(); // 居住点区域格子
 
         // 生成大陆地形
-        OceanContinentGenerator.Generate(mapData, config);
+        OceanContinentGenerator.Generate(mapData, config, oceanList, landList, isLandList, isLandList);
 
-        // 生成定居点和生态群
-        SettlementGenerator.Generate(mapData, config, importantLocations);
+        // 生成定居点
+        SettlementGenerator.Generate(mapData, config, landList, cityList, cityPoints);
 
-        // 生成平原特征
+        // 生成和生态群
         NaturalFeatureGenerator.Generate(mapData, config.mapSize);
 
         // 生成河流
-        RiverGenerator.Generate(mapData, config.mapSize);
+        //RiverGenerator.Generate(mapData, config.mapSize);
 
         //// 生成道路和航线
         //RoadRouteGenerator.Generate(mapData, config, importantLocations);
@@ -48,6 +52,7 @@ public static class MapGeneratorUtility
 
         return mapData;
     }
+
 
     /// <summary>
     /// 将地图数据保存到txt文件
