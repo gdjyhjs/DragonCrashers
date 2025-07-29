@@ -14,14 +14,15 @@ public static class NaturalFeatureGenerator
     public static void Generate(int[,] mapData, List<Vector2Int> landList, List<List<Vector2Int>> isLandList
         , out List<Vector2Int> mountainUsedList, out List<Vector2Int> forestUsedList, out List<Vector2Int> lakeUsedList, out List<Vector2Int> plainUsedList)
     {
-
         // 生成山脉
         int maxMountainCount = Random.Range(7, 12);
         mountainUsedList = new List<Vector2Int>(); // 山脉占点列表
         List<Vector2Int> mountainCanUseList = new List<Vector2Int>(landList); // 山脉选点可用列表
+        int expectMountainGrid = 0; // 预期山脉格子数
         for (int i = 0; i < maxMountainCount; i++)
         {
-            int size = Random.Range(96, 199);
+            int size = Random.Range(96, 1000);
+            expectMountainGrid += size;
             int nearDis = Mathf.CeilToInt(Mathf.Sqrt(size));
             Vector2Int center = FindSuitablePosition(mapData, size, MapData.Mountain, mountainCanUseList, mountainUsedList, isLandList, nearDis);
             if (center.x != -1)
@@ -59,9 +60,11 @@ public static class NaturalFeatureGenerator
         int maxForestCount = Random.Range(9, 15);
         forestUsedList = new List<Vector2Int>(); // 森林占点列表
         List<Vector2Int> forestCanUseList = new List<Vector2Int>(landList); // 森林选点可用列表
+        int expectForestGrid = 0; // 预期森林格子数
         for (int i = 0; i < maxForestCount; i++)
         {
-            int size = Random.Range(49, 108);
+            int size = Random.Range(49, 500);
+            expectForestGrid += size;
             int nearDis = Mathf.CeilToInt(Mathf.Sqrt(size));
             Vector2Int center = FindSuitablePosition(mapData, size, MapData.Forest, forestCanUseList, forestUsedList, isLandList, nearDis);
             if (center.x != -1)
@@ -74,9 +77,11 @@ public static class NaturalFeatureGenerator
         int maxLakeCount = Random.Range(13, 17);
         lakeUsedList = new List<Vector2Int>(); // 湖泊占点列表
         List<Vector2Int> lakeCanUseList = new List<Vector2Int>(landList); // 湖泊选点可用列表
+        int expectLakeGrid = 0; // 预期湖泊格子数
         for (int i = 0; i < maxLakeCount; i++)
         {
-            int size = Random.Range(13, 61);
+            int size = Random.Range(13, 200);
+            expectLakeGrid += size;
             int nearDis = Mathf.CeilToInt(Mathf.Sqrt(size));
             Vector2Int center = FindSuitablePosition(mapData, size, MapData.Lake, lakeCanUseList, lakeUsedList, isLandList, nearDis);
             if (center.x != -1)
@@ -88,14 +93,14 @@ public static class NaturalFeatureGenerator
         plainUsedList = new List<Vector2Int>();
         foreach (Vector2Int p in landList)
         {
-            if (!mountainCanUseList.Contains(p) && !forestUsedList.Contains(p) && !lakeUsedList.Contains(p))
+            if (!mountainUsedList.Contains(p) && !forestUsedList.Contains(p) && !lakeUsedList.Contains(p))
             {
                 mapData[p.x, p.y] = mapData[p.x, p.y] | (int)MapData.Plain;
                 plainUsedList.Add(p);
             }
         }
 
-        Debug.Log($"陆地格子数：{landList.Count}  山脉{mountainCanUseList.Count}  森林{forestUsedList.Count}  湖泊{lakeUsedList.Count}  平原{plainUsedList.Count}");
+        Debug.Log($"陆地格子数：{landList.Count}  山脉{mountainUsedList.Count}/{expectMountainGrid}  森林{forestUsedList.Count}/{expectForestGrid}  湖泊{lakeUsedList.Count}/{expectLakeGrid}  平原{plainUsedList.Count}");
     }
 
     /// <summary>

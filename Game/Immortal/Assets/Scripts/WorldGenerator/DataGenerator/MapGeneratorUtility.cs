@@ -28,29 +28,56 @@ public static class MapGeneratorUtility
         List<Vector2Int> oceanList = new List<Vector2Int>(); // 记录海洋点
         List<List<Vector2Int>> isLandList = new List<List<Vector2Int>>(); // 每个岛所占格子
         List<Vector2Int> cityList = new List<Vector2Int>(); // 居住点起点
-        List<Vector2Int> cityPoints = new List<Vector2Int>(); // 居住点区域格子
+        List<Vector2Int> cityAllPoints = new List<Vector2Int>(); // 居住点区域格子
 
         // 生成大陆地形
         OceanContinentGenerator.Generate(mapData, config, oceanList, landList, isLandList);
 
+        // 计算耗时
+        System.DateTime step1Time = System.DateTime.Now;
+        System.TimeSpan step1UsedTime = step1Time - startTime;
+        Debug.Log($"生成大陆地形！耗时: {step1UsedTime.TotalMilliseconds:F2}ms ({step1UsedTime.TotalSeconds:F2}秒)");
+
+
         List<Vector2Int> canUsePoint = new List<Vector2Int>(landList); // 可使用的陆地格子
 
         // 生成定居点
-        SettlementGenerator.Generate(mapData, config, landList, cityList, cityPoints, isLandList, canUsePoint);
+        SettlementGenerator.Generate(mapData, config, landList, cityList, cityAllPoints, isLandList, canUsePoint);
+
+        // 计算耗时
+        System.DateTime step2Time = System.DateTime.Now;
+        System.TimeSpan step2UsedTime = step2Time - step1Time;
+        Debug.Log($"生成定居点！耗时: {step2UsedTime.TotalMilliseconds:F2}ms ({step2UsedTime.TotalSeconds:F2}秒)");
 
 
         List<Vector2Int> mountainUsedList; // 山脉占点列表
         List<Vector2Int> forestUsedList; // 森林占点列表
         List<Vector2Int> lakeUsedList; // 湖泊占点列表
         List<Vector2Int> plainUsedList; // 平原占点列表
-        // 生成和生态群
+        // 生成生态群
         NaturalFeatureGenerator.Generate(mapData, landList, isLandList, out mountainUsedList, out forestUsedList, out lakeUsedList, out plainUsedList);
 
-        // 生成河流
-        //RiverGenerator.Generate(mapData, config.mapSize);
+        // 计算耗时
+        System.DateTime step3Time = System.DateTime.Now;
+        System.TimeSpan step3UsedTime = step3Time - step2Time;
+        Debug.Log($"生成生态群！耗时: {step3UsedTime.TotalMilliseconds:F2}ms ({step3UsedTime.TotalSeconds:F2}秒)");
 
-        //// 生成道路和航线
-        //RoadRouteGenerator.Generate(mapData, config, importantLocations);
+        // 生成河流
+        RiverGenerator.Generate(mapData, landList, isLandList);
+
+        // 计算耗时
+        System.DateTime step4Time = System.DateTime.Now;
+        System.TimeSpan step4UsedTime = step4Time - step3Time;
+        Debug.Log($"生成河流！耗时: {step4UsedTime.TotalMilliseconds:F2}ms ({step4UsedTime.TotalSeconds:F2}秒)");
+
+        // 生成道路和航线
+        //RoadRouteGenerator.Generate(mapData, config, cityPoints.ToArray());
+        RoadRouteGeneratorPro.Generate(mapData, config, cityList.ToArray(), cityAllPoints.ToArray(), landList, isLandList);
+
+        // 计算耗时
+        System.DateTime step5Time = System.DateTime.Now;
+        System.TimeSpan step5UsedTime = step5Time - step4Time;
+        Debug.Log($"生成道路和航线！耗时: {step5UsedTime.TotalMilliseconds:F2}ms ({step5UsedTime.TotalSeconds:F2}秒)");
 
         // 计算总耗时
         System.DateTime endTime = System.DateTime.Now;

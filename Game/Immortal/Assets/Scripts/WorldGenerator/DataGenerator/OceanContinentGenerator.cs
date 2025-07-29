@@ -32,7 +32,6 @@ public static class OceanContinentGenerator
     public static void Generate(int[,] mapData, MapGeneratorConfig config, List<Vector2Int> oceanList, List<Vector2Int> landList, List<List<Vector2Int>> isLandList)
     {
         Vector2Int mapSize = config.mapSize;
-        System.DateTime startTime = System.DateTime.Now;
 
         // 增加一些随机性
         targetGridCount = Mathf.RoundToInt(config.continentRatio * Random.Range(0.8f, 1.2f) * mapSize.x * mapSize.y);
@@ -52,11 +51,6 @@ public static class OceanContinentGenerator
 
         // 生成多个大陆板块并连接
         GenerateContinentalPlates(mapData, mapSize);
-
-        // 计算总耗时
-        System.DateTime stepTime = System.DateTime.Now;
-        System.TimeSpan totalTime = stepTime - startTime;
-        Debug.Log($"陆地生成完成！总耗时: {totalTime.TotalMilliseconds:F2}ms ({totalTime.TotalSeconds:F2}秒)");
 
         // 收集海洋区域坐标
         for (int x = 0; x < mapSize.x; x++)
@@ -78,8 +72,6 @@ public static class OceanContinentGenerator
         GenerateIslands(mapData, config, oceanList, landList, config.smallIslandCount, config.smallIslandSize, "Small", isLandList);
         GenerateIslands(mapData, config, oceanList, landList, config.mediumIslandCount, config.mediumIslandSize, "Medium", isLandList);
         GenerateIslands(mapData, config, oceanList, landList, config.largeIslandCount, config.largeIslandSize, "Large", isLandList);
-
-        Debug.Log($"总格子数{mapSize.x * mapSize.y}  海洋格子数{oceanList.Count}  陆地格子数{landList.Count}  岛屿数量{isLandList.Count}");
     }
 
     /// <summary>
@@ -88,7 +80,6 @@ public static class OceanContinentGenerator
     private static void GenerateContinentalPlates(int[,] mapData, Vector2Int mapSize)
     {
         // 记录开始时间
-        System.DateTime startTime = System.DateTime.Now;
 
         // 决定生成5个大陆板块
         int plateCount = 5;
@@ -105,24 +96,11 @@ public static class OceanContinentGenerator
             plates.Add(plate);
         }
 
-        // 计算总耗时
-        System.DateTime stepTime = System.DateTime.Now;
-        System.TimeSpan totalTime = stepTime - startTime;
-        Debug.Log($"大陆板块生成完成！总耗时: {totalTime.TotalMilliseconds:F2}ms ({totalTime.TotalSeconds:F2}秒)");
-
         // 连接所有板块形成完整大陆
         ConnectAllPlates(mapData, mapSize, plates);
 
-        System.DateTime step2Time = System.DateTime.Now;
-        System.TimeSpan total2Time = step2Time - stepTime;
-        Debug.Log($"连接板块完成！总耗时: {total2Time.TotalMilliseconds:F2}ms ({total2Time.TotalSeconds:F2}秒)");
-
         // 处理被包围的海洋
         ResolveEnclosedOceans(mapData, mapSize);
-
-        System.DateTime endTime = System.DateTime.Now;
-        System.TimeSpan total3Time = endTime - step2Time;
-        Debug.Log($"处理被包围的海洋完成！总耗时: {total3Time.TotalMilliseconds:F2}ms ({total3Time.TotalSeconds:F2}秒)");
     }
 
     /// <summary>

@@ -15,7 +15,7 @@ public enum MapData
     Tribe = 4,
     /// <summary>村庄 浅蓝色</summary>
     Village = 8,
-    /// <summary>道路 浅褐色</summary>
+    /// <summary>道路 大红色</summary>
     Road = 16,
     /// <summary>航线 粉红色</summary>
     Route = 32,
@@ -34,7 +34,7 @@ public enum MapData
     Forest = 1024,
     /// <summary>湖泊 青色</summary>
     Lake = 2048,
-    /// <summary>河流 淡青色</summary>
+    /// <summary>河流 黄色</summary>
     River = 4096,
     /// <summary>码头 红色 </summary>
     Dock = 8192,

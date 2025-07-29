@@ -9,18 +9,18 @@ public static class RoadRouteGenerator
     /// <summary>
     /// 生成道路和航线
     /// </summary>
-    public static void Generate(int[,] mapData, MapGeneratorConfig config, Vector2Int[] importantLocations)
+    public static void Generate(int[,] mapData, MapGeneratorConfig config, Vector2Int[] cityPoints)
     {
         // 生成主道路（连接城市和宗门）
-        List<Vector2Int> majorLocations = GetMajorLocations(mapData, importantLocations);
+        List<Vector2Int> majorLocations = GetMajorLocations(mapData, cityPoints);
         GenerateMainRoads(mapData, config.mapSize, majorLocations);
 
         // 生成小道路（连接村庄、部落到主道路）
-        List<Vector2Int> minorLocations = GetMinorLocations(mapData, importantLocations);
+        List<Vector2Int> minorLocations = GetMinorLocations(mapData, cityPoints);
         GenerateMinorRoads(mapData, config.mapSize, minorLocations, majorLocations);
 
         // 生成码头和航线（岛屿连接）
-        GenerateDocksAndRoutes(mapData, config.mapSize, importantLocations);
+        GenerateDocksAndRoutes(mapData, config.mapSize, cityPoints);
     }
 
     /// <summary>
