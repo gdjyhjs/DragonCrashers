@@ -538,7 +538,50 @@ MonoBehaviour:
   layerMountain: {fileID: 8574412962073106934, guid: 6504e62edfb35774590fc3d828442c65, type: 2}
   layerPlain: {fileID: 8574412962073106934, guid: 9592214b58358c64189c8ffcb0134ffa, type: 2}
   layerRoad: {fileID: 8574412962073106934, guid: 92b396e0a512b6a4c95bccd37de5cd6c, type: 2}
-  textureScale: 10
+  grassData: []
+  treesData:
+  - prefab: {fileID: 5935278547815300987, guid: e05ae677c7b3bc546bd36b488586fb0c, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
+  - prefab: {fileID: 5361428799875542787, guid: c31bf8ec8e29cd74f9fb9a970fde7a53, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
+  - prefab: {fileID: 873261478477796481, guid: c0fdfdeafe3a1404a8766f946dd531d0, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
+  - prefab: {fileID: 2479184009378418726, guid: b62637568d07eb141b948ab45ea8c3d4, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
+  - prefab: {fileID: 7296054959696050501, guid: 367ab66e2689a8345a8fb8fd14a4f90c, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
+  - prefab: {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
+  - prefab: {fileID: 4928616408704863665, guid: 1caa73a6296593c46bb83d678ff6609b, type: 3}
+    startPos: {x: 0, y: 0}
+    endPos: {x: 1, y: 1}
+    density: 0.2
+    minScale: 0.3
+    maxScale: 0.8
 --- !u!1 &1488268981
 GameObject:
   m_ObjectHideFlags: 0
