@@ -54,11 +54,11 @@ public class TerrainTextureSetter
                 // 按地图数据分配纹理权重
                 if (IsType(dataValue, MapData.City) || IsType(dataValue, MapData.Sect) || IsType(dataValue, MapData.Village) || IsType(dataValue, MapData.Tribe))
                 {
-                    SetLayerWeight(splatmapData, x, z, LayerType.City);
+                    SetLayerWeight(splatmapData, x, z, LayerType.Road);
                 }
                 else if (IsType(dataValue, MapData.Road))
                 {
-                    SetLayerWeight(splatmapData, x, z, LayerType.Road);
+                    SetLayerWeight(splatmapData, x, z, LayerType.City);
                 }
                 else if (IsType(dataValue, MapData.Forest))
                 {
@@ -70,7 +70,7 @@ public class TerrainTextureSetter
                 }
                 else
                 {
-                    SetLayerWeight(splatmapData, x, z, LayerType.Plain);
+                    SetLayerWeight(splatmapData, x, z, LayerType.Mountain);
                 }
             }
         }

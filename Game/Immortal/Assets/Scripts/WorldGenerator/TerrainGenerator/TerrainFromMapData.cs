@@ -53,7 +53,7 @@ public class TerrainFromMapData : MonoBehaviour
         //new TerrainGrassSetter(terrainData, mapData, grassData, _layerOrder).SetGrass();
 
         // 4. 种树（森林）
-        new TerrainTreeSetter(terrainData, mapData, treesData).SetTrees();
+        new TerrainTreeSetter(terrainData, mapData, treesData).SetTrees(transform);
 
         Debug.Log("地形所有设置完成！");
     }

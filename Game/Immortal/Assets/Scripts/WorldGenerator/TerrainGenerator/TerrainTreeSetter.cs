@@ -46,7 +46,7 @@ public class TerrainTreeSetter
     /// <summary>
     /// 核心方法：在地形上生成树木
     /// </summary>
-    public void SetTrees()
+    public void SetTrees(Transform parent)
     {
         // 获取地图尺寸（宽和高的单元格数量）
         int mapWidth = mapData.GetLength(0);
@@ -71,6 +71,9 @@ public class TerrainTreeSetter
         int forestCount = 0; // 记录森林区域数量
         int forestMax = 0; // （原代码未使用，可能是预留变量）
 
+        Debug.Log($"格子大小：{mapCellSizeX}，{mapCellSizeZ}   数据大小：{mapWidth}，{mapHeight}  heightmapRes:{heightmapRes}");
+
+        var offset = new Vector2Int(mapWidth/2, mapHeight/2);
         // 遍历地图所有单元格
         for (int mapX = 0; mapX < mapWidth; mapX++)
         {
@@ -79,23 +82,11 @@ public class TerrainTreeSetter
                 // 获取当前单元格的地图数据值
                 int dataValue = mapData[mapX, mapY];
 
+                var curPos = new Vector3(mapX * mapCellSizeX, 0, mapY * mapCellSizeZ);
+
                 // 计算当前地图单元格在世界坐标中的范围
-                float worldX0 = mapX * mapCellSizeX;
-                float worldZ0 = mapY * mapCellSizeZ;
-                float worldX1 = (mapX + 1) * mapCellSizeX;
-                float worldZ1 = (mapY + 1) * mapCellSizeZ;
-
-                // 将世界坐标转换为地形高度图的采样坐标（整数索引）
-                int heightX0 = Mathf.FloorToInt(worldX0 / heightmapScaleX);
-                int heightZ0 = Mathf.FloorToInt(worldZ0 / heightmapScaleZ);
-                int heightX1 = Mathf.CeilToInt(worldX1 / heightmapScaleX);
-                int heightZ1 = Mathf.CeilToInt(worldZ1 / heightmapScaleZ);
-
-                // 限制高度图坐标在有效范围内（防止越界）
-                heightX0 = Mathf.Clamp(heightX0, 0, heightmapRes - 1);
-                heightX1 = Mathf.Clamp(heightX1, 0, heightmapRes - 1);
-                heightZ0 = Mathf.Clamp(heightZ0, 0, heightmapRes - 1);
-                heightZ1 = Mathf.Clamp(heightZ1, 0, heightmapRes - 1);
+                float worldX = (mapX) * mapCellSizeX;
+                float worldZ = (mapY) * mapCellSizeZ;
 
                 // 计算当前单元格在地图中的相对比例（0-1范围）
                 var xPos = mapX * 1f / mapWidth;
@@ -136,12 +127,15 @@ public class TerrainTreeSetter
                 }
 
                 // 遍历当前区域的高度图范围，生成树木
-                for (int x = heightX0; x <= heightX1; x++)
+                for (int i = 0; i < mapCellSizeX; i++)
                 {
-                    for (int z = heightZ0; z <= heightZ1; z++)
+                    for (int j = 0; j < mapCellSizeZ; j++)
                     {
+                        var x = worldX + i;
+                        var z = worldZ + j;
+
                         // 获取当前坐标的地形高度
-                        float height = terrainData.GetHeight(x, z);
+                        float height = terrainData.GetHeight((int)x, (int)z);
 
                         // 遍历符合条件的树配置，按密度生成树木
                         foreach (var treeData in currentTreesData)
@@ -152,9 +146,9 @@ public class TerrainTreeSetter
                             float other = density - count;
                             if (density > 1)
                             {
-                                for (int j = 0; j < density; j++)
+                                for (int k = 0; k < density; k++)
                                 {
-                                    CreateTree(treeData.prefab, height, x, z);
+                                    CreateTree(treeData, height, x, z, parent);
                                 }
                             }
                             
@@ -162,7 +156,7 @@ public class TerrainTreeSetter
                             {
                                 if (Random.Range(0f, 1f) <= other)
                                 {
-                                    CreateTree(treeData.prefab, height, x, z);
+                                    CreateTree(treeData, height, x, z, parent);
                                 }
                             }
                         }
@@ -185,12 +179,13 @@ public class TerrainTreeSetter
     /// <param name="height">地形高度（Y轴位置）</param>
     /// <param name="x">高度图X坐标</param>
     /// <param name="z">高度图Z坐标</param>
-    private void CreateTree(GameObject prefab, float height, int x, int z)
+    private void CreateTree(TerrainTreeData data, float height, float x, float z,Transform parent)
     {
         // 实例化树预制体
-        var go = GameObject.Instantiate(prefab);
+        GameObject go = GameObject.Instantiate(data.prefab, parent);
         // 设置树的位置（在高度图坐标基础上添加随机偏移，避免整齐排列）
-        go.transform.position = new Vector3(x + Random.Range(-0.5f, 0.5f), height, z + Random.Range(-0.5f, 0.5f));
+        go.transform.localPosition = new Vector3(x + Random.Range(0f, 1f), height, z + Random.Range(0f, 1f));
+        go.transform.localScale = Vector3.one * Random.Range(data.minScale, data.maxScale);
     }
 
     /// <summary>
