@@ -3,6 +3,8 @@ using UnityEngine;
 using System.IO;
 using Codice.Client.BaseCommands;
 using System.Collections.Generic;
+using log4net.Util;
+using TreeEditor;
 
 public class MapEditorWindow : EditorWindow
 {
@@ -32,6 +34,8 @@ public class MapEditorWindow : EditorWindow
     private static Color lakeColor = new Color(0.2f, 0.8f, 0.8f); // 青色
     private static Color oceanColor = new Color(0.0f, 0.3f, 0.5f); // 暗青色
     private int customTextureWidth = -1; // 新增变量，用于记录自定义的图片宽度
+
+    private TerrainFromMapData terrainData;
 
     // 新增：地形类型与颜色、说明的映射，用于右侧显示
     private Dictionary<int, (Color, string)> terrainColorInfo = new Dictionary<int, (Color, string)>()
@@ -224,6 +228,30 @@ public class MapEditorWindow : EditorWindow
         {
             EditorGUILayout.HelpBox("未生成地图纹理，请先加载或生成地图。", MessageType.Info);
         }
+        terrainData = (TerrainFromMapData)EditorGUILayout.ObjectField(
+            "地形处理组件",  // 字段标签
+            terrainData,     // 当前值
+            typeof(TerrainFromMapData),  // 允许的类型
+            true  // 是否允许场景中的对象（如果是MonoBehaviour组件则需要设为true）
+        );
+
+        if (terrainData != null && GUILayout.Button("设置地形高度"))
+        {
+            TerrainData data = terrainData.targetTerrain.terrainData;
+            new TerrainHeightSetter(data, terrainData.mapData).SetHeights();
+        }
+
+        if (terrainData != null && GUILayout.Button("设置地图纹理"))
+        {
+            TerrainData data = terrainData.targetTerrain.terrainData;
+            new TerrainTextureSetter(data, terrainData.mapData, terrainData._terrainLayers, terrainData._layerOrder).SetTextures();
+        }
+
+        if (terrainData != null && GUILayout.Button("设置地形树木"))
+        {
+            TerrainData data = terrainData.targetTerrain.terrainData;
+            new TerrainTreeSetter(data, terrainData.mapData, terrainData.treesData).SetTrees(terrainData.transform);
+        }
 
         EditorGUILayout.EndScrollView();
     }
@@ -365,7 +393,7 @@ public class MapEditorWindow : EditorWindow
             for (int x = 0; x < targetWidth; x++)
             {
                 // 计算在原图中的对应坐标（浮点型，用于插值）
-                float sourceX = (float)x / targetWidth * currentMapSize.x;
+                float sourceX = (float)(targetWidth - 1 - x) / targetWidth * currentMapSize.x;
                 float sourceY = (float)y / targetHeight * currentMapSize.y;
 
                 // 取整得到周围像素坐标，进行双线性插值

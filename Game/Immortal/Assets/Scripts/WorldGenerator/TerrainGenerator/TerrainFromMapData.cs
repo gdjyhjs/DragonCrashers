@@ -14,14 +14,23 @@ public class TerrainFromMapData : MonoBehaviour
     public TerrainLayer layerRoad;
 
     // 草与树的原型（Inspector中赋值）
-    public TerrainGrassData[] grassData; // 草纹理
     public TerrainTreeData[] treesData; // 树
 
-    private LayerType[] _layerOrder = { LayerType.City, LayerType.Forest, LayerType.Mountain, LayerType.Plain, LayerType.Road };
-    private TerrainLayer[] _terrainLayers;
+    public LayerType[] _layerOrder = { LayerType.City, LayerType.Forest, LayerType.Mountain, LayerType.Plain, LayerType.Road };
+    public TerrainLayer[] _terrainLayers;
+
+    private bool isInit;
 
     private void Awake()
     {
+        Init();
+    }
+
+    public void Init()
+    {
+        if (isInit)
+            return;
+
         // 初始化纹理层数组
         _terrainLayers = new TerrainLayer[] { layerCity, layerForest, layerMountain, layerPlain, layerRoad };
 
@@ -31,6 +40,8 @@ public class TerrainFromMapData : MonoBehaviour
 
         // 自动查找地形
         if (targetTerrain == null) targetTerrain = GetComponent<Terrain>();
+
+        isInit = true;
     }
 
     void Start()
@@ -43,16 +54,13 @@ public class TerrainFromMapData : MonoBehaviour
 
         TerrainData terrainData = targetTerrain.terrainData;
 
-        // 1. 设置地形高度
-        new TerrainHeightSetter(terrainData, mapData).SetHeights();
+        //// 1. 设置地形高度
+        //new TerrainHeightSetter(terrainData, mapData).SetHeights();
 
-        // 2. 设置地面纹理
-        new TerrainTextureSetter(terrainData, mapData, _terrainLayers, _layerOrder).SetTextures();
+        //// 2. 设置地面纹理
+        //new TerrainTextureSetter(terrainData, mapData, _terrainLayers, _layerOrder).SetTextures();
 
-        // 3. 种草（平原/森林）
-        //new TerrainGrassSetter(terrainData, mapData, grassData, _layerOrder).SetGrass();
-
-        // 4. 种树（森林）
+        // 4. 种树（森林、草丛、装饰物）
         new TerrainTreeSetter(terrainData, mapData, treesData).SetTrees(transform);
 
         Debug.Log("地形所有设置完成！");

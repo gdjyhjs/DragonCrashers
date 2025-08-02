@@ -2,6 +2,7 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using TreeEditor;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.iOS;
 
@@ -19,6 +20,7 @@ public class TerrainTreeData
     public float maxScale = 1; // 最大缩放比例
     public float density = 1; // 生成密度（每1平方米生成多少个，小于0则按照概率生成）Density calculation method
     public DensityCalculationType densityCalculationType = DensityCalculationType.Shared; // 密度计算方式（独立或共享）
+    public string flag = "Tree"; // 对象标识
 }
 
 /// <summary>
@@ -81,6 +83,17 @@ public class TerrainTreeSetter
             {
                 // 获取当前单元格的地图数据值
                 int dataValue = mapData[mapX, mapY];
+                if (IsType(dataValue, MapData.Sect)) continue;
+                if (IsType(dataValue, MapData.City)) continue;
+                if (IsType(dataValue, MapData.Tribe)) continue;
+                if (IsType(dataValue, MapData.Village)) continue;
+                if (IsType(dataValue, MapData.Road)) continue;
+                if (IsType(dataValue, MapData.Route)) continue;
+                if (IsType(dataValue, MapData.Lake)) continue;
+                if (IsType(dataValue, MapData.River)) continue;
+                if (IsType(dataValue, MapData.Dock)) continue;
+                if (IsType(dataValue, MapData.Bridge)) continue;
+                if (IsType(dataValue, MapData.Ocean)) continue;
 
                 var curPos = new Vector3(mapX * mapCellSizeX, 0, mapY * mapCellSizeZ);
 
@@ -89,15 +102,16 @@ public class TerrainTreeSetter
                 float worldZ = (mapY) * mapCellSizeZ;
 
                 // 计算当前单元格在地图中的相对比例（0-1范围）
-                var xPos = mapX * 1f / mapWidth;
-                var yPos = mapY * 1f / mapHeight;
+                var xPos = 1 - mapX * 1f / mapWidth;
+                var yPos = 1 - mapY * 1f / mapHeight;
+
 
                 // 筛选当前位置符合生成条件的树配置
                 foreach (TerrainTreeData treeData in this.treesData)
                 {
                     // 检查当前位置是否在树的生成范围（startPos到endPos之间）
-                    if (xPos < treeData.startPos.x || xPos > treeData.endPos.x ||
-                        yPos < treeData.startPos.y || yPos > treeData.endPos.y)
+                    if (xPos < treeData.startPos.y || xPos > treeData.endPos.y ||
+                        yPos < treeData.startPos.x || yPos > treeData.endPos.x)
                     {
                         continue; // 不在范围内，跳过
                     }
@@ -134,9 +148,6 @@ public class TerrainTreeSetter
                         var x = worldX + i;
                         var z = worldZ + j;
 
-                        // 获取当前坐标的地形高度
-                        float height = terrainData.GetHeight((int)x, (int)z);
-
                         // 遍历符合条件的树配置，按密度生成树木
                         foreach (var treeData in currentTreesData)
                         {
@@ -148,7 +159,7 @@ public class TerrainTreeSetter
                             {
                                 for (int k = 0; k < density; k++)
                                 {
-                                    CreateTree(treeData, height, x, z, parent);
+                                    CreateTree(treeData, x, z, parent);
                                 }
                             }
                             
@@ -156,7 +167,7 @@ public class TerrainTreeSetter
                             {
                                 if (Random.Range(0f, 1f) <= other)
                                 {
-                                    CreateTree(treeData, height, x, z, parent);
+                                    CreateTree(treeData, x, z, parent);
                                 }
                             }
                         }
@@ -179,13 +190,59 @@ public class TerrainTreeSetter
     /// <param name="height">地形高度（Y轴位置）</param>
     /// <param name="x">高度图X坐标</param>
     /// <param name="z">高度图Z坐标</param>
-    private void CreateTree(TerrainTreeData data, float height, float x, float z,Transform parent)
+    private void CreateTree(TerrainTreeData data, float x1, float z1,Transform root)
     {
+        var parent = root.Find(data.flag);
+        if(parent == null)
+        {
+            var flag = new GameObject(data.flag);
+            flag.transform.SetParent(root, false);
+            parent = flag.transform;
+        }
+
+        var x = z1;
+        var z = x1;
+
+        // 射线起点：从(x, 500, z)位置开始
+        Vector3 localRayOrigin = new Vector3(x, 500f, z);
+        // 转换为世界坐标
+        Vector3 worldRayOrigin = parent.TransformPoint(localRayOrigin);
+        // 射线方向：向下
+        Vector3 rayDirection = Vector3.down;
+        // 射线最大距离（足够覆盖从500高度到地面的距离）
+        float maxDistance = 1000f;
+        // 获取Ground层的索引
+        int groundLayerIndex = LayerMask.NameToLayer("Ground");
+
+        RaycastHit hit;
+
+        // 射线检测所有层（layerMask设为-1表示检测所有层）
+        if (Physics.Raycast(worldRayOrigin, rayDirection, out hit, maxDistance, -1))
+        {
+            // 检查碰撞到的是否是Ground层
+            if (hit.collider.gameObject.layer != groundLayerIndex)
+            {
+                // 不是Ground层，说明地面有其他东西，直接返回
+                Debug.Log($"位置 ({x}, {z}) 的地面被其他物体覆盖，不生成树木");
+                return;
+            }
+        }
+        else
+        {
+            // 没有检测到任何碰撞
+            Debug.LogWarning($"位置 ({x}, {z}) 未检测到任何物体，不生成树木");
+            return;
+        }
+
+        // 如果通过检测，获取地面高度
+        float height = hit.point.y - root.transform.position.y;
+
         // 实例化树预制体
         GameObject go = GameObject.Instantiate(data.prefab, parent);
         // 设置树的位置（在高度图坐标基础上添加随机偏移，避免整齐排列）
         go.transform.localPosition = new Vector3(x + Random.Range(0f, 1f), height, z + Random.Range(0f, 1f));
         go.transform.localScale = Vector3.one * Random.Range(data.minScale, data.maxScale);
+        go.name = data.flag + ":" + x + "," + z;
     }
 
     /// <summary>
