@@ -200,6 +200,7 @@ public class TerrainTreeSetter
             parent = flag.transform;
         }
 
+        // 数据需要转换坐标
         var x = z1;
         var z = x1;
 

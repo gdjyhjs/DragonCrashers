@@ -21,6 +21,8 @@ public class TerrainFromMapData : MonoBehaviour
 
     private bool isInit;
 
+    public TerrainBuildData[] buildData;
+
     private void Awake()
     {
         Init();
@@ -46,6 +48,11 @@ public class TerrainFromMapData : MonoBehaviour
 
     void Start()
     {
+        Build();
+    }
+
+    public void Build()
+    {
         if (targetTerrain == null || mapData == null)
         {
             Debug.LogError("地形或地图数据未设置！");
@@ -54,14 +61,17 @@ public class TerrainFromMapData : MonoBehaviour
 
         TerrainData terrainData = targetTerrain.terrainData;
 
-        //// 1. 设置地形高度
-        //new TerrainHeightSetter(terrainData, mapData).SetHeights();
+        // 1. 设置地形高度
+        new TerrainHeightSetter(terrainData, mapData).SetHeights();
 
-        //// 2. 设置地面纹理
-        //new TerrainTextureSetter(terrainData, mapData, _terrainLayers, _layerOrder).SetTextures();
+        // 2. 设置地面纹理
+        new TerrainTextureSetter(terrainData, mapData, _terrainLayers, _layerOrder).SetTextures();
 
-        // 4. 种树（森林、草丛、装饰物）
+        // 3. 种树（森林、草丛、装饰物）
         new TerrainTreeSetter(terrainData, mapData, treesData).SetTrees(transform);
+
+        // 4. 创造城市和建筑
+        new TerrainBuildSetter(terrainData, mapData, buildData).SetBuilds(transform);
 
         Debug.Log("地形所有设置完成！");
     }

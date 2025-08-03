@@ -6,10 +6,10 @@ public class TerrainHeightSetter
     private int[,] _mapData;
 
     // 高度配置（可扩展为外部参数）
-    private float _mountainHeight = 100.3f;
-    private float _oceanHeight = 98.5f;
-    private float _lakeHeight = 99.2f;
-    private float _riverHeight = 99.5f;
+    private float _mountainHeight = 100f;
+    private float _oceanHeight = 95.6f;
+    private float _lakeHeight = 97.2f;
+    private float _riverHeight = 98.4f;
     private float _defaultHeight = 100f;
 
     public TerrainHeightSetter(TerrainData terrainData, int[,] mapData)
@@ -72,9 +72,17 @@ public class TerrainHeightSetter
 
     private float GetTargetHeight(int dataValue)
     {
+        if (IsType(dataValue, MapData.River)) return _defaultHeight;
+
         if (IsType(dataValue, MapData.Ocean)) return _oceanHeight;
         if (IsType(dataValue, MapData.Lake)) return _lakeHeight;
         if (IsType(dataValue, MapData.River)) return _riverHeight;
+
+        if (IsType(dataValue, MapData.City) || IsType(dataValue, MapData.Sect) || IsType(dataValue, MapData.Village) || IsType(dataValue, MapData.Tribe)) return _defaultHeight;
+        if (IsType(dataValue, MapData.Road)) return _defaultHeight;
+        //if (IsType(dataValue, MapData.Forest)) return _defaultHeight;
+        //if (IsType(dataValue, MapData.Plain)) return _defaultHeight;
+
         if (IsType(dataValue, MapData.Mountain)) return _mountainHeight;
         return _defaultHeight;
     }
